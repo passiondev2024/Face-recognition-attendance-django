@@ -16,6 +16,7 @@ class Student(models.Model):
     department = models.CharField(max_length=200, blank=True, null=True)
     course = models.CharField(max_length=200, null=True, blank=True)
     year = models.CharField(max_length=200, null=True, blank=True)
+    semester = models.CharField(max_length=200, null=True, blank=True)
     
     def __str__(self):
         return self.admission
