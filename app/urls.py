@@ -5,5 +5,6 @@ urlpatterns = [
     path('', views.Index, name='index'),
     path('attend', views.Attend, name='attend'),
     path('attendance', views.Attendance, name='attendance'),
-    path('')
+    path('enroll', views.Enroll, name='enroll'),
+    path()
 ]
