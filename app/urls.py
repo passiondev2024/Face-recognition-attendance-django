@@ -8,5 +8,5 @@ urlpatterns = [
     path('enroll', views.Enroll, name='enroll'),
     path('examcard', views.ExamCard, name='examcard'),
     path('profile', views.myProfile, name='profile'),
-    path('editprofile',)
+    path('editprofile',views.editProfile, name='')
 ]
