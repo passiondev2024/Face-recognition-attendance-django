@@ -1,4 +1,5 @@
 from django.shortcuts import render
+from django.contrib.auth.models import auth, User
 
 
 
@@ -8,6 +9,9 @@ def Login(request):
         username = request.post['username']
         password = request.POST['password']
         
+        user = auth.authenticate(username=username, password=password)
+        if user is not None:
+            aut
     return render(request, 'app/login.html')
 
 def Index(request):
