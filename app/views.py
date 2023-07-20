@@ -1,5 +1,6 @@
-from django.shortcuts import render
+from django.shortcuts import render, redirect
 from django.contrib.auth.models import auth, User
+from django.contrib import messages
 
 
 
@@ -11,7 +12,12 @@ def Login(request):
         
         user = auth.authenticate(username=username, password=password)
         if user is not None:
-            aut
+            auth.login(request, user)
+            messages.info(request, 'Your are logged in')
+            return redirect('index')
+        else:
+            messages.error(request, 'Invalid details')
+            return redirect('/')
     return render(request, 'app/login.html')
 
 def Index(request):
