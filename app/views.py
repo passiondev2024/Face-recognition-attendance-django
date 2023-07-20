@@ -4,6 +4,10 @@ from django.shortcuts import render
 
 # Create your views here.
 def Login(request):
+    if request.method == 'POST':
+        username = request.post['username']
+        password = request.POST['password']
+        
     return render(request, 'app/login.html')
 
 def Index(request):
