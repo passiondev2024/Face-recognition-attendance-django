@@ -14,3 +14,5 @@ def Attendance(request):
 
 def Enroll(request):
     return render(request, 'app/enroll.html')
+
+def 
