@@ -19,4 +19,6 @@ def ExamCard(request):
     return render(request, 'examcard.html')
 
 def myProfile(request):
-    return render(request, 'app/')
+    return render(request, 'app/profile.html')
+
+def 
