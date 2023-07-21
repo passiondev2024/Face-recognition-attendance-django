@@ -22,4 +22,7 @@ def myProfile(request):
     return render(request, 'app/profile.html')
 
 def editProfile(request):
-    return re
+    return render(request, 'app/edit-profile.html')
+
+def Logout(request):
+    return render(request, 'app/logout.html')
