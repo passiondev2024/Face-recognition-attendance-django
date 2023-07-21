@@ -60,31 +60,31 @@
                     <ul>
                         <li class="menu-title">Main</li>
                         <li>
-                            <a href="index.html"><i class="fa fa-dashboard"></i> <span>Dashboard</span></a>
+                            <a href="{% url 'index' %}"><i class="fa fa-dashboard"></i> <span>Dashboard</span></a>
                         </li>
                         <li>
-                            <a href="attend.html"><i class="fa fa-wheelchair"></i> <span>Attent Class</span></a>
+                            <a href="{% url 'attend' %}"><i class="fa fa-wheelchair"></i> <span>Attent Class</span></a>
                         </li>
                         <li>
-                            <a href="attendance.html"><i class="fa fa-user-md"></i> <span>Attendance</span></a>
+                            <a href="{% url 'attendance' %}"><i class="fa fa-user-md"></i> <span>Attendance</span></a>
                         </li>
-                        <li class="active">
-                            <a href="enroll.html"><i class="fa fa-user-md"></i> <span>Enroll</span></a>
+                        <li>
+                            <a href="{% url 'enroll' %}"><i class="fa fa-user-md"></i> <span>Enroll</span></a>
                         </li>
                         <!-- <li>
                             <a href="chat.html"><i class="fa fa-comments"></i> <span>Chat</span> <span
                             class="badge badge-pill bg-primary float-right">5</span></a>
                         </li> -->
                         <li>
-                            <a href="examcard.html"><i class="fa fa-calendar"></i> <span>Exam Card</span></a>
+                            <a href="{% url 'examcard' %}"><i class="fa fa-calendar"></i> <span>Exam Card</span></a>
                         </li>
                         <li class="submenu">
                             <a href="#"><i class="fa fa-user"></i> <span> Account </span> <span
                                     class="menu-arrow"></span></a>
                             <ul style="display: none;">
-                                <li><a href="profile.html">My Profile</a></li>
-                                <li><a href="edit-profile.html">Edit Profile</a></li>
-                                <li><a href="login.html">LogOut</a></li>
+                                <li><a href="{% url 'profile' %}">My Profile</a></li>
+                                <li><a href="{% url 'editprofile' %}">Edit Profile</a></li>
+                                <li><a href="{% url 'logout' %}">LogOut</a></li>
                             </ul>
                         </li>
                     </ul>
