@@ -8,3 +8,6 @@ def Index(request):
 
 def Attend(request):
     return render(request, 'app/attend.html')
+
+def Attendance(request):
+    return render
