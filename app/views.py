@@ -10,4 +10,7 @@ def Attend(request):
     return render(request, 'app/attend.html')
 
 def Attendance(request):
-    return render
+    return render(request, 'app/attendance.html')
+
+def Enroll(request):
+    return render(request, 'app/enroll.html')
