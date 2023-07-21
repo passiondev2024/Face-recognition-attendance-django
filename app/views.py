@@ -18,4 +18,5 @@ def Enroll(request):
 def ExamCard(request):
     return render(request, 'examcard.html')
 
-def 
+def myProfile(request):
+    return render(request, 'app/')
