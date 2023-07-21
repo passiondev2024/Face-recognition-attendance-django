@@ -21,4 +21,5 @@ def ExamCard(request):
 def myProfile(request):
     return render(request, 'app/profile.html')
 
-def 
+def editProfile(request):
+    return re
