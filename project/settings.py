@@ -120,7 +120,7 @@ USE_TZ = True
 
 STATIC_URL = 'static/'
 STATICFILES_DIR = [
-    os.path.join(BASE_DIR, 'app/static/assets')
+    os.path.join(BASE_DIR, ('app/static/assets'))
 ]
 
 # Default primary key field type
