@@ -13,8 +13,8 @@ def Login(request):
         user = auth.authenticate(username=username, password=password)
         if user is not None:
             auth.login(request, user)
-            messages.info(request, 'Your are logged in')
-            return redirect('index')
+            messages.info(request, 'Please enroll to continue')
+            return redirect('enroll')
         else:
             messages.error(request, 'Invalid details')
             return redirect('/')
