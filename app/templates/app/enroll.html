@@ -1,0 +1,240 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=0">
+
+    <title>Face attendance</title>
+    <link rel="stylesheet" type="text/css" href="{% static 'assets/css/bootstrap.min.css">
+    <link rel="stylesheet" type="text/css" href="{% static 'assets/css/font-awesome.min.css">
+    <link rel="stylesheet" type="text/css" href="{% static 'assets/css/select2.min.css">
+    <link rel="stylesheet" type="text/css" href="{% static 'assets/css/bootstrap-datetimepicker.min.css">
+    <link rel="stylesheet" type="text/css" href="{% static 'assets/css/style.css">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/bbbootstrap/libraries@main/choices.min.css">
+    <script src="https://cdn.jsdelivr.net/gh/bbbootstrap/libraries@main/choices.min.js"></script>
+</head>
+
+<body>
+    <div class="main-wrapper">
+        <div class="header">
+            <div class="header-left">
+                <a href="index.html" class="logo">
+                    <img src="assets/img/logo.png" width="35" height="35" alt=""> <span>Preclinic</span>
+                </a>
+            </div>
+            <a id="toggle_btn" href="javascript:void(0);"><i class="fa fa-bars"></i></a>
+            <a id="mobile_btn" class="mobile_btn float-left" href="#sidebar"><i class="fa fa-bars"></i></a>
+            <ul class="nav user-menu float-right">
+                <li class="nav-item dropdown has-arrow">
+                    <a href="#" class="dropdown-toggle nav-link user-link" data-toggle="dropdown">
+                        <span class="user-img">
+                            <img class="rounded-circle" src="assets/img/user.jpg" width="24" alt="Admin">
+                            <span class="status online"></span>
+                        </span>
+                        <span>Admin</span>
+                    </a>
+                    <div class="dropdown-menu">
+                        <a class="dropdown-item" href="profile.html">My Profile</a>
+                        <a class="dropdown-item" href="edit-profile.html">Edit Profile</a>
+                        <a class="dropdown-item" href="settings.html">Settings</a>
+                        <a class="dropdown-item" href="login.html">Logout</a>
+                    </div>
+                </li>
+            </ul>
+            <div class="dropdown mobile-user-menu float-right">
+                <a href="#" class="dropdown-toggle" data-toggle="dropdown" aria-expanded="false"><i
+                        class="fa fa-ellipsis-v"></i></a>
+                <div class="dropdown-menu dropdown-menu-right">
+                    <a class="dropdown-item" href="profile.html">My Profile</a>
+                    <a class="dropdown-item" href="edit-profile.html">Edit Profile</a>
+                    <a class="dropdown-item" href="settings.html">Settings</a>
+                    <a class="dropdown-item" href="login.html">Logout</a>
+                </div>
+            </div>
+        </div>
+        <div class="sidebar" id="sidebar">
+            <div class="sidebar-inner slimscroll">
+                <div id="sidebar-menu" class="sidebar-menu">
+                    <ul>
+                        <li class="menu-title">Main</li>
+                        <li>
+                            <a href="index.html"><i class="fa fa-dashboard"></i> <span>Dashboard</span></a>
+                        </li>
+                        <li>
+                            <a href="attend.html"><i class="fa fa-wheelchair"></i> <span>Attent Class</span></a>
+                        </li>
+                        <li>
+                            <a href="attendance.html"><i class="fa fa-user-md"></i> <span>Attendance</span></a>
+                        </li>
+                        <li class="active">
+                            <a href="enroll.html"><i class="fa fa-user-md"></i> <span>Enroll</span></a>
+                        </li>
+                        <!-- <li>
+                            <a href="chat.html"><i class="fa fa-comments"></i> <span>Chat</span> <span
+                            class="badge badge-pill bg-primary float-right">5</span></a>
+                        </li> -->
+                        <li>
+                            <a href="examcard.html"><i class="fa fa-calendar"></i> <span>Exam Card</span></a>
+                        </li>
+                        <li class="submenu">
+                            <a href="#"><i class="fa fa-user"></i> <span> Account </span> <span
+                                    class="menu-arrow"></span></a>
+                            <ul style="display: none;">
+                                <li><a href="profile.html">My Profile</a></li>
+                                <li><a href="edit-profile.html">Edit Profile</a></li>
+                                <li><a href="login.html">LogOut</a></li>
+                            </ul>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+        <div class="page-wrapper">
+            <div class="content">
+                <div class="row">
+                    <div class="col-sm-12">
+                        <h4 class="page-title">Enroll for Face Attendance</h4>
+                    </div>
+                </div>
+                <form>
+                    <div class="card-box">
+                        <h3 class="card-title">Basic Informations</h3>
+                        <div class="row">
+                            <div class="col-md-12">
+                                <div class="profile-img-wrap">
+                                    <img class="inline-block" src="assets/img/user.jpg" alt="user">
+                                    <div class="fileupload btn">
+                                        <span class="btn-text">Upload</span>
+                                        <input class="upload" type="file">
+                                    </div>
+                                </div>
+                                <div class="profile-basic">
+                                    <div class="row">
+                                        <div class="col-md-6">
+                                            <div class="form-group form-focus">
+                                                <label class="focus-label">First Name</label>
+                                                <input type="text" name="first-name" class="form-control floating">
+                                            </div>
+                                        </div>
+                                        <div class="col-md-6">
+                                            <div class="form-group form-focus">
+                                                <label class="focus-label">Last Name</label>
+                                                <input type="text" class="form-control floating" name="last-name">
+                                            </div>
+                                        </div>
+                                        <div class="col-md-6">
+                                            <div class="form-group form-focus">
+                                                <label class="focus-label">Admission</label>
+                                                <input type="text" class="form-control floating" name="admission">
+                                            </div>
+                                        </div>
+                                        <div class="col-md-6">
+                                            <div class="form-group form-focus">
+                                                <label class="focus-label">Phone Number</label>
+                                                <input type="number" class="form-control floating" name="phone">
+                                            </div>
+                                        </div>
+                                        <div class="col-md-6">
+                                            <div class="form-group form-focus">
+                                                <label class="focus-label">Email</label>
+                                                <input type="Email" class="form-control floating" name="email">
+                                            </div>
+                                        </div>
+                                        <div class="col-md-6">
+                                            <div class="form-group form-focus select-focus">
+                                                <label class="focus-label">Gendar</label>
+                                                <select class="select form-control floating">
+                                                    <option value="male selected">Male</option>
+                                                    <option value="female">Female</option>
+                                                </select>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="card-box">
+                        <h3 class="card-title">Education Informations</h3>
+                        <div class="row">
+                            <div class="col-md-12">
+                                <div class="form-group form-focus">
+                                    <label class="focus-label">School</label>
+                                    <select id="school" class="form-control floating" name="school" required>
+                                        <option value="">-- Select School --</option>
+                                        <option value="school1">Science Technology And Engineering</option>
+                                        <option value="school2">Inforcoms</option>
+                                        <option value="school3">Business</option>
+                                    </select>
+                                </div>
+                            </div>
+                            <div class="col-md-6">
+                                <div class="form-group form-focus">
+                                    <label class="focus-label">Department</label>
+                                    <select id="department" class="form-control floating" name="department" disabled
+                                        required>
+                                        <option value="">-- Select Department --</option>
+                                    </select>
+                                </div>
+                            </div>
+                            <div class="col-md-6">
+                                <div class="form-group form-focus">
+                                    <label class="focus-label">Course</label>
+                                    <select id="course" class="form-control floating" name="course" disabled required>
+                                        <option value="">-- Select Course --</option>
+                                    </select>
+                                </div>
+                            </div>
+                            <div class="col-md-6">
+                                <div class="form-group form-focus">
+                                    <label class="focus-label">Year</label>
+                                    <select id="year" class="form-control floating" name="year" disabled required>
+                                        <option value="">-- Select Year --</option>
+                                    </select>
+                                </div>
+                            </div>
+                            <div class="col-md-6">
+                                <div class="form-group form-focus">
+                                    <label class="focus-label">Semester</label>
+                                    <select id="semester" class="form-control floating" name="semester" disabled
+                                        required>
+                                        <option value="">-- Select Semester --</option>
+                                    </select>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="card-box">
+                        <h3 class="card-title">Semester Units</h3>
+                        <div class="row">
+                            <div class="col-md-6">
+                                <div class="form-group form-focus">
+                                    <label class="focus-label">Select Units</label>
+                                    <select id="unit" class="form-control floating" name="unit">
+
+                                    </select>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="text-center m-t-20">
+                        <button class="btn btn-primary submit-btn" type="button">Enroll</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+    <div class="sidebar-overlay" data-reff=""></div>
+    <script src="{% static 'assets/js/jquery-3.2.1.min.js"></script>
+    <script src="{% static 'assets/js/popper.min.js"></script>
+    <script src="{% static 'assets/js/bootstrap.min.js"></script>
+    <script src="{% static 'assets/js/jquery.slimscroll.js"></script>
+    <script src="{% static 'assets/js/select2.min.js"></script>
+    <script src="{% static 'assets/js/moment.min.js"></script>
+    <script src="{% static 'assets/js/bootstrap-datetimepicker.min.js"></script>
+    <script src="{% static 'assets/js/app.js"></script>
+    <script src="{% static 'assets/js/units.js"></script>
+</body>
+</html>
