@@ -1,5 +1,6 @@
 {% extends 'main.html' %}
 {% load static %}
+{% block content %}
         <div class="page-wrapper">
             <div class="content">
                 <div class="row">
@@ -226,7 +227,4 @@
     <script src="{% static 'js/Chart.bundle.js' %}"></script>
     <script src="{% static 'js/chart.js' %}"></script>
     <script src="{% static 'js/app.js' %}"></script>
-
-</body>
-
-</html>
+{% endblock content %}
