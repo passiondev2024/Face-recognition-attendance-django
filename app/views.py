@@ -16,7 +16,7 @@ def Enroll(request):
     return render(request, 'app/enroll.html')
 
 def ExamCard(request):
-    return render(request, 'examcard.html')
+    return render(request, 'app/examcard.html')
 
 def myProfile(request):
     return render(request, 'app/profile.html')
