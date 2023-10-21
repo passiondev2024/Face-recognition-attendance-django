@@ -1,6 +1,6 @@
 /*
 Author       : Dreamguys
-最新最全最好的Bootstrap模板：http://www.bootstrapmb.com
+锟斤拷锟斤拷锟斤拷全锟斤拷玫锟紹ootstrap模锟藉：http://www.bootstrapmb.com
 Version      : 1.0
 */
 
@@ -64,7 +64,7 @@ body {
 	font-family: 'Rubik', sans-serif;
 	font-size: 0.875rem;
 	color: #666;
-	background-color: #fafafa;
+	background-color: #E9E9E9;
 	overflow-x: hidden;
 	height: 100%;
 }
@@ -1069,6 +1069,7 @@ textarea.form-control {
 	vertical-align: middle;
 }
 .account-box {
+	box-shadow: #848383;
 	background-color: #fff;
 	border: 1px solid #eaeaea;
 	margin: 0 auto;
@@ -4020,7 +4021,7 @@ blockquote p {
 
 /*-----------------
 	33. UI Kit
-    最新最全最好的Bootstrap模板：http://www.bootstrapMB.com
+    锟斤拷锟斤拷锟斤拷全锟斤拷玫锟紹ootstrap模锟藉：http://www.bootstrapMB.com
 -----------------------*/
 
 .pagination-box .pagination {
