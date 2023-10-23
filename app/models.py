@@ -17,5 +17,4 @@ class Student(models.Model):
         return self.admission
     
     
-# class MarkAttendance(models.Model):
     
