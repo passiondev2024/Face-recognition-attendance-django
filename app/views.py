@@ -35,7 +35,7 @@ def Enroll(request):
         phone = request.POST['phone']
         email = request.POST['email']
         gender = request.POST['gender']
-        profile_pic = request.FILES.get('profile_pic')
+        profile_pic = request.FILES.get['profile_pic']
         school = request.POST['school']
         department= request.POST['department']
         course = request.POST['course']
@@ -53,9 +53,9 @@ def Enroll(request):
             semester=semester, units=units
         )
         student_details.save()
-        messages.info('You have been enrolled')
+        messages.info(request, 'You have been enrolled')
         return redirect('index')
-        messages.info('Your are logges in')
+        messages.info(request, 'Your are logges in')
     
     else:
         return render(request, 'app/enroll.html')

@@ -23,6 +23,16 @@
     <div class="main-wrapper">
         <div style="margin: 0% auto;" class="page-wrapper">
             <div class="content">
+                {% for message in messages %}
+                <div class="container-fluid p-0">
+                  <div class="alert {{ message.tags }} alert-dismissible" role="alert" >
+                    <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                      <span aria-hidden="true" class="btn-close">X</span>
+                    </button>
+                    {{ message }}
+                  </div>
+                </div>
+                {% endfor %}
                 <div class="row">
                     <div class="col-sm-12">
                         <h4 class="page-title">Enroll for Face Attendance</h4>
@@ -35,12 +45,8 @@
                         <div class="row">
                             <div class="col-md-12">
                                 <div class="profile-img-wrap">
-                                    <!-- <img class="inline-block" src="assets/img/user.jpg" alt="user">
-                                    <div class="fileupload btn">
-                                        <span class="btn-text">Upload</span>
-                                        <input class="upload" type="image" name="profile_pic" required>
-                                    </div> -->
-                                    <p style="color: red;">NOTE: The image should be an HD passport with a yellow/gold background</p>
+                                    <input type="file" name="profile-pic" id="">
+                                    <p style="color: red;">NOTE: The image should be an HD passport with a yellow/gold background.</p>
                                 </div>
                                 <div class="profile-basic">
                                     <div class="row">
@@ -145,7 +151,7 @@
                         </div>
                     </div>
                     <div class="text-center m-t-20">
-                        <button class="btn btn-primary submit-btn" type="button">Enroll</button>
+                        <button class="btn btn-primary submit-btn" type="submit">Enroll</button>
                     </div>
                 </form>
             </div>
