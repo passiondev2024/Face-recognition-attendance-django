@@ -9,7 +9,7 @@ $(document).ready(function() {
 			backgroundColor: 'rgba(0, 158, 251, 0.5)',
 			borderColor: 'rgba(0, 158, 251, 1)',
 			borderWidth: 1,
-			data: [35, 59, 80, 81, 56, 55, 40]
+			data: [59, 80, 81, 56, 55, 40]
 		}]
 	};
 
