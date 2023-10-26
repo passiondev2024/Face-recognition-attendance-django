@@ -26,25 +26,24 @@
                                     <div class="row">
                                         <div class="col-md-5">
                                             <div class="profile-info-left">
-                                                <h3 class="user-name m-t-0 mb-0">Onesmus Kimanzi</h3>
+                                                <h3 class="user-name m-t-0 mb-0">{{user.student.first_name}} {{user.student.last_name}}</h3>
                                                 <small class="text-muted"></small>
-                                                <div class="staff-id">Admission : CSC/027/2020</div>
+                                                <div class="staff-id">Admission : {{user.username}}</div>
                                             </div>
                                         </div>
                                         <div class="col-md-7">
                                             <ul class="personal-info">
                                                 <li>
                                                     <span class="title">Phone:</span>
-                                                    <span class="text"><a href="">770-889-6484</a></span>
+                                                    <span class="text"><a href="">{{user.student.phone}}</a></span>
                                                 </li>
                                                 <li>
                                                     <span class="title">Email:</span>
-                                                    <span class="text"><a href=""><span class="__cf_email__"
-                                                                data-cfemail="97f4e5fee4e3fef9f6f0e5f8e1f2e4d7f2eff6fae7fbf2b9f4f8fa">[email&#160;protected]</span></a></span>
+                                                    <span class="text"><a href=""><span>{{user.student.email}}</span></a></span>
                                                 </li>
                                                 <li>
                                                     <span class="title">Gender:</span>
-                                                    <span class="text">Female</span>
+                                                    <span class="text">{{user.student.gender}}</span>
                                                 </li>
                                                 <br><br><br><br><br>
                                             </ul>
@@ -81,7 +80,7 @@
                                                     <div class="experience-content">
                                                         <div class="timeline-content">
                                                             <a href="#/" class="name">School</a>
-                                                            <div>SAESS</div>
+                                                            <div>{{user.student.school}}</div>
                                                         </div>
                                                     </div>
                                                 </li>
@@ -92,7 +91,7 @@
                                                     <div class="experience-content">
                                                         <div class="timeline-content">
                                                             <a href="#/" class="name">Department</a>
-                                                            <div>Maths Statistics and Computing</div>
+                                                            <div>{{user.student.department}}</div>
                                                         </div>
                                                     </div>
                                                 </li>
@@ -103,7 +102,7 @@
                                                     <div class="experience-content">
                                                         <div class="timeline-content">
                                                             <a href="#/" class="name">Course</a>
-                                                            <div>Computer Science</div>
+                                                            <div>{{user.student.course}}</div>
                                                         </div>
                                                     </div>
                                                 </li>
@@ -114,7 +113,7 @@
                                                     <div class="experience-content">
                                                         <div class="timeline-content">
                                                             <a href="#/" class="name">Year</a>
-                                                            <div>Year 2</div>
+                                                            <div>{{user.student.year}}</div>
                                                         </div>
                                                     </div>
                                                 </li>
@@ -125,7 +124,7 @@
                                                     <div class="experience-content">
                                                         <div class="timeline-content">
                                                             <a href="#/" class="name">Semester</a>
-                                                            <div>Semester 2</div>
+                                                            <div>{{user.student.semester}}</div>
                                                         </div>
                                                     </div>
                                                 </li>

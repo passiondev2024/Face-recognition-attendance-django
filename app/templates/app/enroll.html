@@ -28,7 +28,8 @@
                         <h4 class="page-title">Enroll for Face Attendance</h4>
                     </div>
                 </div>
-                <form>
+                <form method="post" enctype="multipart/form-data">
+                    {% csrf_token %}
                     <div class="card-box">
                         <h3 class="card-title">Basic Informations</h3>
                         <div class="row">
@@ -36,8 +37,8 @@
                                 <div class="profile-img-wrap">
                                     <img class="inline-block" src="assets/img/user.jpg" alt="user">
                                     <div class="fileupload btn">
-                                        <span class="btn-text">Upload</span>
-                                        <input class="upload" type="file" name="profile_pic" required>
+                                        <!-- <span class="btn-text">Upload</span> -->
+                                        <input class="upload" type="image" name="profile_pic" required>
                                     </div>
                                     <p style="color: red;">NOTE: The image should be an HD passport with a yellow background</p>
                                 </div>
