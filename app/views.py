@@ -60,7 +60,7 @@ def Enroll(request):
         return render(request, 'app/enroll.html')
     return render(request, 'app/enroll.html')
 
-def profilePic(request):
+def ProfilePic(request):
     student = request.user.student
     form = ProfileImageForm(initial={'student':student})
     if request.method == 'POST':
@@ -76,7 +76,6 @@ def profilePic(request):
         return render(request, 'app/profile_pic.html')
     
     context = {'form':form}
-    print(form)
     return render(request, 'app/profile_pic.html', context)
 
 def Index(request):
