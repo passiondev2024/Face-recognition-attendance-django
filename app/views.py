@@ -55,6 +55,7 @@ def Enroll(request):
         student_details.save()
         messages.info('You have been enrolled')
         return redirect('index')
+        messages.info('Your are logges in')
     
     else:
         return render(request, 'app/enroll.html')
