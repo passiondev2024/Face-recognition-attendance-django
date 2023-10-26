@@ -10,6 +10,7 @@
     <link rel="stylesheet" type="text/css" href="{% static 'css/bootstrap.min.css' %}">
     <link rel="stylesheet" type="text/css" href="{% static 'css/font-awesome.min.css' %}">
     <link rel="stylesheet" type="text/css" href="{% static 'css/style.css' %}">
+    <link rel="stylesheet" href="{% static 'css/toast.css' %}">
     <!--[if lt IE 9]>
 		<script src="assets/js/html5shiv.min.js"></script>
 		<script src="assets/js/respond.min.js"></script>
@@ -26,7 +27,7 @@
                             <a href="#"><img src="{% static 'img/logo-dark.png' %}" alt=""></a>
                         </div>
 
-                        
+
                         {% for message in messages %}
                         <script>
                             createToast('{{ message.tags }}', '{{ message }}');
@@ -59,6 +60,7 @@
 	<script src="{% static 'js/popper.min.js' %}"></script>
     <script src="{% static 'js/bootstrap.min.js' %}"></script>
     <script src="{% static 'js/app.js' %}"></script>
+    <script src="{% static 'js/toast.js' %}"></script>
 </body>
 
 </html>
