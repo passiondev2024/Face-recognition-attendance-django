@@ -1,7 +1,8 @@
 from django.shortcuts import render, redirect
 from django.contrib.auth.models import auth, User
 from django.contrib import messages
-from .models import Student
+from .models import Student, ProfileImage
+from .forms import ProfileImageForms
 
 
 
@@ -60,6 +61,10 @@ def Enroll(request):
     else:
         return render(request, 'app/enroll.html')
     return render(request, 'app/enroll.html')
+
+def profilePic(request):
+    
+    return render(request, 'app/profile_pic.html')
 
 def Index(request):
     return render(request, 'app/index.html')
