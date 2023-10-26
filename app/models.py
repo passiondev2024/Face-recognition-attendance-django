@@ -10,7 +10,6 @@ class Student(models.Model):
     phone = models.CharField(max_length=200, null=True, blank=True)
     email = models.CharField(max_length=200, null=True, blank=True)
     gender = models.CharField(max_length=200, null=True, blank=True)
-    profile_pic = models.ImageField(null=True, blank=True, upload_to="media/")
     
     school = models.CharField(max_length=200, blank=True, null=True)
     department = models.CharField(max_length=200, blank=True, null=True)
@@ -22,5 +21,13 @@ class Student(models.Model):
     def __str__(self):
         return self.first_name
     
+    
+class ProfileImage(models.Model):
+    student = models.OneToOneField(Student, null=True, blank=True, on_delete=models.CASCADE)
+    profile_pic = models.ImageField(null=True, blank=True, upload_to="media/")
+    
+    def __str__(self):
+        return self.profile_pic
+
     
     
