@@ -163,82 +163,35 @@ $(document).ready(function () {
             units = ['COM 110: Computer 1', 'PHY 111: Physics'];
         }
         else if (($('#semester').val() == 'semester2') && ($('#year').val() == 'year1') && ($('#course').val() == 'csc')) {
-            $('#unit').append($('<option>', {
-                value: 'COM 120',
-                text: 'COM 120: Computer'
-            }));
-            $('#unit').append($('<option>', {
-                value: 'PHY 121',
-                text: 'PHY 121: Physics'
-            }));
+            units = ['COM 120: Computer', 'PHY 121: Physics']
         }
         // YEAR TWO
         else if (($('#semester').val() == 'semester1') && ($('#year').val() == 'year2') && ($('#course').val() == 'csc')) {
-            $('#unit').append($('<option>', {
-                value: 'COM 210',
-                text: 'COM 210: Computer 2'
-            }));
-            $('#unit').append($('<option>', {
-                value: 'COM 215',
-                text: 'COM 215: Computer'
-            }));
-        } else if (($('#semester').val() == 'semester2') && ($('#year').val() == 'year2') && ($('#course').val() == 'csc')) {
-            $('#unit').append($('<option>', {
-                value: 'unit1',
-                text: 'COM 220'
-            }));
-            $('#unit').append($('<option>', {
-                value: 'unit2',
-                text: 'PHY 226'
-            }));
+            units = ['COM 210: Computer 2', 'COM 215: Computer']
+        }
+        else if (($('#semester').val() == 'semester2') && ($('#year').val() == 'year2') && ($('#course').val() == 'csc')) {
+            units = ['COM 220', 'PHY 226']
         }
         // YEAR 3
         else if (($('#semester').val() == 'semester1') && ($('#year').val() == 'year3') && ($('#course').val() == 'csc')) {
-            $('#unit').append($('<option>', {
-                value: 'unit1',
-                text: 'COM 310'
-            }));
-            $('#unit').append($('<option>', {
-                value: 'unit2',
-                text: 'COM 311'
-            }));
+            units = ['COM 310', 'COM 311']
         }
         else if (($('#semester').val() == 'semester2') && ($('#year').val() == 'year3') && ($('#course').val() == 'csc')) {
-            $('#unit').append($('<option>', {
-                value: 'COM 320',
-                text: 'COM 320: Computer 5'
-            }));
-            $('#unit').append($('<option>', {
-                value: 'COM 326',
-                text: 'COM 326: Computer 6'
-            }));
+            units = ['COM 320: Computer 5', 'COM 326: Computer 6']
         }
         // YEAR FOUR
         else if (($('#semester').val() == 'semester1') && ($('#year').val() == 'year4') && ($('#course').val() == 'csc')) {
-            $('#unit').append($('<option>', {
-                value: 'unit1',
-                text: 'COM 410'
-            }));
-            $('#unit').append($('<option>', {
-                value: 'unit2',
-                text: 'COM 411'
-            }));
+            units = ['COM 410', 'COM 411']
         }
         else if (($('#semester').val() == 'semester2') && ($('#year').val() == 'year4') && ($('#course').val() == 'csc')) {
-            $('#unit').append($('<option>', {
-                value: 'unit1',
-                text: 'COM 420'
-            }));
-            $('#unit').append($('<option>', {
-                value: 'unit2',
-                text: 'COM 421'
-            }));
+            units = ['COM 420', 'COM 421']
         }
 
         for (var i = 0; i < units.length; i++) {
             var checkbox = $('<input>').attr({
                 type: 'checkbox',
                 id: 'unit' + (i + 1),
+                name: 'selected_units[]',
                 value: units[i]
             });
             var label = $('<label>').attr('for', 'unit' + (i + 1)).text(units[i]);
