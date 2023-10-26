@@ -14,13 +14,13 @@
   --warning: #E9BD0C;
   --info: #3498DB;
 }
-body {
+/* body {
   display: flex;
   align-items: center;
   justify-content: center;
   min-height: 100vh;
   background: var(--dark);
-}
+} */
 .notifications {
   position: fixed;
   top: 30px;
