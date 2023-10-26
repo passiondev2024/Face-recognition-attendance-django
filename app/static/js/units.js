@@ -152,10 +152,10 @@ $(document).ready(function () {
         $('#unit').prop('disabled', false);
         $('#unit').empty();
 
-        $('#unit').append($('<option>', {
-            value: '',
-            text: '-- Select Unit --'
-        }));
+        // $('#unit').append($('<option>', {
+        //     value: '',
+        //     text: '-- Select Unit --'
+        // }));
 
         var selectedSemester = $('#semester').val();
         var selectedYear = $('#year').val();
