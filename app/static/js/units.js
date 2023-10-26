@@ -150,12 +150,7 @@ $(document).ready(function () {
 
     $('#semester').change(function () {
         $('#unit').prop('disabled', false);
-        $('#unit').empty();
-
-        // $('#unit').append($('<option>', {
-        //     value: '',
-        //     text: '-- Select Unit --'
-        // }));
+        $('#unit-checkboxes').empty(); // Clear existing checkboxes
 
         var selectedSemester = $('#semester').val();
         var selectedYear = $('#year').val();
@@ -165,14 +160,7 @@ $(document).ready(function () {
         // YEAR ONE
         // COMP
         if (($('#semester').val() == 'semester1') && ($('#year').val() == 'year1') && ($('#course').val() == 'csc')) {
-            $('#unit').append($('<option>', {
-                value: 'COM 110',
-                text: 'COM110: Computer 1'
-            }));
-            $('#unit').append($('<option>', {
-                value: 'PHY 111',
-                text: 'PHY 111: Physics'
-            }));
+            units = ['COM 110: Computer 1', 'PHY 111: Physics'];
         }
         else if (($('#semester').val() == 'semester2') && ($('#year').val() == 'year1') && ($('#course').val() == 'csc')) {
             $('#unit').append($('<option>', {
@@ -248,10 +236,13 @@ $(document).ready(function () {
         }
 
         for (var i = 0; i < units.length; i++) {
-            $('#unit').append($('<option>', {
-                value: units[i],
-                text: units[i]
-            }));
+            var checkbox = $('<input>').attr({
+                type: 'checkbox',
+                id: 'unit' + (i + 1),
+                value: units[i]
+            });
+            var label = $('<label>').attr('for', 'unit' + (i + 1)).text(units[i]);
+            $('#unit-checkboxes').append(checkbox).append(label).append('<br>');
         }
     });
 });
