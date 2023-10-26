@@ -10,4 +10,4 @@ class StudentTable(admin.ModelAdmin):
     
 @admin.register(ProfileImage)
 class ProfileImageTabls(admin.ModelAdmin):
-    list_display = ('student', 'profile_pic')
+    list_display = ('student', 'profile_picture')

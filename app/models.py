@@ -24,7 +24,7 @@ class Student(models.Model):
     
 class ProfileImage(models.Model):
     student = models.OneToOneField(Student, null=True, blank=True, on_delete=models.CASCADE)
-    profile_pic = models.ImageField(null=True, blank=True, upload_to="media/")
+    profile_picture = models.ImageField(null=True, blank=True, upload_to="media/")
     
     def __str__(self):
         return self.profile_pic
