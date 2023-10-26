@@ -25,6 +25,15 @@
 						<div class="account-logo">
                             <a href="#"><img src="{% static 'img/logo-dark.png' %}" alt=""></a>
                         </div>
+
+                        
+                        {% for message in messages %}
+                        <script>
+                            createToast('{{ message.tags }}', '{{ message }}');
+                        </script>
+                        {% endfor %}
+
+
                         <div class="form-group">
                             <label>Username</label>
                             <input type="text" name="username" class="form-control" required>
