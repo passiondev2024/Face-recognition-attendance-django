@@ -1,6 +1,7 @@
 from django.shortcuts import render, redirect
 from django.contrib.auth.models import auth, User
 from django.contrib import messages
+from .models import Student
 
 
 
@@ -21,6 +22,12 @@ def Login(request):
     return render(request, 'app/login.html')
 
 def Enroll(request):
+    user = request.user
+    existing_student = Student.objects.filter(user=user).first()
+    if existing_student:
+        # messages.info(request, '')
+        return redirect('index')
+    
     if request.method == 'POST':
         user = request.user
         first_name = request.POST['first_name']
@@ -36,6 +43,21 @@ def Enroll(request):
         semester = request.POST['semester']
         units = request.POST.getlist('selected_units')
         
+        student_details = Student.objects.create(
+            user=user,
+            first_name=first_name, last_name=last_name,
+            phone=phone, email=email,
+            gender=gender, profile_pic=profile_pic,
+            school=school, department=department,
+            course=course, year=year,
+            semester=semester, units=units
+        )
+        student_details.save()
+        messages.info('You have been enrolled')
+        return redirect('index')
+    
+    else:
+        return render(request, 'app/enroll.html')
     return render(request, 'app/enroll.html')
 
 def Index(request):
