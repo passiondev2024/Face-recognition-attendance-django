@@ -3,7 +3,7 @@ from django.forms import ModelForm
 from django import forms
 
 
-class ProfileImageForms(forms.ModelForm):
+class ProfileImageForm(forms.ModelForm):
     class Meta:
         model = ProfileImage
         fields = '__all__'

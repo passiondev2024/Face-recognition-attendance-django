@@ -2,7 +2,7 @@ from django.shortcuts import render, redirect
 from django.contrib.auth.models import auth, User
 from django.contrib import messages
 from .models import Student, ProfileImage
-from .forms import ProfileImageForms
+from .forms import ProfileImageForm
 
 
 
@@ -36,7 +36,6 @@ def Enroll(request):
         phone = request.POST['phone']
         email = request.POST['email']
         gender = request.POST['gender']
-        profile_pic = request.FILES.get('profile_pic')
         school = request.POST['school']
         department= request.POST['department']
         course = request.POST['course']
@@ -48,14 +47,13 @@ def Enroll(request):
             user=user,
             first_name=first_name, last_name=last_name,
             phone=phone, email=email,
-            gender=gender, profile_pic=profile_pic,
-            school=school, department=department,
+            gender=gender, school=school, department=department,
             course=course, year=year,
             semester=semester, units=units
         )
         student_details.save()
         messages.info(request, 'You have been enrolled')
-        return redirect('index')
+        return redirect('profilePic')
         messages.info(request, 'Your are logges in')
     
     else:
@@ -63,8 +61,23 @@ def Enroll(request):
     return render(request, 'app/enroll.html')
 
 def profilePic(request):
+    student = request.user.student
+    form = ProfileImageForm(initial={'student':student})
+    if request.method == 'POST':
+        form = ProfileImageForm(request.FILES, request.POST)
+        if form.is_valid():
+            form.save()
+            messages.info(request, 'You are logged in')
+            return redirect('index')
+        else:
+            messages.error(request, 'Upload a ')
+            return redirect('profilePic')  
+    else:
+        return render(request, 'app/profile_pic.html')
     
-    return render(request, 'app/profile_pic.html')
+    context = {'form':form}
+    print(form)
+    return render(request, 'app/profile_pic.html', context)
 
 def Index(request):
     return render(request, 'app/index.html')
