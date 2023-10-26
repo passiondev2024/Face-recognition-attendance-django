@@ -10,8 +10,6 @@
     <link rel="stylesheet" type="text/css" href="{% static 'css/bootstrap.min.css' %}">
     <link rel="stylesheet" type="text/css" href="{% static 'css/font-awesome.min.css' %}">
     <link rel="stylesheet" type="text/css" href="{% static 'css/style.css' %}">
-    <link rel="stylesheet" href="{% static 'css/toast.css' %}">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.1/css/all.min.css">
     <!--[if lt IE 9]>
 		<script src="assets/js/html5shiv.min.js"></script>
 		<script src="assets/js/respond.min.js"></script>
@@ -23,16 +21,22 @@
         <div class="account-page">
             <div class="account-center">
                 <div class="account-box">
-                    <form action="index.html" class="form-signin">
+                    <form method="post" action="" class="form-signin">
+                        {% csrf_token %}
 						<div class="account-logo">
                             <a href="#"><img src="{% static 'img/logo-dark.png' %}" alt=""></a>
                         </div>
 
 
                         {% for message in messages %}
-                        <script>
-                            createToast('{{ message.tags }}', '{{ message }}');
-                        </script>
+                        <div class="container-fluid p-0">
+                          <div class="alert {{ message.tags }} alert-dismissible" role="alert" >
+                            <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                              <span aria-hidden="true" class="btn-close">X</span>
+                            </button>
+                            {{ message }}
+                          </div>
+                        </div>
                         {% endfor %}
 
 
@@ -61,7 +65,6 @@
 	<script src="{% static 'js/popper.min.js' %}"></script>
     <script src="{% static 'js/bootstrap.min.js' %}"></script>
     <script src="{% static 'js/app.js' %}"></script>
-    <script src="{% static 'js/toast.js' %}"></script>
 </body>
 
 </html>

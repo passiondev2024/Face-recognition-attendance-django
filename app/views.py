@@ -8,7 +8,7 @@ from .models import Student
 # Create your views here.
 def Login(request):
     if request.method == 'POST':
-        username = request.post['username']
+        username = request.POST['username']
         password = request.POST['password']
         
         user = auth.authenticate(username=username, password=password)
