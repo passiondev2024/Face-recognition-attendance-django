@@ -22,12 +22,12 @@ class Student(models.Model):
         return self.first_name
     
     
-class ProfileImage(models.Model):
+class Profile(models.Model):
     student = models.OneToOneField(Student, null=True, blank=True, on_delete=models.CASCADE)
-    profile_picture = models.ImageField(null=True, blank=True, upload_to="media/")
+    profile_photo = models.ImageField(null=True, blank=True, upload_to="media/")
     
     def __str__(self):
-        return self.profile_pic
+        return self.student
 
     
     

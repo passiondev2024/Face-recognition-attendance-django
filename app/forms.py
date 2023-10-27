@@ -1,9 +1,14 @@
-from .models import ProfileImage
+from .models import Profile, Student
 from django.forms import ModelForm
 from django import forms
 
-
-class ProfileImageForm(forms.ModelForm):
+class StudentForm(forms.ModelForm):
     class Meta:
-        model = ProfileImage
+        model = Student
+        fields = '__all__'
+        
+        
+class ProfileForm(forms.ModelForm):
+    class Meta:
+        model = Profile
         fields = '__all__'

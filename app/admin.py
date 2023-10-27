@@ -1,5 +1,5 @@
 from django.contrib import admin
-from .models import Student, ProfileImage
+from .models import Student, Profile
 
 # Register your models here.
 @admin.register(Student)
@@ -8,6 +8,6 @@ class StudentTable(admin.ModelAdmin):
     
     
     
-@admin.register(ProfileImage)
-class ProfileImageTabls(admin.ModelAdmin):
-    list_display = ('student', 'profile_picture')
+@admin.register(Profile)
+class ProfileTable(admin.ModelAdmin):
+    list_display = ('student', 'profile_photo')

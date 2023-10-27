@@ -1,8 +1,8 @@
 from django.shortcuts import render, redirect
 from django.contrib.auth.models import auth, User
 from django.contrib import messages
-from .models import Student, ProfileImage
-from .forms import ProfileImageForm
+from .models import Student, Profile
+from .forms import ProfileForm, StudentForm
 
 
 
@@ -62,18 +62,18 @@ def Enroll(request):
 
 def ProfilePic(request):
     student = request.user.student
-    form = ProfileImageForm(initial={'student':student})
+    form = ProfileForm(initial={'student':student})
     if request.method == 'POST':
-        form = ProfileImageForm(request.FILES, request.POST)
+        form = ProfileForm(request.FILES, request.POST)
         if form.is_valid():
             form.save()
             messages.info(request, 'You are logged in')
             return redirect('index')
         else:
-            messages.error(request, 'Upload a ')
+            messages.error(request, 'Upload a valid profile image')
             return redirect('profilePic')  
     else:
-        return render(request, 'app/profile_pic.html')
+        form = ProfileForm()
     
     context = {'form':form}
     return render(request, 'app/profile_pic.html', context)
