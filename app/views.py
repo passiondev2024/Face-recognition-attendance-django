@@ -3,6 +3,7 @@ from django.contrib.auth.models import auth, User
 from django.contrib import messages
 from .models import Student, Profile
 from .forms import ProfileForm, StudentForm
+from .utils import get_student_units
 
 
 
@@ -81,7 +82,12 @@ def ProfilePic(request):
     return render(request, 'app/profile_pic.html', context)
 
 def Index(request):
-    return render(request, 'app/index.html')
+    logged_in_user = request.user
+    student = Student.objects.get(user=logged_in_user)
+    units_list = student.units.split(',')
+    
+    context = {'units_list':units_list}
+    return render(request, 'app/index.html', context)
 
 def Attend(request):
     return render(request, 'app/attend.html')

@@ -53,22 +53,13 @@
                                     </tr>
                                 </thead>
                                 <tbody>
+                                    {% for unit in units_list %}
                                     <tr>
                                         <td>
-                                            <h5 class="time-title p-0">COM 110</h5>
-                                        </td>
-                                        <td>
-                                            <h5 class="time-title p-0">Introduction to computer</h5>
+                                            <h5 class="time-title p-0">{{unit}}</h5>
                                         </td>
                                     </tr>
-                                    <tr>
-                                        <td>
-                                            <h5 class="time-title p-0">COM 110</h5>
-                                        </td>
-                                        <td>
-                                            <h5 class="time-title p-0">Introduction to computer</h5>
-                                        </td>
-                                    </tr>
+                                    {% endfor %}
                                 </tbody>
                             </table>
                         </div>
