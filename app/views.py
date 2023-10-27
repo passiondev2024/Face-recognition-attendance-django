@@ -50,7 +50,7 @@ def Enroll(request):
             phone=phone, email=email,
             gender=gender, school=school, department=department,
             course=course, year=year,
-            semester=semester, units= ','.join(selected_units)
+            semester=semester, units=units
         )
         student_details.save()
         messages.info(request, 'You have been enrolled, upload profile photo to continue')
