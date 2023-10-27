@@ -27,7 +27,7 @@ def Enroll(request):
     existing_student = Student.objects.filter(user=user).first()
     if existing_student:
         # messages.info(request, '')
-        return redirect('index')
+        return redirect('profilePic')
     
     if request.method == 'POST':
         user = request.user
@@ -52,19 +52,21 @@ def Enroll(request):
             semester=semester, units=units
         )
         student_details.save()
-        messages.info(request, 'You have been enrolled')
+        messages.info(request, 'You have been enrolled, upload profile photo to continue')
         return redirect('profilePic')
-        messages.info(request, 'Your are logges in')
-    
     else:
         return render(request, 'app/enroll.html')
     return render(request, 'app/enroll.html')
 
 def ProfilePic(request):
     student = request.user.student
+    user = request.user
+    existing_profile = Profile.objects.filter(student=student).first()
+    if existing_profile:
+        return redirect('index')
     form = ProfileForm(initial={'student':student})
     if request.method == 'POST':
-        form = ProfileForm(request.FILES, request.POST)
+        form = ProfileForm(request.POST, request.FILES)
         if form.is_valid():
             form.save()
             messages.info(request, 'You are logged in')
@@ -74,7 +76,6 @@ def ProfilePic(request):
             return redirect('profilePic')  
     else:
         form = ProfileForm()
-    
     context = {'form':form}
     return render(request, 'app/profile_pic.html', context)
 
