@@ -41,7 +41,8 @@ def Enroll(request):
         course = request.POST['course']
         year = request.POST['year']
         semester = request.POST['semester']
-        units = request.POST.getlist('selected_units')
+        selected_units = request.POST.getlist('selected_units[]')
+        units = ','.join(selected_units)
         
         student_details = Student.objects.create(
             user=user,
@@ -49,7 +50,7 @@ def Enroll(request):
             phone=phone, email=email,
             gender=gender, school=school, department=department,
             course=course, year=year,
-            semester=semester, units=units
+            semester=semester, units= ','.join(selected_units)
         )
         student_details.save()
         messages.info(request, 'You have been enrolled, upload profile photo to continue')
@@ -60,13 +61,13 @@ def Enroll(request):
 
 def ProfilePic(request):
     student = request.user.student
-    user = request.user
     existing_profile = Profile.objects.filter(student=student).first()
     if existing_profile:
         return redirect('index')
+    
     form = ProfileForm(initial={'student':student})
     if request.method == 'POST':
-        form = ProfileForm(request.POST, request.FILES)
+        form = ProfileForm(request.POST, request.FILES, initial={'student':student})
         if form.is_valid():
             form.save()
             messages.info(request, 'You are logged in')
@@ -75,7 +76,7 @@ def ProfilePic(request):
             messages.error(request, 'Upload a valid profile image')
             return redirect('profilePic')  
     else:
-        form = ProfileForm()
+        form = ProfileForm(initial={'student':student})
     context = {'form':form}
     return render(request, 'app/profile_pic.html', context)
 
