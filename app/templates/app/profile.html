@@ -19,7 +19,7 @@
                             <div class="profile-view">
                                 <div class="profile-img-wrap">
                                     <div class="profile-img">
-                                        <a href="#"><img class="avatar" src="{% static 'img/doctor-03.jpg' %}" alt=""></a>
+                                        <a href="#"><img class="avatar" src="{{user.student.profile.profile_photo.url}}" alt=""></a>
                                     </div>
                                 </div>
                                 <div class="profile-basic">
@@ -147,22 +147,13 @@
                                                     </tr>
                                                 </thead>
                                                 <tbody>
+                                                    {% for unit in units_list %}
                                                     <tr>
                                                         <td>
-                                                            <h5 class="time-title p-0">COM 110</h5>
-                                                        </td>
-                                                        <td>
-                                                            <h5 class="time-title p-0">Introduction to computer</h5>
+                                                            <h5 class="time-title p-0">{{unit}}</h5>
                                                         </td>
                                                     </tr>
-                                                    <tr>
-                                                        <td>
-                                                            <h5 class="time-title p-0">COM 110</h5>
-                                                        </td>
-                                                        <td>
-                                                            <h5 class="time-title p-0">Introduction to computer</h5>
-                                                        </td>
-                                                    </tr>
+                                                    {% endfor %}
                                                 </tbody>
                                             </table>
                                         </div>
@@ -173,7 +164,7 @@
                         <div class="tab-pane" id="bottom-tab3">
                             <div class="profile-img-wrap">
                                 <div class="profile-img">
-                                    <a href="#"><img src="assets/img/doctor-03.jpg" alt=""></a>
+                                    <a href="#"><img src="{{user.student.profile.profile_photo.url}}" alt=""></a>
                                 </div>
                             </div>
                         </div>

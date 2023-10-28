@@ -1,30 +1,30 @@
 {% extends 'main.html' %}
 {% load static %}
 {% block content %}
-        <div class="main-wrapper account-wrapper">
-            <div class="account-page">
-                <div class="account-center">
-                    <div class="account-box">
-                        <form action="index.html" class="form-signin">
-                            <div class="account-logo">
-                                <a href="index.html"><img src="assets/img/logo-dark.png" alt=""></a>
-                            </div>
-                            <div class="form-group">
-                                <label>Select Unit</label>
-                                <select name="" id="" class="form-control">
-                                    
-                                </select>
-                            </div>
-                            <div class="form-group text-center">
-                                <button type="submit" class="btn btn-primary account-btn">Attend</button>
-                            </div>
-                        </form>
+<div class="main-wrapper account-wrapper">
+    <div class="account-page">
+        <div class="account-center">
+            <div class="account-box">
+                <form class="form-signin">
+                    <div class="form-group">
+                        <label>Select Unit</label>
+                        <select name="" id="" class="form-control">
+                            <option value="">Select unit.......</option>
+                            {% for unit in units_list %}
+                            <option value="attend_unit">{{unit}}</option>
+                            {% endfor %}
+                        </select>
                     </div>
-                </div>
+                    <div class="form-group text-center">
+                        <button type="submit" class="btn btn-primary account-btn">Attend</button>
+                    </div>
+                </form>
             </div>
         </div>
-        <script src="{% static 'js/jquery-3.2.1.min.js' %}"></script>
-        <script src="{% static 'js/popper.min.js' %}"></script>
-        <script src="{% static 'js/bootstrap.min.js' %}"></script>
-        <script src="{% static 'js/app.js' %}"></script>
+    </div>
+</div>
+<script src="{% static 'js/jquery-3.2.1.min.js' %}"></script>
+<script src="{% static 'js/popper.min.js' %}"></script>
+<script src="{% static 'js/bootstrap.min.js' %}"></script>
+<script src="{% static 'js/app.js' %}"></script>
 {% endblock content %}

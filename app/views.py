@@ -90,7 +90,12 @@ def Index(request):
     return render(request, 'app/index.html', context)
 
 def Attend(request):
-    return render(request, 'app/attend.html')
+    logged_in_user = request.user
+    student = Student.objects.get(user=logged_in_user)
+    units_list = student.units.split(',')
+    
+    context = {'units_list':units_list}
+    return render(request, 'app/attend.html', context)
 
 def Attendance(request):
     return render(request, 'app/attendance.html')
@@ -100,7 +105,12 @@ def ExamCard(request):
     return render(request, 'app/examcard.html')
 
 def myProfile(request):
-    return render(request, 'app/profile.html')
+    logged_in_user = request.user
+    student = Student.objects.get(user=logged_in_user)
+    units_list = student.units.split(',')
+    
+    context = {'units_list':units_list}
+    return render(request, 'app/profile.html', context)
 
 def editProfile(request):
     return render(request, 'app/edit-profile.html')
