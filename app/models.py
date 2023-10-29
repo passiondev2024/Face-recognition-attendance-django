@@ -28,6 +28,14 @@ class Profile(models.Model):
     
     # def __str__(self):
     #     return self.profile_photo
+    
+    
+class takeAttendance(models.Model):
+    student = models.ForeignKey(Student, on_delete=models.CASCADE)
+    unitAttendent = models.CharField(max_length=200)
+    
+    def __str__(self):
+        return self.unitAttendent
 
     
     
