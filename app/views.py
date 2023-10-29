@@ -121,8 +121,9 @@ def Attend(request):
             attendances = takeAttendance.objects.filter(date=str(date.today()), student=details['student'], unitAttendent=details['unitAttendent'])
             context = {'attendances':attendances, 'ta':True}
             messages.success(request, 'Attendance taken successfully')
-    context1 = {'units_list':units_list, 'context':context}
-    return render(request, 'app/attend.html', context1)
+    context= {}
+    context1 = {'units_list':units_list,}
+    return render(request, 'app/attend.html', context1, context)
 
 def Attendance(request):
     return render(request, 'app/attendance.html')
