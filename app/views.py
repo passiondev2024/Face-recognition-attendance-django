@@ -93,6 +93,9 @@ def Attend(request):
     logged_in_user = request.user
     student = Student.objects.get(user=logged_in_user)
     units_list = student.units.split(',')
+    if request.method == 'POST':
+        student = request.user.student
+        
     
     context = {'units_list':units_list}
     return render(request, 'app/attend.html', context)
