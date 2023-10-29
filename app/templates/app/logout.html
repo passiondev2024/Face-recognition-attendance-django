@@ -1,25 +1,28 @@
 {% extends 'main.html' %}
 {% load static %}
 {% block content %}
-        <div class="page-wrapper">
-            <div class="content">
-                <div style="margin: 0% auto;" class="row filter-row">
-                    <br><br><br>
-                    <div class="col-sm-6 col-md-3">
-                        <a href="{{request.META.HTTP_REFERER}}" class="btn btn-success btn-block">Back</a>
-                    </div>
-                    <div class="col-sm-6 col-md-3">
-                        <a href="#" class="btn btn-danger btn-block">Logout</a>
-                    </div>
+<div class="page-wrapper">
+    <div class="content">
+        <form action="" method="post">
+            {% csrf_token %}
+            <div style="margin: 0% auto;" class="row filter-row">
+                <br><br><br>
+                <div class="col-sm-6 col-md-3">
+                    <a href="{{request.META.HTTP_REFERER}}" class="btn btn-success btn-block">Back</a>
+                </div>
+                <div class="col-sm-6 col-md-3">
+                    <input class="btn btn-danger btn-block" type="submit" value="Logout">
                 </div>
             </div>
-        </div>
+        </form>
     </div>
-    <div class="sidebar-overlay" data-reff=""></div>
-    <script src="{% static 'js/jquery-3.2.1.min.js' %}"></script>
-    <script src="{% static 'js/popper.min.js' %}"></script>
-    <script src="{% static 'js/bootstrap.min.js' %}"></script>
-    <script src="{% static 'js/jquery.slimscroll.js' %}"></script>
-    <script src="{% static 'js/select2.min.js' %}"></script>
-    <script src="{% static 'js/app.js' %}"></script>
+</div>
+</div>
+<div class="sidebar-overlay" data-reff=""></div>
+<script src="{% static 'js/jquery-3.2.1.min.js' %}"></script>
+<script src="{% static 'js/popper.min.js' %}"></script>
+<script src="{% static 'js/bootstrap.min.js' %}"></script>
+<script src="{% static 'js/jquery.slimscroll.js' %}"></script>
+<script src="{% static 'js/select2.min.js' %}"></script>
+<script src="{% static 'js/app.js' %}"></script>
 {% endblock content %}
