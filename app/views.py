@@ -127,4 +127,8 @@ def editProfile(request):
     return render(request, 'app/edit-profile.html', context)
 
 def Logout(request):
+    if request.method == 'POST':
+        auth.logout(request)
+        messages.info(request, 'Your have been logged out')
+        return redirect('/')
     return render(request, 'app/logout.html')
