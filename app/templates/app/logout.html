@@ -3,115 +3,13 @@
 {% block content %}
         <div class="page-wrapper">
             <div class="content">
-                <div class="row">
-                    <div class="col-sm-12">
-                        <h4 class="page-title">Attendance Sheet</h4>
-                    </div>
-                </div>
-                <div class="row filter-row">
+                <div style="margin: 0% auto;" class="row filter-row">
+                    <br><br><br>
                     <div class="col-sm-6 col-md-3">
-                        <div class="form-group form-focus">
-                            <label class="focus-label">Employee Name</label>
-                            <input type="text" class="form-control floating">
-                        </div>
+                        <a href="{{request.META.HTTP_REFERER}}" class="btn btn-success btn-block">Back</a>
                     </div>
                     <div class="col-sm-6 col-md-3">
-                        <div class="form-group form-focus select-focus">
-                            <label class="focus-label">Select Month</label>
-                            <select class="select floating">
-                                <option>-</option>
-                                <option>Jan</option>
-                                <option>Feb</option>
-                                <option>Mar</option>
-                                <option>Apr</option>
-                                <option>May</option>
-                                <option>Jun</option>
-                                <option>Jul</option>
-                                <option>Aug</option>
-                                <option>Sep</option>
-                                <option>Oct</option>
-                                <option>Nov</option>
-                                <option>Dec</option>
-                            </select>
-                        </div>
-                    </div>
-                    <div class="col-sm-6 col-md-3">
-                        <div class="form-group form-focus select-focus">
-                            <label class="focus-label">Select Year</label>
-                            <select class="select floating">
-                                <option>-</option>
-                                <option>2017</option>
-                                <option>2016</option>
-                                <option>2015</option>
-                                <option>2014</option>
-                                <option>2013</option>
-                            </select>
-                        </div>
-                    </div>
-                    <div class="col-sm-6 col-md-3">
-                        <a href="#" class="btn btn-success btn-block"> Search </a>
-                    </div>
-                </div>
-                <div class="row">
-                    <div class="col-lg-12">
-                        <div class="table-responsive">
-                            <table class="table table-striped custom-table mb-0">
-                                <thead>
-                                    <tr>
-                                        <th>WEEKS</th>
-                                        <th>COM 110</th>
-                                        <th>COM 110</th>
-                                        <th>COM 110</th>
-                                        <th>COM 110</th>
-                                        <th>COM 110</th>
-                                        <th>COM 110</th>
-                                        <th>COM 110</th>
-                                    </tr>
-                                </thead>
-                                <tbody>
-                                    <tr>
-                                        <td>Week 1</td>
-                                        <td><i class="fa fa-check text-success"></i> </td>
-                                        <td><i class="fa fa-check text-success"></i> </td>
-                                        <td><i class="fa fa-check text-success"></i> </td>
-                                        <td><i class="fa fa-close text-danger"></i> </td>
-                                        <td><i class="fa fa-close text-danger"></i> </td>
-                                        <td><i class="fa fa-close text-danger"></i> </td>
-                                        <td><i class="fa fa-check text-success"></i> </td>
-                                    </tr>
-                                    <tr>
-                                        <td>Week 2</td>
-                                        <td><i class="fa fa-check text-success"></i> </td>
-                                        <td><i class="fa fa-check text-success"></i> </td>
-                                        <td><i class="fa fa-check text-success"></i> </td>
-                                        <td><i class="fa fa-close text-danger"></i> </td>
-                                        <td><i class="fa fa-close text-danger"></i> </td>
-                                        <td><i class="fa fa-close text-danger"></i> </td>
-                                        <td><i class="fa fa-check text-success"></i> </td>
-                                    </tr>
-                                    <tr>
-                                        <td>Week 3</td>
-                                        <td><i class="fa fa-check text-success"></i> </td>
-                                        <td><i class="fa fa-check text-success"></i> </td>
-                                        <td><i class="fa fa-check text-success"></i> </td>
-                                        <td><i class="fa fa-close text-danger"></i> </td>
-                                        <td><i class="fa fa-close text-danger"></i> </td>
-                                        <td><i class="fa fa-close text-danger"></i> </td>
-                                        <td><i class="fa fa-check text-success"></i> </td>
-                                    </tr>
-                                    <tr>
-                                        <td>Week 4</td>
-                                        <td><i class="fa fa-check text-success"></i> </td>
-                                        <td><i class="fa fa-check text-success"></i> </td>
-                                        <td><i class="fa fa-check text-success"></i> </td>
-                                        <td><i class="fa fa-close text-danger"></i> </td>
-                                        <td><i class="fa fa-close text-danger"></i> </td>
-                                        <td><i class="fa fa-close text-danger"></i> </td>
-                                        <td><i class="fa fa-check text-success"></i> </td>
-                                    </tr>
-                                </tbody>
-                            </table>
-                        </div>
+                        <a href="#" class="btn btn-danger btn-block">Logout</a>
                     </div>
                 </div>
             </div>
