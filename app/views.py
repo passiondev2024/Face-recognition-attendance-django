@@ -113,7 +113,13 @@ def myProfile(request):
     return render(request, 'app/profile.html', context)
 
 def editProfile(request):
-    return render(request, 'app/edit-profile.html')
+    user = user.student.profile
+    existing_prof = Student.objects.get(user=user)
+    form = ProfileForm(instance=existing_prof)
+    
+    
+    context = {'existing_prof':existing_prof}
+    return render(request, 'app/edit-profile.html', context)
 
 def Logout(request):
     return render(request, 'app/logout.html')
