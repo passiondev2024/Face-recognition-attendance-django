@@ -1,134 +1,72 @@
 ﻿{% extends 'main.html' %}
 {% load static %}
 {% block content %}
-        <div class="page-wrapper">
-            <div class="content">
-                <div class="row">
-                    <div class="col-sm-12">
-                        <h4 class="page-title">Edit Profile</h4>
-                    </div>
-                </div>
-                <form>
-                    <div class="card-box">
-                        <h3 class="card-title">Basic Informations</h3>
-                        <div class="row">
-                            <div class="col-md-12">
-                                <div class="profile-img-wrap">
-                                    <img class="inline-block" src="assets/img/user.jpg" alt="user">
-                                    <div class="fileupload btn">
-                                        <span class="btn-text">edit</span>
-                                        <input class="upload" type="file">
-                                    </div>
-                                </div>
-                                <div class="profile-basic">
-                                    <div class="row">
-                                        <div class="col-md-6">
-                                            <div class="form-group form-focus">
-                                                <label class="focus-label">First Name</label>
-                                                <input type="text" class="form-control floating" value="Onesmus">
-                                            </div>
-                                        </div>
-                                        <div class="col-md-6">
-                                            <div class="form-group form-focus">
-                                                <label class="focus-label">Last Name</label>
-                                                <input type="text" class="form-control floating" value="Muimi">
-                                            </div>
-                                        </div>
-                                        <div class="col-md-6">
-                                            <div class="form-group form-focus">
-                                                <label class="focus-label">Admission</label>
-                                                <input type="text" class="form-control floating" value="CSC/027/2020">
-                                            </div>
-                                        </div>
-                                        <div class="col-md-6">
-                                            <div class="form-group form-focus">
-                                                <label class="focus-label">Phone Number</label>
-                                                <input type="number" class="form-control floating"
-                                                    value="254 792613079">
-                                            </div>
-                                        </div>
-                                        <div class="col-md-6">
-                                            <div class="form-group form-focus">
-                                                <label class="focus-label">Email</label>
-                                                <input type="Email" class="form-control floating"
-                                                    value="kimonesmuske@gmail.com">
-                                            </div>
-                                        </div>
-                                        <div class="col-md-6">
-                                            <div class="form-group form-focus select-focus">
-                                                <label class="focus-label">Gendar</label>
-                                                <select class="select form-control floating">
-                                                    <option value="male selected">Male</option>
-                                                    <option value="female">Female</option>
-                                                </select>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="card-box">
-                        <h3 class="card-title">Education Informations</h3>
-                        <div class="row">
-                            <div class="col-md-12">
-                                <div class="form-group form-focus">
-                                    <label class="focus-label">School</label>
-                                    <input type="text" class="form-control floating" value="SAESS">
-                                </div>
-                            </div>
-                            <div class="col-md-6">
-                                <div class="form-group form-focus">
-                                    <label class="focus-label">Department</label>
-                                    <input type="text" class="form-control floating"
-                                        value="Maths, Statistics and Computing">
-                                </div>
-                            </div>
-                            <div class="col-md-6">
-                                <div class="form-group form-focus">
-                                    <label class="focus-label">Course</label>
-                                    <input type="text" class="form-control floating" value="Computer Science">
-                                </div>
-                            </div>
-                            <div class="col-md-6">
-                                <div class="form-group form-focus">
-                                    <label class="focus-label">Year</label>
-                                    <input type="text" class="form-control floating" value="4">
-                                </div>
-                            </div>
-                            <div class="col-md-6">
-                                <div class="form-group form-focus">
-                                    <label class="focus-label">Semester</label>
-                                    <input type="text" class="form-control floating" value="1">
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="card-box">
-                        <h3 class="card-title">Semester Units</h3>
-                        <div class="row">
-                            <div class="col-md-6">
-                                <div class="form-group form-focus">
-                                    <label class="focus-label">Institution</label>
-                                    <input type="text" class="form-control floating" value="Oxford University">
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="text-center m-t-20">
-                        <button class="btn btn-primary submit-btn" type="button">Submit</button>
-                    </div>
-                </form>
+<div class="page-wrapper">
+    <div class="content">
+        <div class="row">
+            <div class="col-sm-12">
+                <h4 class="page-title">Edit Profile</h4>
             </div>
         </div>
+        <form>
+            <div class="card-box profile-header">
+                <div class="row">
+                    <div class="col-md-12">
+                        <div class="profile-view">
+                            <div class="profile-img-wrap">
+                                <div class="profile-img">
+                                    <a href="#"><img class="avatar" src="{{user.student.profile.profile_photo.url}}"
+                                            alt=""></a>
+                                </div>
+                            </div>
+                            <div class="profile-basic">
+                                <div class="row">
+                                    <div class="col-md-5">
+                                        <div class="profile-info-left">
+                                            <h3 class="user-name m-t-0 mb-0">{{user.student.first_name}}
+                                                {{user.student.last_name}}</h3>
+                                            <small class="text-muted"></small>
+                                            <div class="staff-id">Admission : {{user.username}}</div>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-7">
+                                        <ul class="personal-info">
+                                            <li>
+                                                <span class="title">Phone:</span>
+                                                <span class="text"><a href="">{{user.student.phone}}</a></span>
+                                            </li>
+                                            <li>
+                                                <span class="title">Email:</span>
+                                                <span class="text"><a
+                                                        href=""><span>{{user.student.email}}</span></a></span>
+                                            </li>
+                                            <li>
+                                                <span class="title">Gender:</span>
+                                                <span class="text">{{user.student.gender}}</span>
+                                            </li>
+                                            <br><br><br><br><br>
+                                        </ul>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="text-center m-t-20">
+                <button class="btn btn-primary submit-btn" type="button">Submit</button>
+            </div>
+        </form>
     </div>
-    <div class="sidebar-overlay" data-reff=""></div>
-    <script src="{% static 'js/jquery-3.2.1.min.js' %}"></script>
-    <script src="{% static 'js/popper.min.js' %}"></script>
-    <script src="{% static 'js/bootstrap.min.js' %}"></script>
-    <script src="{% static 'js/jquery.slimscroll.js' %}"></script>
-    <script src="{% static 'js/select2.min.js' %}"></script>
-    <script src="{% static 'js/moment.min.js' %}"></script>
-    <script src="{% static 'js/bootstrap-datetimepicker.min.js' %}"></script>
-    <script src="{% static 'js/app.js' %}"></script>
+</div>
+</div>
+<div class="sidebar-overlay" data-reff=""></div>
+<script src="{% static 'js/jquery-3.2.1.min.js' %}"></script>
+<script src="{% static 'js/popper.min.js' %}"></script>
+<script src="{% static 'js/bootstrap.min.js' %}"></script>
+<script src="{% static 'js/jquery.slimscroll.js' %}"></script>
+<script src="{% static 'js/select2.min.js' %}"></script>
+<script src="{% static 'js/moment.min.js' %}"></script>
+<script src="{% static 'js/bootstrap-datetimepicker.min.js' %}"></script>
+<script src="{% static 'js/app.js' %}"></script>
 {% endblock content %}
