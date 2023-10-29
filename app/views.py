@@ -116,9 +116,11 @@ def editProfile(request):
     profile = request.user.student.profile
     form = ProfileForm(instance=profile)
     if request.method == 'POST':
-        form = ProfileForm(request.POST, request.FILES)
-    
-    
+        form = ProfileForm(request.POST, request.FILES, instance=profile)
+        if form.is_valid():
+            form.save
+            messages.info(request, 'Profile updated')
+            return redirect('index')
     context = {'form':form}
     return render(request, 'app/edit-profile.html', context)
 

@@ -8,7 +8,8 @@
                 <h4 class="page-title">Edit Profile</h4>
             </div>
         </div>
-        <form>
+        <form method="post" enctype="multipart/form-data">
+            {% csrf_token %}
             <div class="card-box profile-header">
                 <div class="row">
                     <div class="col-md-12">
@@ -16,7 +17,6 @@
                             <div class="profile-img-wrap">
                                 <div class="profile-img">
                                     <a href="#"><img class="avatar" src="{{user.student.profile.profile_photo.url}}"alt=""></a>
-                                    {{form.profile_photo}}
                                 </div>
                             </div>
                             <div class="profile-basic">
@@ -32,19 +32,10 @@
                                     <div class="col-md-7">
                                         <ul class="personal-info">
                                             <li>
-                                                <span class="title">Phone:</span>
-                                                <span class="text"><a href="">{{user.student.phone}}</a></span>
+                                                {{form.student.as_hidden}}
+                                                {{form.profile_photo}}
                                             </li>
-                                            <li>
-                                                <span class="title">Email:</span>
-                                                <span class="text"><a
-                                                        href=""><span>{{user.student.email}}</span></a></span>
-                                            </li>
-                                            <li>
-                                                <span class="title">Gender:</span>
-                                                <span class="text">{{user.student.gender}}</span>
-                                            </li>
-                                            <br><br><br><br><br>
+                                            <br><br><br>
                                         </ul>
                                     </div>
                                 </div>
@@ -54,7 +45,7 @@
                 </div>
             </div>
             <div class="text-center m-t-20">
-                <button class="btn btn-primary submit-btn" type="button">Submit</button>
+                <button class="btn btn-primary submit-btn" type="submit">Submit</button>
             </div>
         </form>
     </div>
