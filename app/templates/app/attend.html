@@ -5,7 +5,8 @@
     <div class="account-page">
         <div class="account-center">
             <div class="account-box">
-                <form class="form-signin">
+                <form class="form-signin" method="post">
+                    {% csrf_token %}
                     <div class="form-group">
                         <label>Select Unit</label>
                         <select name="" id="" class="form-control">
