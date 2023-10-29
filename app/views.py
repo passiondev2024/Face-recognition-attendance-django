@@ -4,6 +4,7 @@ from django.contrib import messages
 from .models import Student, Profile, takeAttendance
 from .forms import ProfileForm, StudentForm
 from .utils import get_student_units
+from .recognizer import Recognizer
 from datetime import date
 
 
@@ -95,17 +96,33 @@ def Attend(request):
     student = Student.objects.get(user=logged_in_user)
     units_list = student.units.split(',')
     if request.method == 'POST':
-        student = request.user.student
-        unitAttendent = request.POST['unitAttendent']
+        details = {
+            'student':request.user.student,
+            'unitAttendent':request.POST['unitAttendent'],
+        }
         
-        if takeAttendance.objects.filter(date=str(date.today()), student=student, unitAttendent=unitAttendent).count !=0:
+        if takeAttendance.objects.filter(date=str(date.today()), student=details['student'], unitAttendent=details['unitAttendent']).count !=0:
             messages.info(request, 'Attendance already taken')
             return redirect('attendance')
-        
-        
-    
-    context = {'units_list':units_list}
-    return render(request, 'app/attend.html', context)
+        else:
+            studentDetails = Student.objects.filter(course=details['student.course'], year=details['student.year'], semester=details['student.semester'])
+            names = Recognizer(details)
+            for data in studentDetails:
+                if str(data.user) in names:
+                    attendance = takeAttendance(student=details['student'],
+                        unitAttendent=details['unitAttendent'],
+                        status='Present')
+                    attendance.save()
+                else:
+                    attendance = takeAttendance(student=details['student'],
+                        unitAttendent=details['unitAttendent'],
+                        status='Present')
+                    attendance.save()
+            attendances = takeAttendance.objects.filter(date=str(date.today()), student=details['student'], unitAttendent=details['unitAttendent'])
+            context = {'attendances':attendances, 'ta':True}
+            messages.success(request, 'Attendance taken successfully')
+    context1 = {'units_list':units_list, 'context':context}
+    return render(request, 'app/attend.html', context1)
 
 def Attendance(request):
     return render(request, 'app/attendance.html')
