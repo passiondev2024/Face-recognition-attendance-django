@@ -33,6 +33,9 @@ class Profile(models.Model):
 class takeAttendance(models.Model):
     student = models.ForeignKey(Student, on_delete=models.CASCADE)
     unitAttendent = models.CharField(max_length=200)
+    date = models.DateField(auto_now_add = True, null = True)
+    time = models.TimeField(auto_now_add=True, null = True)
+    status = models.CharField(max_length=200, null = True, default='Absent')
     
     def __str__(self):
         return self.unitAttendent

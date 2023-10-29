@@ -1,9 +1,10 @@
 from django.shortcuts import render, redirect
 from django.contrib.auth.models import auth, User
 from django.contrib import messages
-from .models import Student, Profile
+from .models import Student, Profile, takeAttendance
 from .forms import ProfileForm, StudentForm
 from .utils import get_student_units
+from datetime import date
 
 
 
@@ -95,6 +96,12 @@ def Attend(request):
     units_list = student.units.split(',')
     if request.method == 'POST':
         student = request.user.student
+        unitAttendent = request.POST['unitAttendent']
+        
+        if takeAttendance.objects.filter(date=str(date.today()), student=student, unitAttendent=unitAttendent).count !=0:
+            messages.info(request, 'Attendance already taken')
+            return redirect('attendance')
+        
         
     
     context = {'units_list':units_list}
