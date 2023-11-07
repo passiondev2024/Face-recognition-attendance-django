@@ -1,5 +1,5 @@
 from django.contrib import admin
-from .models import Student, Profile
+from .models import Student, Profile, takeAttendance
 
 # Register your models here.
 @admin.register(Student)
@@ -11,3 +11,7 @@ class StudentTable(admin.ModelAdmin):
 @admin.register(Profile)
 class ProfileTable(admin.ModelAdmin):
     list_display = ('student', 'profile_photo')
+    
+@admin.register(takeAttendance)
+class takeAttendanceTable(admin.ModelAdmin):
+    list_display = ('student', 'unitAttendent', 'date', 'time', 'status')
