@@ -98,11 +98,11 @@ def Attend(request):
             'unitAttendent':request.POST['unitAttendent'],
         }
         
-        if takeAttendance.objects.filter(date=str(date.today()), student=details['student'], unitAttendent=details['unitAttendent']).count !=0:
+        if takeAttendance.objects.filter(date=str(date.today()), student=details['student'], unitAttendent=details['unitAttendent']).count() !=0:
             messages.info(request, 'Attendance already taken')
             return redirect('attendance')
         else:
-            studentDetails = Student.objects.filter(course=details['student.course'], year=details['student.year'], semester=details['student.semester'])
+            studentDetails = Student.objects.filter(course=details['student'].course, year=details['student'].year, semester=details['student'].semester)
             names = Recognizer(details)
             for data in studentDetails:
                 if str(data.user) in names:
