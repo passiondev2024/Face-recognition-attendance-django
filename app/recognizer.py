@@ -8,8 +8,9 @@ import os
 
 def Recognizer(details, classNames):
     time_spend = time.time() + 30
-    base_dir = os.path.dirname(os.path.abspath(media))
+    base_dir = os.path.dirname(os.path.abspath('media'))
     path = os.path.join(base_dir, 'media')
+    print(path)
     
     images = []
     classNames = []
@@ -25,6 +26,8 @@ def Recognizer(details, classNames):
             encodeList.append(encode)
         return encodeList
     
+    
+    encodeListKnown = findEncondings(images)
     cap = cv2.VideoCapture(0)
     
     while True:
