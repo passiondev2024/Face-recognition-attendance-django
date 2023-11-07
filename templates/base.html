@@ -32,7 +32,8 @@
                 <li class="nav-item dropdown has-arrow">
                     <a href="#" class="dropdown-toggle nav-link user-link" data-toggle="dropdown">
                         <span class="user-img">
-                            <img class="rounded-circle" src="{{user.student.profile.profile_photo.url}}" width="24" alt="Admin">
+                            <img class="rounded-circle" src="{{user.student.profile.profile_photo.url}}" width="24"
+                                alt="Admin">
                             <span class="status online"></span>
                         </span>
                         <span>{{user.username}}</span>
@@ -48,9 +49,9 @@
                 <a href="#" class="dropdown-toggle" data-toggle="dropdown" aria-expanded="false"><i
                         class="fa fa-ellipsis-v"></i></a>
                 <div class="dropdown-menu dropdown-menu-right">
-                    <a class="dropdown-item" href="profile.html">My Profile</a>
-                    <a class="dropdown-item" href="edit-profile.html">Edit Profile</a>
-                    <a class="dropdown-item" href="login.html">Logout</a>
+                    <a class="dropdown-item" href="{% url 'profile' %}">My Profile</a>
+                    <a class="dropdown-item" href="{% url 'editprofile' %}">Edit Profile</a>
+                    <a class="dropdown-item" href="{% url 'logout' %}">Logout</a>
                 </div>
             </div>
         </div>
@@ -84,13 +85,44 @@
                             <ul style="display: none;">
                                 <li><a href="{% url 'profile' %}">My Profile</a></li>
                                 <li><a href="{% url 'editprofile' %}">Edit Profile</a></li>
-                                <li><a href="{% url 'logout' %}">LogOut</a></li>
+                                <li><a href="{% url 'logout' %}" data-toggle="modal"
+                                        data-target="#add_chat_user">LogOut</a></li>
+                                <!-- <li><a href="{% url 'logout' %}">LogOut</a></li> -->
                             </ul>
                         </li>
                     </ul>
+                    <div id="add_group" class="modal fade">
+                        <div class="modal-dialog modal-dialog-centered">
+                            <div class="modal-content">
+                                <div class="modal-header">
+                                    <h3 class="modal-title">Create a group</h3>
+                                    <button type="button" class="close" data-dismiss="modal">&times;</button>
+                                </div>
+                                <div class="modal-body">
+                                    <p>Groups are where your team communicates. They’re best when organized around a
+                                        topic — #leads, for example.</p>
+                                    <form>
+                                        <div class="form-group">
+                                            <label>Group Name <span class="text-danger">*</span></label>
+                                            <input class="form-control" type="text">
+                                        </div>
+                                        <div class="form-group">
+                                            <label>Send invites to: <span
+                                                    class="text-muted-light">(optional)</span></label>
+                                            <input class="form-control" type="text">
+                                        </div>
+                                        <div class="m-t-50 text-center">
+                                            <button class="btn btn-primary submit-btn">Create Group</button>
+                                        </div>
+                                    </form>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
                 </div>
             </div>
         </div>
     </div>
 </body>
+
 </html>
