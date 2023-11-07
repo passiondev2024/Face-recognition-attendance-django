@@ -91,6 +91,7 @@ def Index(request):
     context = {'units_list':units_list}
     return render(request, 'app/index.html', context)
 
+
 def Attend(request):
     if request.method == 'POST':
         details = {
@@ -120,6 +121,7 @@ def Attend(request):
     units_list = student.units.split(',')
     context = {'units_list': units_list}
     return render(request, 'app/attend.html', context)
+
 
 def Attendance(request):
     return render(request, 'app/attendance.html')
