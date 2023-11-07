@@ -2,6 +2,16 @@
 {% load static %}
 {% block content %}
 <div class="main-wrapper account-wrapper">
+    {% for message in messages %}
+    <div class="container-fluid p-0">
+        <div class="alert {{ message.tags }} alert-dismissible" role="alert">
+            <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                <span aria-hidden="true" class="btn-close">X</span>
+            </button>
+            {{ message }}
+        </div>
+    </div>
+    {% endfor %}
     <div class="account-page">
         <div class="account-center">
             <div class="account-box">
