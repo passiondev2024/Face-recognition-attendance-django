@@ -8,7 +8,7 @@ import time
 
 def Recognizer(details):
     time_spend = time.time() + 30
-	path = os.path.join(BASE_DIR, )
+	path = os.path.join(BASE_DIR, 'media')
 	images = []
 	classNames = []
 	myList = os.listdir(path)
