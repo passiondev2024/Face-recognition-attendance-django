@@ -1,6 +1,6 @@
 from django.db import models
 from django.contrib.auth.models import User
-
+import os
 # Create your models here.
 
 class Student(models.Model):
@@ -28,6 +28,12 @@ class Profile(models.Model):
     
     # def __str__(self):
     #     return self.profile_photo
+    
+def profile_photo_upload(instance, filename):
+    username = instance.student.user.username
+    _, file_extension = os.path.splitext(filename)
+    new_filename = f"{username}{file_extension}"
+    return os.path.join("media/", new_filename)
     
     
 class takeAttendance(models.Model):
