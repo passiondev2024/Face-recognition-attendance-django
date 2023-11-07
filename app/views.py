@@ -92,9 +92,6 @@ def Index(request):
     return render(request, 'app/index.html', context)
 
 def Attend(request):
-    logged_in_user = request.user
-    student = Student.objects.get(user=logged_in_user)
-    units_list = student.units.split(',')
     if request.method == 'POST':
         details = {
             'student':request.user.student,
@@ -119,11 +116,14 @@ def Attend(request):
                         status='Present')
                     attendance.save()
             attendances = takeAttendance.objects.filter(date=str(date.today()), student=details['student'], unitAttendent=details['unitAttendent'])
-            context = {'attendances':attendances, 'ta':True}
             messages.success(request, 'Attendance taken successfully')
-    context= {}
-    context1 = {'units_list':units_list,}
-    return render(request, 'app/attend.html', context1, context)
+            # context = {'attendances':attendances, 'ta':True}
+            
+    logged_in_user = request.user
+    student = Student.objects.get(user=logged_in_user)
+    units_list = student.units.split(',')
+    context = {'units_list':units_list,}
+    return render(request, 'app/attend.html', context)
 
 def Attendance(request):
     return render(request, 'app/attendance.html')

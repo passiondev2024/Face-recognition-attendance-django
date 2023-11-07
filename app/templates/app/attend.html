@@ -8,8 +8,9 @@
                 <form class="form-signin" method="post">
                     {% csrf_token %}
                     <div class="form-group">
+                        {{form.student}}
                         <label>Select Unit</label>
-                        <select name="" id="" class="form-control">
+                        <select name="unitAttendent" id="" class="form-control">
                             <option value="">Select unit.......</option>
                             {% for unit in units_list %}
                             <option value="attend_unit">{{unit}}</option>
