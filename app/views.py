@@ -94,35 +94,31 @@ def Index(request):
 def Attend(request):
     if request.method == 'POST':
         details = {
-            'student':request.user.student,
-            'unitAttendent':request.POST['unitAttendent'],
+            'student': request.user.student,
+            'unitAttendent': request.POST['unitAttendent'],
         }
         
-        if takeAttendance.objects.filter(date=str(date.today()), student=details['student'], unitAttendent=details['unitAttendent']).count() !=0:
+        if takeAttendance.objects.filter(date=str(datetime.today()), student=details['student'], unitAttendent=details['unitAttendent']).count() != 0:
             messages.info(request, 'Attendance already taken')
             return redirect('attendance')
         else:
             studentDetails = Student.objects.filter(course=details['student'].course, year=details['student'].year, semester=details['student'].semester)
-            names = Recognizer(details)
-            for data in studentDetails:
-                if str(data.user) in names:
-                    attendance = takeAttendance(student=details['student'],
-                        unitAttendent=details['unitAttendent'],
-                        status='Present')
-                    attendance.save()
-                else:
-                    attendance = takeAttendance(student=details['student'],
-                        unitAttendent=details['unitAttendent'],
-                        status='Present')
-                    attendance.save()
-            attendances = takeAttendance.objects.filter(date=str(date.today()), student=details['student'], unitAttendent=details['unitAttendent'])
-            messages.success(request, 'Attendance taken successfully')
-            # context = {'attendances':attendances, 'ta':True}
+            classNames = [str(data.user) for data in studentDetails]
+            recognized_name = Recognizer(details, classNames)
             
+            if recognized_name:
+                attendance = takeAttendance(student=details['student'],
+                                            unitAttendent=details['unitAttendent'],
+                                            status='Present')
+                attendance.save()
+                
+            attendances = takeAttendance.objects.filter(date=str(datetime.today()), student=details['student'], unitAttendent=details['unitAttendent'])
+            messages.success(request, 'Attendance taken successfully')
+    
     logged_in_user = request.user
     student = Student.objects.get(user=logged_in_user)
     units_list = student.units.split(',')
-    context = {'units_list':units_list,}
+    context = {'units_list': units_list}
     return render(request, 'app/attend.html', context)
 
 def Attendance(request):

@@ -79,3 +79,6 @@ def Recognizer(details):
 	cap.release()
 	cv2.destroyAllWindows()
 	return name
+
+
+
