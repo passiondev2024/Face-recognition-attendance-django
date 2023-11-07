@@ -6,6 +6,7 @@ from .forms import ProfileForm, StudentForm
 from .utils import get_student_units
 from .recognizer import Recognizer
 from datetime import date
+from datetime import datetime
 
 
 
@@ -99,7 +100,7 @@ def Attend(request):
             'unitAttendent': request.POST['unitAttendent'],
         }
         
-        if takeAttendance.objects.filter(date=str(datetime.today()), student=details['student'], unitAttendent=details['unitAttendent']).count() != 0:
+        if takeAttendance.objects.filter(date=str(date.today()), student=details['student'], unitAttendent=details['unitAttendent']).count() != 0:
             messages.info(request, 'Attendance already taken')
             return redirect('attendance')
         else:
@@ -113,7 +114,7 @@ def Attend(request):
                                             status='Present')
                 attendance.save()
                 
-            attendances = takeAttendance.objects.filter(date=str(datetime.today()), student=details['student'], unitAttendent=details['unitAttendent'])
+            attendances = takeAttendance.objects.filter(date=str(date.today()), student=details['student'], unitAttendent=details['unitAttendent'])
             messages.success(request, 'Attendance taken successfully')
     
     logged_in_user = request.user
