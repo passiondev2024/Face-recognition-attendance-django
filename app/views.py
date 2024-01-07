@@ -327,6 +327,9 @@ def Attendance(request):
     context = {'units_list':units_list, 'registerAttendance':registerAttendance}
     return render(request, 'app/attendance.html', context)
 
+def ClassAttendance(request):
+    
+
 def Chats(request):
     student = request.user.student
     course = student.course
