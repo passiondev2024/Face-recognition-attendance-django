@@ -328,7 +328,7 @@ def Attendance(request):
     return render(request, 'app/attendance.html', context)
 
 def ClassAttendance(request):
-    
+    return render(request, 'app/fullAttendance.html')
 
 def Chats(request):
     student = request.user.student
