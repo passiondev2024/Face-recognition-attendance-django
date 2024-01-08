@@ -333,10 +333,10 @@ def ClassAttendance(request):
     year = student.year
     semester = student.semester
     students = Student.objects.filter(course=course, semester=semester, year=year)
-    all_attendands = Chat.objects.filter(student__in=students)
+    all_attendands = takeAttendance.objects.filter(student__in=students)
 
-
-    return render(request, 'app/fullAttendance.html')
+    context = {'all':all_attendands, 'student':student, 'students':students}
+    return render(request, 'app/fullAttendance.html', context)
 
 def Chats(request):
     student = request.user.student
