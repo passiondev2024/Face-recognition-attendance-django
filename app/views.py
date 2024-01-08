@@ -333,7 +333,7 @@ def ClassAttendance(request):
     year = student.year
     semester = student.semester
     students = Student.objects.filter(course=course, semester=semester, year=year)
-    all_ = Chat.objects.filter(student__in=students)
+    all_attendands = Chat.objects.filter(student__in=students)
 
 
     return render(request, 'app/fullAttendance.html')
