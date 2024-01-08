@@ -328,6 +328,12 @@ def Attendance(request):
     return render(request, 'app/attendance.html', context)
 
 def ClassAttendance(request):
+    student = request.user.student
+    course = student.course
+    year = student.year
+    semester = student.semester
+    students = Student.objects.filter(course=course, semester=semester, year=year)
+    all_texts = Chat.objects.filter(student__in=students)
     return render(request, 'app/fullAttendance.html')
 
 def Chats(request):
