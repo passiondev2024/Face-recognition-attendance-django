@@ -112,6 +112,7 @@ def Attend(request):
                 attendance = takeAttendance(student=details['student'],
                                             unitAttendent=details['unitAttendent'],
                                             status='Present')
+                
                 attendance.save()
                 
             attendances = takeAttendance.objects.filter(date=str(date.today()), student=details['student'], unitAttendent=details['unitAttendent'])
