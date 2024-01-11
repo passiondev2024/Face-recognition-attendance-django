@@ -5,11 +5,11 @@ from datetime import datetime
 from datetime import date
 import time
 import os
+from django.conf import settings
 
 def Recognizer(details, classNames):
     time_spend = time.time() + 30
-    base_dir = os.path.dirname(os.path.abspath('media'))
-    path = os.path.join(base_dir, 'media')
+    path = os.path.join(settings.BASE_DIR, 'media', 'media')
     print(path)
     
     images = []
@@ -17,6 +17,8 @@ def Recognizer(details, classNames):
     myList = os.listdir(path)
     for cl in myList:
         curImg = cv2.imread(f'{path}/{cl}')
+        images.append(curImg)
+        classNames.append(os.path.splitext(cl)[0])
         
     def findEncondings(images):
         encodeList = []
@@ -51,11 +53,11 @@ def Recognizer(details, classNames):
                 cv2.rectangle(img, (x1,y2-35), (x2,y2), (0,255,0), cv2.FILLED)
                 cv2.putText(img, name, (x1+6, y2-6), cv2.FONT_HERSHEY_COMPLEX, 1, (255,255,255), 2)
                 
-            cv2.imshow('Class Attendance', img)
-            if cv2.waitKey(1) == ord('q'):
-                break
-            if time.time() > time_spend:
-                break
+        cv2.imshow('Class Attendance', img)
+        if cv2.waitKey(1) == ord('q'):
+            break
+        if time.time() > time_spend:
+            break
     cap.release()
     cv2.destroyAllWindows()
     return name
