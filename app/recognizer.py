@@ -45,7 +45,7 @@ def Recognizer(details, classNames):
             
             if matches[matcheIndex]:
                 name = classNames[matcheIndex].upper()
-                y1.x2,y2,x1 = faceLoc
+                y1,x2,y2,x1 = faceLoc
                 y1,x2,y2,x1 = y1*4, x2*4, y2*4,x1*4
                 cv2.rectangle(img, (x1,y1), (x2,y2), (0,255,0), 2)
                 cv2.rectangle(img, (x1,y2-35), (x2,y2), (0,255,0), cv2.FILLED)
