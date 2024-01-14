@@ -125,7 +125,7 @@
                                     </tr>
                                 </thead>
                                 <tbody>
-                                    {% for data in registerAttendance %}
+                                    {% for data in registerAttendance|slice:":5" %}
                                     <tr>
                                         <td>
                                             <span class="user-img">
