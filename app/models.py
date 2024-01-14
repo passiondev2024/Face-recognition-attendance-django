@@ -22,29 +22,38 @@ class Student(models.Model):
         return self.first_name
     
     
+from django.db import models
+from django.dispatch import receiver
+from django.db.models.signals import pre_save
+from django.contrib.auth.models import User
+
 class Profile(models.Model):
     student = models.OneToOneField(Student, null=True, blank=True, on_delete=models.CASCADE)
     profile_photo = models.ImageField(null=True, blank=True, upload_to="media/")
-    
-    # def __str__(self):
-    #     return self.profile_photo
-    
-def profile_photo_upload(instance, filename):
-    username = instance.student.user.username
-    _, file_extension = os.path.splitext(filename)
-    new_filename = f"{username}{file_extension}"
-    return os.path.join("media/", new_filename)
-    
+
+@receiver(pre_save, sender=Profile)
+def save_profile_photo(sender, instance, **kwargs):
+    if instance.student and instance.student.user:
+        # Assuming the username is the desired identifier
+        username = instance.student.user.username
+
+        # Update the upload_to parameter to include the username
+        instance.profile_photo.upload_to = f"media/{username}/"
+
+        # Save the profile photo with the username as part of the path
+        instance.profile_photo.save(f"{username}.jpg", instance.profile_photo, save=False)
+
+
     
 class takeAttendance(models.Model):
     student = models.ForeignKey(Student, on_delete=models.CASCADE)
     unitAttendent = models.CharField(max_length=200)
-    date = models.DateField(auto_now_add=True, null=True)
-    time = models.TimeField(auto_now_add=True, null=True)
-    status = models.CharField(max_length=200, null=True, default='Absent')
-
+    date = models.DateField(auto_now_add = True, null = True)
+    time = models.TimeField(auto_now_add=True, null = True)
+    status = models.CharField(max_length=200, null = True, default='Absent')
+    
     def __str__(self):
-        return f"{self.student.user.username} - {self.unitAttendent}"
+        return self.unitAttendent
 
     
     

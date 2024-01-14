@@ -40,6 +40,7 @@ def Recognizer(details, classNames):
         facesCurFrame = face_recognition.face_locations(imgS)
         encodesCurFrame = face_recognition.face_encodings(imgS, facesCurFrame)
         
+        name = "Unknown"
         for encodeFace, faceLoc in zip(encodesCurFrame, facesCurFrame):
             matches = face_recognition.compare_faces(encodeListKnown, encodeFace, tolerance=0.6)
             faceDis = face_recognition.face_distance(encodeListKnown, encodeFace)
