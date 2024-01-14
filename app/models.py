@@ -51,7 +51,13 @@ class takeAttendance(models.Model):
     date = models.DateField(auto_now_add = True, null = True)
     time = models.TimeField(auto_now_add=True, null = True)
     status = models.CharField(max_length=200, null = True, default='Absent')
+    week = models.IntegerField()  # Add a new field for the week
     
+    def save(self, *args, **kwargs):
+        # Calculate the week based on the date
+        self.week = self.date.isocalendar()[1]
+        super().save(*args, **kwargs)
+        
     def __str__(self):
         return self.unitAttendent
 

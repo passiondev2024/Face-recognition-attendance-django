@@ -100,8 +100,10 @@ def Attend(request):
             'student': request.user.student,
             'unitAttendent': request.POST['unitAttendent'],
         }
-        
-        if takeAttendance.objects.filter(date=str(date.today()), student=details['student'], unitAttendent=details['unitAttendent']).count() != 0:
+
+        this_week = datetime.now().isocalendar()[1]
+# date=str(date.today())
+        if takeAttendance.objects.filter(week=this_week, student=details['student'], unitAttendent=details['unitAttendent']).count() != 0:
             messages.info(request, 'Attendance already taken')
             return redirect('attendance')
         else:
@@ -127,7 +129,13 @@ def Attend(request):
 
 
 def Attendance(request):
-    return render(request, 'app/attendance.html')
+    logged_in_user = request.user
+    student = Student.objects.get(user=logged_in_user)
+    units_list = student.units.split(',')
+    registerAttendance = takeAttendance.objects.filter(student=student)
+    
+    context = {'units_list':units_list, 'registerAttendance':registerAttendance}
+    return render(request, 'app/attendance.html', context)
 
 
 def ExamCard(request):
