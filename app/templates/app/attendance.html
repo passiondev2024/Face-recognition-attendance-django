@@ -68,49 +68,17 @@
                     <table class="table table-striped custom-table mb-0">
                         <thead>
                             <tr>
-                                <th>WEEKS</th>
-                                <th>COM 110</th>
-                                <th>COM 110</th>
-                                <th>COM 110</th>
-                                <th>COM 110</th>
-                                <th>COM 110</th>
-                                <th>COM 110</th>
-                                <th>COM 110</th>
+                                <th>Student</th>
+                                <th>Date</th>
+                                <th>Time</th>
+                                {% for unit in units_list %}
+                                <th>{{unit}}</th>
+                                {% endfor %}
                             </tr>
                         </thead>
                         <tbody>
                             <tr>
                                 <td>Week 1</td>
-                                <td><i class="fa fa-check text-success"></i> </td>
-                                <td><i class="fa fa-check text-success"></i> </td>
-                                <td><i class="fa fa-check text-success"></i> </td>
-                                <td><i class="fa fa-close text-danger"></i> </td>
-                                <td><i class="fa fa-close text-danger"></i> </td>
-                                <td><i class="fa fa-close text-danger"></i> </td>
-                                <td><i class="fa fa-check text-success"></i> </td>
-                            </tr>
-                            <tr>
-                                <td>Week 2</td>
-                                <td><i class="fa fa-check text-success"></i> </td>
-                                <td><i class="fa fa-check text-success"></i> </td>
-                                <td><i class="fa fa-check text-success"></i> </td>
-                                <td><i class="fa fa-close text-danger"></i> </td>
-                                <td><i class="fa fa-close text-danger"></i> </td>
-                                <td><i class="fa fa-close text-danger"></i> </td>
-                                <td><i class="fa fa-check text-success"></i> </td>
-                            </tr>
-                            <tr>
-                                <td>Week 3</td>
-                                <td><i class="fa fa-check text-success"></i> </td>
-                                <td><i class="fa fa-check text-success"></i> </td>
-                                <td><i class="fa fa-check text-success"></i> </td>
-                                <td><i class="fa fa-close text-danger"></i> </td>
-                                <td><i class="fa fa-close text-danger"></i> </td>
-                                <td><i class="fa fa-close text-danger"></i> </td>
-                                <td><i class="fa fa-check text-success"></i> </td>
-                            </tr>
-                            <tr>
-                                <td>Week 4</td>
                                 <td><i class="fa fa-check text-success"></i> </td>
                                 <td><i class="fa fa-check text-success"></i> </td>
                                 <td><i class="fa fa-check text-success"></i> </td>
