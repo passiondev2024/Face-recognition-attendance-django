@@ -88,8 +88,9 @@ def Index(request):
     logged_in_user = request.user
     student = Student.objects.get(user=logged_in_user)
     units_list = student.units.split(',')
+    registerAttendance = takeAttendance.objects.get(user=logged_in_user)
     
-    context = {'units_list':units_list}
+    context = {'units_list':units_list, 'registerAttendance':registerAttendance}
     return render(request, 'app/index.html', context)
 
 
