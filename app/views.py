@@ -93,6 +93,12 @@ def Index(request):
     context = {'units_list':units_list, 'registerAttendance':registerAttendance}
     return render(request, 'app/index.html', context)
 
+# date=str(date.today())
+def get_week_number():
+    now = datetime.now()
+    if now:
+        return now.date().weekday() + 1
+
 
 def Attend(request):
     if request.method == 'POST':
@@ -101,8 +107,7 @@ def Attend(request):
             'unitAttendent': request.POST['unitAttendent'],
         }
 
-        this_week = datetime.now().isocalendar()[1]
-# date=str(date.today())
+        this_week = get_week_number()
         if takeAttendance.objects.filter(week=this_week, student=details['student'], unitAttendent=details['unitAttendent']).count() != 0:
             messages.info(request, 'Attendance already taken')
             return redirect('attendance')
@@ -114,11 +119,12 @@ def Attend(request):
             if recognized_name:
                 attendance = takeAttendance(student=details['student'],
                                             unitAttendent=details['unitAttendent'],
-                                            status='Present')
+                                            status='Present',
+                                            week=this_week) 
                 
                 attendance.save()
                 
-            attendances = takeAttendance.objects.filter(date=str(date.today()), student=details['student'], unitAttendent=details['unitAttendent'])
+            attendances = takeAttendance.objects.filter(week=this_week, student=details['student'], unitAttendent=details['unitAttendent'])
             messages.success(request, 'Attendance taken successfully')
     
     logged_in_user = request.user
