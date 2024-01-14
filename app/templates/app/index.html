@@ -137,12 +137,11 @@
                                         </td>
                                         <td>{{data.date}}</td>
                                         <td>{{data.time}}</td>
-                                        {% if data.status ==  %}
-                                        <td><i class="fa fa-close text-danger"></i> </td>
+                                        {% if data.status == 'Present' %}
                                         <td><i class="fa fa-check text-success"></i> </td>
-                                        <!-- <td><i class="fa fa-check text-success"></i> </td>
+                                        {% else %}
                                         <td><i class="fa fa-close text-danger"></i> </td>
-                                        <td><i class="fa fa-check text-success"></i> </td> -->
+                                        {% endif %}
                                     </tr>
                                     {% endfor %}
                                 </tbody>
