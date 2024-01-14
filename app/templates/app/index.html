@@ -8,7 +8,8 @@
                 <div class="dash-widget">
                     <div class="dash-widget-info text-right">
                         <h3>{{user.username}}</h3>
-                        <span class="widget-title1">Admission Number<i class="fa fa-check" aria-hidden="true"></i></span>
+                        <span class="widget-title1">Admission Number<i class="fa fa-check"
+                                aria-hidden="true"></i></span>
                     </div>
                 </div>
             </div>
@@ -115,6 +116,7 @@
                             <table class="table mb-0 new-patient-table">
                                 <thead>
                                     <tr>
+                                        <th>Student</th>
                                         <th>Date</th>
                                         <th>Time</th>
                                         {% for unit in units_list %}
@@ -125,8 +127,17 @@
                                 <tbody>
                                     {% for data in registerAttendance %}
                                     <tr>
+                                        <td>
+                                            <span class="user-img">
+                                                <img class="rounded-circle"
+                                                    src="{{user.student.profile.profile_photo.url}}" width="24"
+                                                    alt="Admin">
+                                                <!-- <span class="status online"></span> -->
+                                            </span>
+                                        </td>
                                         <td>{{data.date}}</td>
                                         <td>{{data.time}}</td>
+                                        {% if data.status ==  %}
                                         <td><i class="fa fa-close text-danger"></i> </td>
                                         <td><i class="fa fa-check text-success"></i> </td>
                                         <!-- <td><i class="fa fa-check text-success"></i> </td>
@@ -153,7 +164,7 @@
                         <canvas id="bargraph"></canvas>
                     </div>
                 </div>
-            </div> 
+            </div>
         </div>
     </div>
 </div>
