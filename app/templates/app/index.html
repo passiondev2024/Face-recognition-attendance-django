@@ -116,6 +116,7 @@
                                 <thead>
                                     <tr>
                                         <th>Date</th>
+                                        <th>Time</th>
                                         {% for unit in units_list %}
                                         <th>{{unit}}</th>
                                         {% endfor %}
@@ -124,14 +125,15 @@
                                 <tbody>
                                     {% for data in registerAttendance %}
                                     <tr>
-                                        <td>Date</td>
+                                        <td>{{data.date}}</td>
+                                        <td>{{data.time}}</td>
                                         <td><i class="fa fa-close text-danger"></i> </td>
                                         <td><i class="fa fa-check text-success"></i> </td>
                                         <!-- <td><i class="fa fa-check text-success"></i> </td>
                                         <td><i class="fa fa-close text-danger"></i> </td>
                                         <td><i class="fa fa-check text-success"></i> </td> -->
                                     </tr>
-                                    {% for data in registerAttendance %}
+                                    {% endfor %}
                                 </tbody>
                             </table>
                         </div>
