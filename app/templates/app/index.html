@@ -116,11 +116,9 @@
                                 <thead>
                                     <tr>
                                         <th>Date</th>
-                                        <th>COM 110</th>
-                                        <th>COM 210</th>
-                                        <th>COM 123</th>
-                                        <th>COM 452</th>
-                                        <th>COM 234</th>
+                                        {% for unit in units_list %}
+                                        <th>{{unit}}</th>
+                                        {% endfor %}
                                     </tr>
                                 </thead>
                                 <tbody>
@@ -128,9 +126,9 @@
                                         <td>Date</td>
                                         <td><i class="fa fa-close text-danger"></i> </td>
                                         <td><i class="fa fa-check text-success"></i> </td>
-                                        <td><i class="fa fa-check text-success"></i> </td>
+                                        <!-- <td><i class="fa fa-check text-success"></i> </td>
                                         <td><i class="fa fa-close text-danger"></i> </td>
-                                        <td><i class="fa fa-check text-success"></i> </td>
+                                        <td><i class="fa fa-check text-success"></i> </td> -->
                                     </tr>
                                 </tbody>
                             </table>
