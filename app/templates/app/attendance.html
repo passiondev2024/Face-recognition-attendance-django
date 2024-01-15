@@ -81,9 +81,8 @@
                             <tr>
                                 <td>
                                     <span class="user-img">
-                                        <img class="rounded-circle"
-                                            src="{{user.student.profile.profile_photo.url}}" width="24"
-                                            alt="Admin">
+                                        <img class="rounded-circle" src="{{user.student.profile.profile_photo.url}}"
+                                            width="24" alt="Admin">
                                         <span class="status online"></span>
                                     </span>
                                 </td>
@@ -91,13 +90,13 @@
                                 <td>{{data.time}}</td>
                                 {% for unit in units_list %}
                                 {% if data.unitAttendent == unit %}
-                                    {% if data.status == 'Present' %}
-                                        <td><i class="fa fa-check text-success"></i></td>
-                                    {% else %}
-                                        <td><i class="fa fa-close text-danger"></i></td>
-                                    {% endif %}
+                                {% if data.status == 'Present' %}
+                                <td><i class="fa fa-check text-success"></i></td>
                                 {% else %}
-                                    <td><i class="fa fa-close text-danger"></i></td>
+                                <td><i class="fa fa-close text-danger"></i></td>
+                                {% endif %}
+                                {% else %}
+                                <td></td> <!-- Empty cell for units where attendance is not recorded -->
                                 {% endif %}
                                 {% endfor %}
                             </tr>
