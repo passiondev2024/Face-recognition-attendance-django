@@ -2,11 +2,13 @@ from django.shortcuts import render, redirect
 from django.contrib.auth.models import auth, User
 from django.contrib import messages
 from .models import Student, Profile, takeAttendance
+from django.db.models import Count, F, ExpressionWrapper, FloatField
 from .forms import ProfileForm, StudentForm
 from .utils import get_student_units
 from .recognizer import Recognizer
 from datetime import date
 from datetime import datetime
+import json
 
 
 
@@ -84,14 +86,41 @@ def ProfilePic(request):
     context = {'form':form}
     return render(request, 'app/profile_pic.html', context)
 
+
+
 def Index(request):
     logged_in_user = request.user
     student = Student.objects.get(user=logged_in_user)
     units_list = student.units.split(',')
-    registerAttendance = takeAttendance.objects.filter(student=student)
-    
-    context = {'units_list':units_list, 'registerAttendance':registerAttendance}
+
+    # Annotate the QuerySet with attendance count per unit
+    registerAttendance = (
+        takeAttendance.objects
+        .filter(student=student)
+        .values('unitAttendent')
+        .annotate(attendance_count=Count('id'))
+    )
+
+    # Calculate the percentage attendance for each unit
+    registerAttendance = registerAttendance.annotate(
+        attendance_percentage=ExpressionWrapper(
+            (F('attendance_count') / 14) * 100,
+            output_field=FloatField()
+        )
+    )
+
+    units_list_json = json.dumps(units_list)
+    attendance_data_json = json.dumps(list(registerAttendance))
+
+    context = {
+        'units_list': units_list,
+        'registerAttendance': registerAttendance,
+        'units_list_json': units_list_json,
+        'attendance_data_json': attendance_data_json,
+    }
+
     return render(request, 'app/index.html', context)
+
 
 # date=str(date.today())
 def get_week_number():

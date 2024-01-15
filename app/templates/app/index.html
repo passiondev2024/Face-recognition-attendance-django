@@ -139,13 +139,13 @@
                                         <td>{{data.time}}</td>
                                         {% for unit in units_list %}
                                         {% if data.unitAttendent == unit %}
-                                            {% if data.status == 'Present' %}
-                                                <td><i class="fa fa-check text-success"></i></td>
-                                            {% else %}
-                                                <td><i class="fa fa-close text-danger"></i></td>
-                                            {% endif %}
+                                        {% if data.status == 'Present' %}
+                                        <td><i class="fa fa-check text-success"></i></td>
                                         {% else %}
-                                            <td><i class="fa fa-close text-danger"></i></td>
+                                        <td><i class="fa fa-close text-danger"></i></td>
+                                        {% endif %}
+                                        {% else %}
+                                        <td><i class="fa fa-close text-danger"></i></td>
                                         {% endif %}
                                         {% endfor %}
                                     </tr>
@@ -175,6 +175,40 @@
 </div>
 </div>
 </div>
+<script>
+    // Function to create a bar chart
+    function createBarChart(unitsList, attendanceData) {
+        var ctx = document.getElementById('bargraph').getContext('2d');
+        var myBarChart = new Chart(ctx, {
+            type: 'bar',
+            data: {
+                labels: unitsList,
+                datasets: [{
+                    label: 'Dataset 1',
+                    backgroundColor: 'rgba(0, 158, 251, 0.5)',
+                    borderColor: 'rgba(0, 158, 251, 1)',
+                    borderWidth: 1,
+                    data: attendanceData
+                }]
+            },
+            options: {
+                responsive: true,
+                legend: {
+                    display: false,
+                }
+            }
+        });
+    }
+
+    // Convert units_list to a JavaScript array
+    var unitsList = JSON.parse('{{ units_list|escapejs }}');
+
+    // Convert attendance_data to a JavaScript array
+    var attendanceData = JSON.parse('{{ attendance_data|escapejs }}');
+
+    // Call the function with data from Django template
+    createBarChart(unitsList, attendanceData);
+</script>
 <div class="sidebar-overlay" data-reff=""></div>
 <script src="{% static 'js/jquery-3.2.1.min.js' %}"></script>
 <script src="{% static 'js/popper.min.js' %}"></script>
