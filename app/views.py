@@ -139,7 +139,7 @@ def Attendance(request):
     student = Student.objects.get(user=logged_in_user)
     units_list = student.units.split(',')
     this_week = get_week_number()
-    registerAttendance = takeAttendance.objects.filter(student=student, this_week=this_week)
+    registerAttendance = takeAttendance.objects.filter(student=student)
     
     context = {'units_list':units_list, 'registerAttendance':registerAttendance}
     return render(request, 'app/attendance.html', context)
