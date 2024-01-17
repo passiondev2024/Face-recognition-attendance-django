@@ -92,6 +92,7 @@ def Index(request):
     logged_in_user = request.user
     student = Student.objects.get(user=logged_in_user)
     units_list = student.units.split(',')
+    register = takeAttendance.objects.filter(student=student)
 
     # Annotate the QuerySet with attendance count per unit
     registerAttendance = (
@@ -113,6 +114,7 @@ def Index(request):
     attendance_data_json = json.dumps(list(registerAttendance))
 
     context = {
+        'register':register,
         'units_list': units_list,
         'registerAttendance': registerAttendance,
         'units_list_json': units_list_json,
