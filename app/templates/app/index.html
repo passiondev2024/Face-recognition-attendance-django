@@ -184,17 +184,24 @@
             data: {
                 labels: unitsList,
                 datasets: [{
-                    label: 'Dataset 1',
+                    label: 'Percentage Attendance',
                     backgroundColor: 'rgba(0, 158, 251, 0.5)',
                     borderColor: 'rgba(0, 158, 251, 1)',
                     borderWidth: 1,
-                    data: attendanceData
+                    data: attendanceData.map(item => item.attendance_percentage)
                 }]
             },
             options: {
                 responsive: true,
                 legend: {
-                    display: false,
+                    display: true,
+                    position: 'top'
+                },
+                scales: {
+                    y: {
+                        beginAtZero: true,
+                        max: 100
+                    }
                 }
             }
         });
