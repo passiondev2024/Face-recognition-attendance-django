@@ -3,6 +3,7 @@ from django.contrib.auth.models import auth, User
 from django.contrib import messages
 from .models import Student, Profile, takeAttendance
 from django.db.models import Count, F, ExpressionWrapper, FloatField
+from django.db.models import Case, When, Value, FloatField
 from .forms import ProfileForm, StudentForm
 from .utils import get_student_units
 from .recognizer import Recognizer
