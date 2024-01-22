@@ -88,6 +88,8 @@ def ProfilePic(request):
 
 
 
+from django.db.models import Subquery, OuterRef
+
 def Index(request):
     logged_in_user = request.user
     student = Student.objects.get(user=logged_in_user)
@@ -104,8 +106,13 @@ def Index(request):
 
     # Calculate the percentage attendance for each unit
     registerAttendance = registerAttendance.annotate(
-        attendance_percentage=ExpressionWrapper(
-            (F('attendance_count') / 14) * 100,
+        total_sessions=Value(14, output_field=FloatField()),
+        attendance_percentage=Case(
+            When(attendance_count__gt=0, then=ExpressionWrapper(
+                (F('attendance_count') / F('total_sessions')) * 100,
+                output_field=FloatField()
+            )),
+            default=Value(0.0),
             output_field=FloatField()
         )
     )
@@ -115,7 +122,7 @@ def Index(request):
     print(attendance_data_json)
 
     context = {
-        'register':register,
+        'register': register,
         'units_list': units_list,
         'registerAttendance': registerAttendance,
         'units_list_json': units_list_json,
@@ -123,6 +130,8 @@ def Index(request):
     }
 
     return render(request, 'app/index.html', context)
+
+
 
 
 # date=str(date.today())

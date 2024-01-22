@@ -177,6 +177,7 @@
 </div>
 
 
+<!-- Include Chart.js library -->
 <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
 
 <script>
@@ -206,6 +207,20 @@
                         beginAtZero: true,
                         max: 100
                     }
+                },
+                plugins: {
+                    tooltip: {
+                        callbacks: {
+                            label: function (context) {
+                                var label = context.dataset.label || '';
+                                if (label) {
+                                    label += ': ';
+                                }
+                                label += context.parsed.y + '%';
+                                return label;
+                            }
+                        }
+                    }
                 }
             }
         });
@@ -220,6 +235,7 @@
     // Call the function with data from Django template
     createBarChart(unitsList, attendanceData);
 </script>
+
 <div class="sidebar-overlay" data-reff=""></div>
 <script src="{% static 'js/jquery-3.2.1.min.js' %}"></script>
 <script src="{% static 'js/popper.min.js' %}"></script>
