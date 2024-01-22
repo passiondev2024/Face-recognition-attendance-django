@@ -3,6 +3,7 @@ from django.contrib.auth.models import auth, User
 from django.contrib import messages
 from .models import Student, Profile, takeAttendance
 from django.db.models import Count, F, ExpressionWrapper, FloatField
+from django.db.models import Subquery, OuterRef
 from django.db.models import Case, When, Value, FloatField
 from .forms import ProfileForm, StudentForm
 from .utils import get_student_units
@@ -86,10 +87,6 @@ def ProfilePic(request):
         form = ProfileForm(initial={'student':student})
     context = {'form':form}
     return render(request, 'app/profile_pic.html', context)
-
-
-
-from django.db.models import Subquery, OuterRef
 
 def Index(request):
     logged_in_user = request.user
