@@ -53,6 +53,7 @@
                 <div class="dropdown-menu dropdown-menu-right">
                     <a class="dropdown-item" href="{% url 'profile' %}">My Profile</a>
                     <a class="dropdown-item" href="{% url 'editprofile' %}">Edit Profile</a>
+                    <a class="dropdown-item" href="{% url 'change_password' %}">Change Password</a>
                     <a class="dropdown-item" href="{% url 'logout' %}">Logout</a>
                 </div>
             </div>
@@ -87,6 +88,7 @@
                             <ul style="display: none;">
                                 <li><a href="{% url 'profile' %}">My Profile</a></li>
                                 <li><a href="{% url 'editprofile' %}">Edit Profile</a></li>
+                                <li><a href="{% url 'change_password' %}">Change Password</a></li>
                                 <li><a href="{% url 'logout' %}">LogOut</a></li>
                             </ul>
                         </li>
