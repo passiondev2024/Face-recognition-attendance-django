@@ -212,6 +212,9 @@ def editProfile(request):
     context = {'form':form}
     return render(request, 'app/edit-profile.html', context)
 
+def ChangePassword(request):
+    return render(request, 'app/changePassword.html')
+
 def Logout(request):
     if request.method == 'POST':
         auth.logout(request)

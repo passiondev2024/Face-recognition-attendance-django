@@ -11,5 +11,6 @@ urlpatterns = [
     path('examcard', views.ExamCard, name='examcard'),
     path('profile', views.myProfile, name='profile'),
     path('editprofile',views.editProfile, name='editprofile'),
+    path('change_password', views.ChangePassword, name='change_password'),
     path('logout', views.Logout, name='logout'),
 ]
