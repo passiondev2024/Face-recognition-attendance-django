@@ -175,6 +175,10 @@
 </div>
 </div>
 </div>
+
+
+<script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+
 <script>
     // Function to create a bar chart
     function createBarChart(unitsList, attendanceData) {
@@ -208,10 +212,10 @@
     }
 
     // Convert units_list to a JavaScript array
-    var unitsList = JSON.parse('{{ units_list|escapejs }}');
+    var unitsList = JSON.parse('{{ units_list_json|escapejs }}');
 
     // Convert attendance_data to a JavaScript array
-    var attendanceData = JSON.parse('{{ attendance_data|escapejs }}');
+    var attendanceData = JSON.parse('{{ attendance_data_json|escapejs }}');
 
     // Call the function with data from Django template
     createBarChart(unitsList, attendanceData);

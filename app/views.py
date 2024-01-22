@@ -112,6 +112,7 @@ def Index(request):
 
     units_list_json = json.dumps(units_list)
     attendance_data_json = json.dumps(list(registerAttendance))
+    print(attendance_data_json)
 
     context = {
         'register':register,
