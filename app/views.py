@@ -3,8 +3,8 @@ from django.contrib.auth.models import auth, User
 from django.contrib import messages
 from .models import Student, Profile, takeAttendance
 from django.db.models import Count, F, ExpressionWrapper, FloatField
+from django.db.models import Case, When, Value, FloatField, F, Count, Q
 from django.db.models import Subquery, OuterRef
-from django.db.models import Case, When, Value, FloatField
 from .forms import ProfileForm, StudentForm
 from .utils import get_student_units
 from .recognizer import Recognizer
@@ -88,6 +88,8 @@ def ProfilePic(request):
     context = {'form':form}
     return render(request, 'app/profile_pic.html', context)
 
+
+
 def Index(request):
     logged_in_user = request.user
     student = Student.objects.get(user=logged_in_user)
@@ -99,15 +101,18 @@ def Index(request):
         takeAttendance.objects
         .filter(student=student)
         .values('unitAttendent')
-        .annotate(attendance_count=Count('id'))
+        .annotate(
+            total_sessions=Value(14, output_field=FloatField()),
+            attendance_count=Count('id'),
+            present_count=Count(Case(When(status='Present', then=1), output_field=FloatField()))
+        )
     )
 
-    # Calculate the percentage attendance for each unit
+    # Calculate the percentage attendance for each unit for 'Present' status
     registerAttendance = registerAttendance.annotate(
-        total_sessions=Value(14, output_field=FloatField()),
         attendance_percentage=Case(
-            When(attendance_count__gt=0, then=ExpressionWrapper(
-                (F('attendance_count') / F('total_sessions')) * 100,
+            When(present_count__gt=0, then=ExpressionWrapper(
+                (F('present_count') / F('total_sessions')) * 100,
                 output_field=FloatField()
             )),
             default=Value(0.0),
@@ -128,8 +133,6 @@ def Index(request):
     }
 
     return render(request, 'app/index.html', context)
-
-
 
 
 # date=str(date.today())
