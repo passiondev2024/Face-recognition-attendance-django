@@ -61,8 +61,9 @@ def Enroll(request):
             course=course, year=year,
             semester=semester, units=units
         )
-        user = User.objects.create_user(user=user, email=email, first_name=first_name, last_name=last_name, phone=phone)
+        user_details = User.objects.create_user(user=user, email=email, first_name=first_name, last_name=last_name, phone=phone)
         student_details.save()
+        user_details.save()
         messages.info(request, 'You have been enrolled, upload profile photo to continue')
         return redirect('profilePic')
     else:
