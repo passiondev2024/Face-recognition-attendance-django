@@ -169,6 +169,58 @@ textarea.form-control {
 	border: 1px solid #eaeaea;
 }
 
+.single-acc-field {
+    margin-bottom: 20px;
+}
+.single-acc-field label {
+    display: block;
+    font-weight: 700;
+    font-size: 13px;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    color: #1D1678;
+    margin-bottom: 3px;
+}
+.single-acc-field label[for="checkbox"] {
+    display: inline-block;
+}
+
+
+.single-acc-field input {
+    display: block;
+    height: 50px;
+    width: 100%;
+    border: 2px solid #ddd;
+    text-indent: 15px;
+}
+
+.single-acc-field textarea {
+    width: 100%;
+    border: 2px solid #ddd;
+    padding: 15px;
+}
+
+.single-acc-field input:focus, .single-acc-field textarea:focus {
+    border-color: #1D1678;
+}
+
+
+.single-acc-field button {
+    background: #1D1678;
+    color: #fff;
+    border: 0;
+    padding: 12px 32px;
+    font-weight: 700;
+    font-size: 13px;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    width: 100%;
+}
+
+.single-acc-field button:hover {
+    background: #FA5252;
+}
+
 /*-----------------
 	2. Table
 -----------------------*/
