@@ -34,41 +34,58 @@ def Login(request):
 def Enroll(request):
     user = request.user
     existing_student = Student.objects.filter(user=user).first()
-    if existing_student:
-        # messages.info(request, '')
-        return redirect('profilePic')
     
+    if existing_student:
+        # User is already a student, redirect to the profilePic page
+        return redirect('profilePic')
+
     if request.method == 'POST':
-        user = request.user
         first_name = request.POST['first_name']
         last_name = request.POST['last_name']
         phone = request.POST['phone']
         email = request.POST['email']
         gender = request.POST['gender']
         school = request.POST['school']
-        department= request.POST['department']
+        department = request.POST['department']
         course = request.POST['course']
         year = request.POST['year']
         semester = request.POST['semester']
         selected_units = request.POST.getlist('selected_units[]')
         units = ','.join(selected_units)
-        
+
+        # Retrieve the user object
+        user = User.objects.get(pk=user.pk)
+
+        # Update user details
+        user.first_name = first_name
+        user.last_name = last_name
+        user.email = email
+        user.save()
+
+        # Create a new Student object
         student_details = Student.objects.create(
             user=user,
-            first_name=first_name, last_name=last_name,
-            phone=phone, email=email,
-            gender=gender, school=school, department=department,
-            course=course, year=year,
-            semester=semester, units=units
+            first_name=first_name,
+            last_name=last_name,
+            phone=phone,
+            email=email,
+            gender=gender,
+            school=school,
+            department=department,
+            course=course,
+            year=year,
+            semester=semester,
+            units=units
         )
-        user_details = User.objects.create_user(user=user, email=email, first_name=first_name, last_name=last_name, phone=phone)
         student_details.save()
-        user_details.save()
-        messages.info(request, 'You have been enrolled, upload profile photo to continue')
+
+        messages.info(request, 'You have been enrolled, upload a profile photo to continue')
         return redirect('profilePic')
     else:
+        # Render the enrollment form
         return render(request, 'app/enroll.html')
     return render(request, 'app/enroll.html')
+
 
 def ProfilePic(request):
     student = request.user.student
