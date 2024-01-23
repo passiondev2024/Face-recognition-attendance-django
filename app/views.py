@@ -3,6 +3,7 @@ from django.contrib.auth.models import auth, User
 from django.contrib import messages
 from .models import Student, Profile, takeAttendance
 from django.db.models import Count, F, ExpressionWrapper, FloatField
+from django.contrib.auth.forms import PasswordChangeForm
 from django.db.models import Case, When, Value, FloatField, F, Count, Q
 from django.db.models import Subquery, OuterRef
 from .forms import ProfileForm, StudentForm
@@ -213,7 +214,18 @@ def editProfile(request):
     return render(request, 'app/edit-profile.html', context)
 
 def ChangePassword(request):
-    return render(request, 'app/changePassword.html')
+    password_form = PasswordChangeForm(request.user)
+    if request.method == 'POST':
+        password_form = PasswordChangeForm(request.user, request.POST)
+        if password_form.is_valid():
+            password_form.save()
+            messages.info(request, 'Password changed')
+            return redirect('/')
+    else:
+        password_form = PasswordChangeForm(request.user)
+    
+    context = {'password_form':password_form}
+    return render(request, 'app/changePassword.html', context)
 
 def Logout(request):
     if request.method == 'POST':
