@@ -62,7 +62,7 @@ $(document).ready(function () {
         if ($('#department').val() == 'Mathematics,Statistics&Computing') {
             $('#course').append($('<option>', {
                 value: 'Computer_Science',
-                text: 'Computer Scienc'
+                text: 'Computer Science'
             }));
             $('#course').append($('<option>', {
                 value: 'Statistics',
@@ -133,10 +133,10 @@ $(document).ready(function () {
             text: '-- Select Semester --'
         }));
 
-        if (($('#year').val() == 'year1')
-            || ($('#year').val() == 'year2')
-            || ($('#year').val() == 'year3')
-            || ($('#year').val() == 'year4')) {
+        if (($('#year').val() == 'Year1')
+            || ($('#year').val() == 'Year2')
+            || ($('#year').val() == 'Year3')
+            || ($('#year').val() == 'Year4')) {
             $('#semester').append($('<option>', {
                 value: 'Semester1',
                 text: 'Semester 1'
@@ -159,13 +159,13 @@ $(document).ready(function () {
 
         // YEAR ONE
         // COMPUTER SCIENCE
-        if (($('#semester').val() == 'semester1') && ($('#year').val() == 'year1') && ($('#course').val() == 'Computer_Science')) {
+        if (($('#semester').val() == 'Semester1') && ($('#year').val() == 'Year1') && ($('#course').val() == 'Computer_Science')) {
             units = [
                 {code: 'COM 110', name:'Introduction to Computer', day:'Monday' , startTime: '09:00 AM', endTime: '12:00 PM'},
                 {code: 'PHY 110', name:'Introduction to Physics', day:'Monday' , startTime: '09:00 AM', endTime: '12:00 PM'}
             ];
         }
-        else if (($('#semester').val() == 'semester2') && ($('#year').val() == 'year1') && ($('#course').val() == 'Computer_Science')) {
+        else if (($('#semester').val() == 'semester2') && ($('#year').val() == 'Year1') && ($('#course').val() == 'Computer_Science')) {
             units = ['COM 120: Computer', 'PHY 121: Physics']
         }
         // YEAR TWO
@@ -191,14 +191,24 @@ $(document).ready(function () {
         }
 
         for (var i = 0; i < units.length; i++) {
+            // Create a checkbox element
             var checkbox = $('<input>').attr({
                 type: 'checkbox',
                 id: 'unit' + (i + 1),
                 name: 'selected_units[]',
-                value: units[i]
+                value: units[i]['code'] // Use units[i]['code'] to access the 'code' property
             });
-            var label = $('<label>').attr('for', 'unit' + (i + 1)).text(units[i]);
-            $('#unit-checkboxes').append(checkbox).append(label).append('<br>');
+        
+            // Create a label element associated with the checkbox
+            var label = $('<label>').attr('for', 'unit' + (i + 1)).text(units[i]['name']); // Use units[i]['name'] to access the 'name' property
+        
+            // Append additional information about the unit
+            var details = $('<span>').text(` (${units[i]['day']}, ${units[i]['startTime']} - ${units[i]['endTime']})`);
+        
+            // Append the checkbox, label, details, and a line break to the element with ID #unit-checkboxes
+            $('#unit-checkboxes').append(checkbox).append(label).append(details).append('<br>');
         }
+        
+        
     });
 });
