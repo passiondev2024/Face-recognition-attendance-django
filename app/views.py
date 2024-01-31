@@ -113,7 +113,8 @@ def ProfilePic(request):
 def Index(request):
     logged_in_user = request.user
     student = Student.objects.get(user=logged_in_user)
-    units_list = student.units.split(',')
+    units_list_json = student.units.split(',')
+    units_list = [json.loads(unit_json) for unit_json in units_list_json]
     register = takeAttendance.objects.filter(student=student)
 
     # Annotate the QuerySet with attendance count per unit
