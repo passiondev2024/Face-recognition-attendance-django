@@ -62,7 +62,7 @@ $(document).ready(function () {
         if ($('#department').val() == 'Mathematics,Statistics&Computing') {
             $('#course').append($('<option>', {
                 value: 'Computer_Science',
-                text: 'Computer Science'
+                text: 'Computer Scienc'
             }));
             $('#course').append($('<option>', {
                 value: 'Statistics',
@@ -99,9 +99,9 @@ $(document).ready(function () {
             text: '-- Select Year --'
         }));
 
-        if (($('#course').val() == 'csc')
-            || ($('#course').val() == 'asc')
-            || ($('#course').val() == 'mat')) {
+        if (($('#course').val() == 'Computer_Science')
+            || ($('#course').val() == 'Statistics')
+            || ($('#course').val() == 'Mathematics')) {
             $('#year').append($('<option>', {
                 value: 'Year1',
                 text: 'Year 1'
@@ -158,34 +158,35 @@ $(document).ready(function () {
         var units = [];
 
         // YEAR ONE
-        // COMP
-        if (($('#semester').val() == 'semester1') && ($('#year').val() == 'year1') && ($('#course').val() == 'csc')) {
+        // COMPUTER SCIENCE
+        if (($('#semester').val() == 'semester1') && ($('#year').val() == 'year1') && ($('#course').val() == 'Computer_Science')) {
             units = [
-                {code: 'COM 110', name:'Introduction to Computer', day:'Monday' , startTime: '09:00 AM', endTime: '12:00 PM'}
+                {code: 'COM 110', name:'Introduction to Computer', day:'Monday' , startTime: '09:00 AM', endTime: '12:00 PM'},
+                {code: 'PHY 110', name:'Introduction to Physics', day:'Monday' , startTime: '09:00 AM', endTime: '12:00 PM'}
             ];
         }
-        else if (($('#semester').val() == 'semester2') && ($('#year').val() == 'year1') && ($('#course').val() == 'csc')) {
+        else if (($('#semester').val() == 'semester2') && ($('#year').val() == 'year1') && ($('#course').val() == 'Computer_Science')) {
             units = ['COM 120: Computer', 'PHY 121: Physics']
         }
         // YEAR TWO
-        else if (($('#semester').val() == 'semester1') && ($('#year').val() == 'year2') && ($('#course').val() == 'csc')) {
+        else if (($('#semester').val() == 'semester1') && ($('#year').val() == 'year2') && ($('#course').val() == 'Computer_Science')) {
             units = ['COM 210: Computer 2', 'COM 215: Computer']
         }
-        else if (($('#semester').val() == 'semester2') && ($('#year').val() == 'year2') && ($('#course').val() == 'csc')) {
+        else if (($('#semester').val() == 'semester2') && ($('#year').val() == 'year2') && ($('#course').val() == 'Computer_Science')) {
             units = ['COM 220', 'PHY 226']
         }
         // YEAR 3
-        else if (($('#semester').val() == 'semester1') && ($('#year').val() == 'year3') && ($('#course').val() == 'csc')) {
+        else if (($('#semester').val() == 'semester1') && ($('#year').val() == 'year3') && ($('#course').val() == 'Computer_Science')) {
             units = ['COM 310', 'COM 311']
         }
-        else if (($('#semester').val() == 'semester2') && ($('#year').val() == 'year3') && ($('#course').val() == 'csc')) {
+        else if (($('#semester').val() == 'semester2') && ($('#year').val() == 'year3') && ($('#course').val() == 'Computer_Science')) {
             units = ['COM 320: Computer 5', 'COM 326: Computer 6']
         }
         // YEAR FOUR
-        else if (($('#semester').val() == 'semester1') && ($('#year').val() == 'year4') && ($('#course').val() == 'csc')) {
+        else if (($('#semester').val() == 'semester1') && ($('#year').val() == 'year4') && ($('#course').val() == 'Computer_Science')) {
             units = ['COM 410', 'COM 411']
         }
-        else if (($('#semester').val() == 'semester2') && ($('#year').val() == 'year4') && ($('#course').val() == 'csc')) {
+        else if (($('#semester').val() == 'semester2') && ($('#year').val() == 'year4') && ($('#course').val() == 'Computer_Science')) {
             units = ['COM 420', 'COM 421']
         }
 
