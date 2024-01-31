@@ -191,12 +191,15 @@ $(document).ready(function () {
         }
 
         for (var i = 0; i < units.length; i++) {
+            // Serialize the unit object to JSON
+            var unitJSON = JSON.stringify(units[i]);
+        
             // Create a checkbox element
             var checkbox = $('<input>').attr({
                 type: 'checkbox',
                 id: 'unit' + (i + 1),
                 name: 'selected_units[]',
-                value: units[i]['code'] // Use units[i]['code'] to access the 'code' property
+                value: unitJSON // Use the serialized JSON string as the value
             });
         
             // Create a label element associated with the checkbox
@@ -207,8 +210,7 @@ $(document).ready(function () {
         
             // Append the checkbox, label, details, and a line break to the element with ID #unit-checkboxes
             $('#unit-checkboxes').append(checkbox).append(label).append(details).append('<br>');
-        }
-        
+        }        
         
     });
 });
