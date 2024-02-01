@@ -160,7 +160,9 @@ $(document).ready(function () {
         // YEAR ONE
         // COMP
         if (($('#semester').val() == 'semester1') && ($('#year').val() == 'year1') && ($('#course').val() == 'csc')) {
-            units = ['COM 110: Computer 1', 'PHY 111: Physics'];
+            units = [
+                {code: 'COM 110', name:'Introduction to Computer', day:'Monday' , startTime: '09:00 AM', endTime: '12:00 PM'}
+            ];
         }
         else if (($('#semester').val() == 'semester2') && ($('#year').val() == 'year1') && ($('#course').val() == 'csc')) {
             units = ['COM 120: Computer', 'PHY 121: Physics']
