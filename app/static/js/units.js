@@ -17,17 +17,17 @@ $(document).ready(function () {
             text: '-- Select Department --'
         }));
 
-        if ($('#school').val() == 'school1') {
+        if ($('#school').val() == 'Science_TechnologyAndEngineering') {
             $('#department').append($('<option>', {
-                value: 'math_comp',
+                value: 'Mathematics,Statistics&Computing',
                 text: 'Department of Mathematics and Computing'
             }));
             $('#department').append($('<option>', {
-                value: 'phy_sci',
+                value: 'Physical_Sciences',
                 text: 'Department of Physical Sciences'
             }));
             $('#department').append($('<option>', {
-                value: 'bio_sci',
+                value: 'Biological_Sciences',
                 text: 'Department of Biological Sciences'
             }));
         } else if ($('#school').val() == 'school2') {
@@ -59,17 +59,17 @@ $(document).ready(function () {
             text: '-- Select Course --'
         }));
 
-        if ($('#department').val() == 'math_comp') {
+        if ($('#department').val() == 'Mathematics,Statistics&Computing') {
             $('#course').append($('<option>', {
-                value: 'csc',
+                value: 'Computer_Science',
                 text: 'Computer Science'
             }));
             $('#course').append($('<option>', {
-                value: 'asc',
+                value: 'Statistics',
                 text: 'Statistics'
             }));
             $('#course').append($('<option>', {
-                value: 'mat',
+                value: 'Mathematics',
                 text: 'Pure Mathematics'
             }));
         } else if ($('#department').val() == 'department2') {
@@ -103,19 +103,19 @@ $(document).ready(function () {
             || ($('#course').val() == 'asc')
             || ($('#course').val() == 'mat')) {
             $('#year').append($('<option>', {
-                value: 'year1',
+                value: 'Year1',
                 text: 'Year 1'
             }));
             $('#year').append($('<option>', {
-                value: 'year2',
+                value: 'Year2',
                 text: 'Year 2'
             }));
             $('#year').append($('<option>', {
-                value: 'year3',
+                value: 'Year3',
                 text: 'Year 3'
             }));
             $('#year').append($('<option>', {
-                value: 'year4',
+                value: 'Year4',
                 text: 'Year 4'
             }));
         }
@@ -138,11 +138,11 @@ $(document).ready(function () {
             || ($('#year').val() == 'year3')
             || ($('#year').val() == 'year4')) {
             $('#semester').append($('<option>', {
-                value: 'semester1',
+                value: 'Semester1',
                 text: 'Semester 1'
             }));
             $('#semester').append($('<option>', {
-                value: 'semester2',
+                value: 'Semester2',
                 text: 'Semester 2'
             }));
         }
