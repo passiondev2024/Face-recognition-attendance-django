@@ -209,7 +209,7 @@ def Attendance(request):
     return render(request, 'app/attendance.html', context)
 
 def Chat(request):
-    return render(request, 'app/chat.html')
+    return render(request, 'app/chating.html')
 
 def ExamCard(request):
     return render(request, 'app/examcard.html')
