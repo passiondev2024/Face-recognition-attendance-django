@@ -189,7 +189,7 @@
         var myBarChart = new Chart(ctx, {
             type: 'bar',
             data: {
-                labels: unitsList,
+                labels: unitsList.map(item => item.code),  // Extracting 'code' from each item
                 datasets: [{
                     label: 'Percentage Attendance',
                     backgroundColor: 'rgba(0, 158, 251, 0.5)',
@@ -237,6 +237,7 @@
     // Call the function with data from Django template
     createBarChart(unitsList, attendanceData);
 </script>
+
 
 <div class="sidebar-overlay" data-reff=""></div>
 <script src="{% static 'js/jquery-3.2.1.min.js' %}"></script>
