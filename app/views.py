@@ -208,6 +208,8 @@ def Attendance(request):
     context = {'units_list':units_list, 'registerAttendance':registerAttendance}
     return render(request, 'app/attendance.html', context)
 
+def Chat(request):
+    return render(request, 'app/chat.html')
 
 def ExamCard(request):
     return render(request, 'app/examcard.html')

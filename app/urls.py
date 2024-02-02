@@ -7,6 +7,7 @@ urlpatterns = [
     path('index', views.Index, name='index'),
     path('attend', views.Attend, name='attend'),
     path('attendance', views.Attendance, name='attendance'),
+    path('chat', views.Chat, name='chat'),
     path('enroll', views.Enroll, name='enroll'),
     path('profilePic', views.ProfilePic, name='profilePic'),
     path('examcard', views.ExamCard, name='examcard'),
