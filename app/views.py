@@ -50,8 +50,10 @@ def Enroll(request):
         course = request.POST['course']
         year = request.POST['year']
         semester = request.POST['semester']
-        selected_units = request.POST.getlist('selected_units[]')
-        units = ','.join(selected_units)
+        selected_units_json = request.POST.getlist('selected_units[]')
+        units_lists = [json.loads(unit_json) for unit_json in selected_units_json]
+        units_json = json.dumps(units_lists)
+        units = units_json
 
         # Retrieve the user object
         user = User.objects.get(pk=user.pk)
@@ -114,6 +116,8 @@ def Index(request):
     logged_in_user = request.user
     student = Student.objects.get(user=logged_in_user)
     units_list_json = student.units.split(',')
+
+    # Deserialize the JSON strings to obtain a list of dictionaries
     units_list = [json.loads(unit_json) for unit_json in units_list_json]
     register = takeAttendance.objects.filter(student=student)
 
