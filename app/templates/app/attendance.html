@@ -89,14 +89,14 @@
                                 <td>{{data.date}}</td>
                                 <td>{{data.time}}</td>
                                 {% for unit in units_list %}
-                                {% if data.unitAttendent == unit %}
+                                {% if data.unitAttendent == unit.code %}
                                 {% if data.status == 'Present' %}
                                 <td><i class="fa fa-check text-success"></i></td>
                                 {% else %}
                                 <td><i class="fa fa-close text-danger"></i></td>
                                 {% endif %}
                                 {% else %}
-                                <td></td> <!-- Empty cell for units where attendance is not recorded -->
+                                <td></td>
                                 {% endif %}
                                 {% endfor %}
                             </tr>
