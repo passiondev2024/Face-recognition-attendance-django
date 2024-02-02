@@ -85,19 +85,21 @@
                                             <tr>
                                                 <th>Unit</th>
                                                 <th>Day</th>
-                                                <th>Time From</th>
-                                                <th>Time To</th>
+                                                <th>Start Time</th>
+                                                <th>End Time</th>
                                             </tr>
                                         </thead>
                                         <tbody>
+                                            {% for unit in units_list %}
                                             <tr>
-                                                <td>COM 110</td>
+                                                <td>{{unit.code}}</td>
                                                 <td>
-                                                    <strong>Monday</strong>
+                                                    <strong>{{unit.day}}</strong>
                                                 </td>
-                                                <td>7:00AM</td>
-                                                <td>9:00AM</td>
+                                                <td>{{unit.startTime}}</td>
+                                                <td>{{unit.endTime}}</td>
                                             </tr>
+                                            {% endfor %}
                                         </tbody>
                                     </table>
                                 </div>
@@ -124,7 +126,7 @@
                                         <th>Date</th>
                                         <th>Time</th>
                                         {% for unit in units_list %}
-                                        <th>{{unit}}</th>
+                                        <th>{{unit.code}}</th>
                                         {% endfor %}
                                     </tr>
                                 </thead>
