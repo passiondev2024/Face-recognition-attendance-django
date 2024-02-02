@@ -201,7 +201,7 @@ def Attend(request):
 def Attendance(request):
     logged_in_user = request.user
     student = Student.objects.get(user=logged_in_user)
-    units_list = student.units.split(',')
+    units_list = json.loads(student.units)
     this_week = get_week_number()
     registerAttendance = takeAttendance.objects.filter(student=student)
     
