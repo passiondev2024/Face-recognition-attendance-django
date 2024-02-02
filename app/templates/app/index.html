@@ -8,7 +8,7 @@
             <div class="col-md-6 col-sm-6 col-lg-6 col-xl-3">
                 <div class="dash-widget">
                     <div class="dash-widget-info text-right">
-                        <h3>{{user.username}}</h3>
+                        <h3 style="text-align: center;">{{user.username}}</h3>
                         <span class="widget-title1">Admission Number<i class="fa fa-check"
                                 aria-hidden="true"></i></span>
                     </div>
@@ -16,7 +16,9 @@
             </div>
             <div class="col-md-6 col-sm-6 col-lg-6 col-xl-3">
                 <div class="dash-widget">
-                    <span class="dash-widget-info text-right"><h3>{{user.student.course}}</h3></span>
+                    <span class="dash-widget-info text-right">
+                        <h3 style="text-align: center;">{{user.student.course}}</h3>
+                    </span>
                     <div class="dash-widget-info text-right">
                         <span class="widget-title2">Course<i class="fa fa-check" aria-hidden="true"></i></span>
                     </div>
@@ -25,7 +27,7 @@
             <div class="col-md-6 col-sm-6 col-lg-6 col-xl-3">
                 <div class="dash-widget">
                     <div class="dash-widget-info text-right">
-                        <h3>{{user.student.year}}</h3>
+                        <h3 style="text-align: center;">{{user.student.year}}</h3>
                         <span class="widget-title3">Year<i class="fa fa-check" aria-hidden="true"></i></span>
                     </div>
                 </div>
@@ -33,7 +35,7 @@
             <div class="col-md-6 col-sm-6 col-lg-6 col-xl-3">
                 <div class="dash-widget">
                     <div class="dash-widget-info text-right">
-                        <h3>{{user.student.semester}}</h3>
+                        <h3 style="text-align: center;">{{user.student.semester}}</h3>
                         <span class="widget-title4">Semester<i class="fa fa-check" aria-hidden="true"></i></span>
                     </div>
                 </div>
@@ -251,4 +253,3 @@
 <script src="{% static 'js/app.js' %}"></script>
 
 {% endblock content %}
-
