@@ -193,7 +193,7 @@ def Attend(request):
     
     logged_in_user = request.user
     student = Student.objects.get(user=logged_in_user)
-    units_list = student.units.split(',')
+    units_list = json.loads(student.units)
     context = {'units_list': units_list}
     return render(request, 'app/attend.html', context)
 
