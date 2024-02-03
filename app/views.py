@@ -190,19 +190,16 @@ def Attend(request):
                 messages.info(request, 'Attendance already taken')
                 return redirect('attendance')
 
-            # Deserialize the JSON data to obtain unit details
-            unit_details = json.loads(unit_attendance_data)
-
             # Check if it's the day of the week when attendance can be marked for this unit
             current_day = datetime.now().strftime('%A')
 
-            if unit_details['day'] != current_day:
-                messages.error(request, f"You can't mark attendance for {unit_details['name']} on {current_day}.")
+            if unit_attendance_data.day != current_day:
+                messages.error(request, f"You can't mark attendance for {unit_attendance_data.name} on {current_day}.")
                 return redirect('attendance')
 
             # Check if the current time is within the start and end time
-            if not is_within_time_range(unit_details['startTime'], unit_details['endTime']):
-                messages.error(request, f"You can't mark attendance for {unit_details['name']} at this time.")
+            if not is_within_time_range(unit_attendance_data.startTime, unit_attendance_data.endTime):
+                messages.error(request, f"You can't mark attendance for {unit_attendance_data.name} at this time.")
                 return redirect('attendance')
 
             # Continue with attendance marking
