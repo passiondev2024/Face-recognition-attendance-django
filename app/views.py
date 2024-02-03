@@ -180,6 +180,7 @@ def Attend(request):
         try:
             student = request.user.student
             unit_attendance_data = request.POST['unitAttendent']
+            print("unit_attendance_data:", unit_attendance_data)
 
             # Get the current week number
             this_week = get_week_number()
