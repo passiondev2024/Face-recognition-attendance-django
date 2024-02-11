@@ -13,10 +13,11 @@
             </div>
         </div>
         <div class="profile-tabs">
-            
+
             <ul class="nav nav-tabs nav-tabs-bottom">
                 {% for unit_data in unit_attendance_data %}
-                <li class="nav-item"><a class="nav-link active" href="#about-cont" data-toggle="tab">{{ unit_data.unit.code }}</a>
+                <li class="nav-item"><a class="nav-link" href="#about-cont" data-toggle="tab">
+                    {{ unit_data.unit.code }}</a>
                 </li>
                 {% endfor %}
                 <!-- <li class="nav-item"><a class="nav-link" href="#bottom-tab2" data-toggle="tab">Enrolled
@@ -24,8 +25,6 @@
                 <li class="nav-item"><a class="nav-link" href="#bottom-tab3" data-toggle="tab">Attendance
                         Photo</a></li> -->
             </ul>
-            
-
             <div class="tab-content">
                 <div class="tab-pane show active" id="about-cont">
                     <div class="row">
@@ -92,40 +91,6 @@
                                     </ul>
                                 </div>
                             </div>
-                        </div>
-                    </div>
-                </div>
-                <div class="tab-pane" id="bottom-tab2">
-                    <div class="col-12 col-md-6 col-lg-6 col-xl-6">
-                        <div class="card">
-                            <div class="card-body p-0">
-                                <div class="table-responsive">
-                                    <table class="table mb-0">
-                                        <thead class="d-none">
-                                            <tr>
-                                                <th>Unit code</th>
-                                                <th>Unit Name</th>
-                                            </tr>
-                                        </thead>
-                                        <tbody>
-                                            {% for unit in units_list %}
-                                            <tr>
-                                                <td>
-                                                    <h5 class="time-title p-0">{{unit}}</h5>
-                                                </td>
-                                            </tr>
-                                            {% endfor %}
-                                        </tbody>
-                                    </table>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <div class="tab-pane" id="bottom-tab3">
-                    <div class="profile-img-wrap">
-                        <div class="profile-img">
-                            <a href="#"><img src="{{user.student.profile.profile_photo.url}}" alt=""></a>
                         </div>
                     </div>
                 </div>
