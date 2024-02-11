@@ -8,6 +8,7 @@ urlpatterns = [
     path('attend', views.Attend, name='attend'),
     path('attendance', views.Attendance, name='attendance'),
     path('classAttendance', views.ClassAttendance, name='classAttendance'),
+    path('get_unit_attendance/', get_unit_attendance, name='get_unit_attendance'),
     path('chat', views.Chats, name='chat'),
     path('enroll', views.Enroll, name='enroll'),
     path('profilePic', views.ProfilePic, name='profilePic'),

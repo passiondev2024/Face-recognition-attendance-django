@@ -327,6 +327,13 @@ def Attendance(request):
     context = {'units_list':units_list, 'registerAttendance':registerAttendance}
     return render(request, 'app/attendance.html', context)
 
+def get_unit_attendance(request):
+    unit_id = request.GET.get('unit_id')
+    # Retrieve attendance data for the selected unit
+    # Modify the query based on your model structure
+    attendance_data = takeAttendance.objects.filter(unitAttendent=unit_id).values()
+
+    return JsonResponse({'attendance_data': list(attendance_data)})
 
 def ClassAttendance(request):
     student = request.user.student
