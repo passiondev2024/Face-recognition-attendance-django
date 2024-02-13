@@ -161,7 +161,7 @@ $(document).ready(function () {
         // COMPUTER SCIENCE
         if (($('#semester').val() == 'Semester1') && ($('#year').val() == 'Year1') && ($('#course').val() == 'Computer_Science')) {
             units = [
-                {code: 'COM 110', name:'Introduction to Computer', day:'Monday', lecturer: 'Dr.Amuomo', room: 'E409' , startTime: '09:00 AM', endTime: '12:00 PM'},
+                {code: 'COM 110', name:'Introduction to Computer', day:'Tuesday', lecturer: 'Dr.Amuomo', room: 'E409' , startTime: '09:00 PM', endTime: '01:00 AM'},
                 {code: 'PHY 110', name:'Introduction to Physics', day:'Monday', lecturer: 'Dr.Amuomo', room: 'E409' , startTime: '09:00 AM', endTime: '12:00 PM'}
             ];
         }
