@@ -186,7 +186,7 @@ def Attend(request):
             unit_attendance_data_raw = request.POST.get('unitAttendent', '{}')
             print(f"Raw Data: {unit_attendance_data_raw}")
 
-            unit_attendance_data = unit_attendance_data_raw
+            unit_attendance_data = eval(unit_attendance_data_raw)  # Using eval to convert the string to a dictionary
             print(f"Parsed Data: {unit_attendance_data}")
 
             day = unit_attendance_data.get('day', '')
