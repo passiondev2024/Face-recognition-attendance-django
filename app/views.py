@@ -181,24 +181,26 @@ def is_within_time_range(start_time, end_time, time_format="%I:%M %p"):
         return start.time() <= now.time() or now <= (end_datetime + timedelta(days=1))
 
 
+from django.db import IntegrityError
+
+# ... (other imports and functions)
+
 def Attend(request):
     try:
         logged_in_user = request.user
         student = Student.objects.get(user=logged_in_user)
         units_list = json.loads(student.units)
-        # print(units_list)
 
         if request.method == 'POST':
             unit_attendance_data_raw = request.POST.get('unitAttendent', '{}')
             print(f"Raw Data: {unit_attendance_data_raw}")
 
-            unit_attendance_data = eval(unit_attendance_data_raw)  # Using eval to convert the string to a dictionary
+            unit_attendance_data = eval(unit_attendance_data_raw)
             print(f"Parsed Data: {unit_attendance_data}")
 
             day = unit_attendance_data.get('day', '')
             start_time = unit_attendance_data.get('startTime', '')
             end_time = unit_attendance_data.get('endTime', '')
-            print(f"Day: {day}, Start Time: {start_time}, End Time: {end_time}")
 
             current_day = datetime.now().strftime('%A')
 
@@ -215,8 +217,15 @@ def Attend(request):
 
             # Check if the current time is within the start and end time
             if not is_within_time_range(start_time, end_time, time_format="%I:%M %p"):
-                messages.error(request, f"You can't mark attendance for {unit_attendance_data.get('name', '')} at this time.")
-                return redirect('attendance')
+                # Record attendance as absent if the student hasn't attended within the specified time
+                absent_attendance = takeAttendance(student=student, unitAttendent=unit_attendance_data, status='Absent', week=this_week)
+                try:
+                    absent_attendance.save()
+                    messages.success(request, 'Attendance recorded as absent.')
+                    return redirect('attendance')
+                except IntegrityError:
+                    messages.error(request, 'Error recording attendance as absent.')
+                    return redirect('attendance')
 
             # Continue with attendance marking
             studentDetails = Student.objects.filter(course=student.course, year=student.year, semester=student.semester)
@@ -247,6 +256,7 @@ def Attend(request):
         # Handle other exceptions if needed
         messages.error(request, f"An error occurred: {str(e)}")
         return redirect('attendance')
+
 
 
 
