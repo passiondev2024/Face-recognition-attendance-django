@@ -176,11 +176,25 @@ def is_within_time_range(start_time, end_time):
 from json.decoder import JSONDecodeError
 
 def Attend(request):
+    logged_in_user = request.user
+    student = Student.objects.get(user=logged_in_user)
+    units_list = json.loads(student.units)
+    
     if request.method == 'POST':
         try:
             student = request.user.student
-            unit_attendance_data = request.POST['unitAttendent']
-            print("unit_attendance_data:", unit_attendance_data)
+            unit_attendance_data_raw = request.POST['unitAttendent']
+
+            # Load the JSON string into a Python dictionary
+            unit_attendance_data = json.loads(unit_attendance_data_raw)
+            print(unit_attendance_data)
+
+            # Extract the parameters
+            day = unit_attendance_data.get('day', '')
+            start_time = unit_attendance_data.get('startTime', '')
+            end_time = unit_attendance_data.get('endTime', '')
+
+            print(f"Day: {day}, Start Time: {start_time}, End Time: {end_time}")
 
             # Get the current week number
             this_week = get_week_number()
@@ -221,10 +235,10 @@ def Attend(request):
         except JSONDecodeError as e:
             messages.error(request, 'Error decoding JSON data. Please check the data format.')
             return redirect('attendance')
-        except Exception as e:
-            # Handle other exceptions if needed
-            messages.error(request, f"An error occurred: {str(e)}")
-            return redirect('attendance')
+        # except Exception as e:
+        #     # Handle other exceptions if needed
+        #     messages.error(request, f"An error occurred: {str(e)}")
+        #     return redirect('attendance')
 
     logged_in_user = request.user
     student = Student.objects.get(user=logged_in_user)
