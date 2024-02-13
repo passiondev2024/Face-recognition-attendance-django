@@ -176,44 +176,39 @@ def is_within_time_range(start_time, end_time):
 from json.decoder import JSONDecodeError
 
 def Attend(request):
-    logged_in_user = request.user
-    student = Student.objects.get(user=logged_in_user)
-    units_list = json.loads(student.units)
-    
-    if request.method == 'POST':
-        try:
-            student = request.user.student
-            unit_attendance_data_raw = request.POST['unitAttendent']
+    try:
+        logged_in_user = request.user
+        student = Student.objects.get(user=logged_in_user)
+        units_list = json.loads(student.units)
+        # print(units_list)
 
-            # Load the JSON string into a Python dictionary
-            unit_attendance_data = json.loads(unit_attendance_data_raw)
-            print(unit_attendance_data)
+        if request.method == 'POST':
+            unit_attendance_data_raw = request.POST.get('unitAttendent', '{}')
+            print(f"Raw Data: {unit_attendance_data_raw}")
 
-            # Extract the parameters
+            unit_attendance_data = unit_attendance_data_raw
+            print(f"Parsed Data: {unit_attendance_data}")
+
             day = unit_attendance_data.get('day', '')
             start_time = unit_attendance_data.get('startTime', '')
             end_time = unit_attendance_data.get('endTime', '')
 
-            print(f"Day: {day}, Start Time: {start_time}, End Time: {end_time}")
-
-            # Get the current week number
-            this_week = get_week_number()
+            current_day = datetime.now().strftime('%A')
 
             # Check if attendance has already been taken for this unit in the current week
+            this_week = get_week_number()
             if takeAttendance.objects.filter(week=this_week, student=student, unitAttendent=unit_attendance_data).count() != 0:
                 messages.info(request, 'Attendance already taken')
                 return redirect('attendance')
 
             # Check if it's the day of the week when attendance can be marked for this unit
-            current_day = datetime.now().strftime('%A')
-
-            if unit_attendance_data.day != current_day:
-                messages.error(request, f"You can't mark attendance for {unit_attendance_data.name} on {current_day}.")
+            if unit_attendance_data.get('day', '') != current_day:
+                messages.error(request, f"You can't mark attendance for {unit_attendance_data.get('name', '')} on {current_day}.")
                 return redirect('attendance')
 
             # Check if the current time is within the start and end time
-            if not is_within_time_range(unit_attendance_data.startTime, unit_attendance_data.endTime):
-                messages.error(request, f"You can't mark attendance for {unit_attendance_data.name} at this time.")
+            if not is_within_time_range(start_time, end_time):
+                messages.error(request, f"You can't mark attendance for {unit_attendance_data.get('name', '')} at this time.")
                 return redirect('attendance')
 
             # Continue with attendance marking
@@ -222,29 +217,29 @@ def Attend(request):
             recognized_name = Recognizer({'student': student, 'unitAttendent': unit_attendance_data}, classNames)
 
             if recognized_name:
-                attendance = takeAttendance(student=student,
-                                            unitAttendent=unit_attendance_data,
-                                            status='Present',
-                                            week=this_week) 
-                
-                attendance.save()
+                attendance, created = takeAttendance.objects.get_or_create(
+                    week=this_week,
+                    student=student,
+                    unitAttendent=unit_attendance_data,
+                    defaults={'status': 'Present'}
+                )
+
+                if not created:
+                    messages.info(request, 'Attendance already taken')
 
             attendances = takeAttendance.objects.filter(week=this_week, student=student, unitAttendent=unit_attendance_data)
             messages.success(request, 'Attendance taken successfully')
 
-        except JSONDecodeError as e:
-            messages.error(request, 'Error decoding JSON data. Please check the data format.')
-            return redirect('attendance')
-        # except Exception as e:
-        #     # Handle other exceptions if needed
-        #     messages.error(request, f"An error occurred: {str(e)}")
-        #     return redirect('attendance')
+        context = {'units_list': units_list}
+        return render(request, 'app/attend.html', context)
 
-    logged_in_user = request.user
-    student = Student.objects.get(user=logged_in_user)
-    units_list = json.loads(student.units)
-    context = {'units_list': units_list}
-    return render(request, 'app/attend.html', context)
+    except JSONDecodeError as e:
+        messages.error(request, 'Error decoding JSON data. Please check the data format.')
+        return redirect('attendance')
+    except Exception as e:
+        # Handle other exceptions if needed
+        messages.error(request, f"An error occurred: {str(e)}")
+        return redirect('attendance')
 
 
 
