@@ -10,6 +10,7 @@ from datetime import datetime, timedelta
 from .forms import ProfileForm, StudentForm
 from .utils import get_student_units
 from .recognizer import Recognizer
+from json.decoder import JSONDecodeError
 from datetime import date
 from datetime import datetime
 import json
@@ -165,15 +166,21 @@ def get_week_number():
         return now.date().weekday() + 1
 
 
-from datetime import datetime, timedelta
+from datetime import datetime
 
-def is_within_time_range(start_time, end_time):
+def is_within_time_range(start_time, end_time, time_format="%I:%M %p"):
     now = datetime.now().time()
-    start = datetime.strptime(start_time, "%I:%M %p").time()
-    end = datetime.strptime(end_time, "%I:%M %p").time()
-    return start <= now <= end
+    start = datetime.strptime(start_time, time_format).time()
+    end = datetime.strptime(end_time, time_format).time()
 
-from json.decoder import JSONDecodeError
+    print(f"Now: {now}, Start: {start}, End: {end}")
+
+    if start <= end:
+        return start <= now <= end
+    else:
+        # Handle cases where the end time is on the next day
+        return start <= now or now <= end
+
 
 def Attend(request):
     try:
@@ -192,6 +199,7 @@ def Attend(request):
             day = unit_attendance_data.get('day', '')
             start_time = unit_attendance_data.get('startTime', '')
             end_time = unit_attendance_data.get('endTime', '')
+            print(f"Day: {day}, Start Time: {start_time}, End Time: {end_time}")
 
             current_day = datetime.now().strftime('%A')
 
@@ -207,7 +215,7 @@ def Attend(request):
                 return redirect('attendance')
 
             # Check if the current time is within the start and end time
-            if not is_within_time_range(start_time, end_time):
+            if not is_within_time_range(start_time, end_time, time_format="%I:%M %p"):
                 messages.error(request, f"You can't mark attendance for {unit_attendance_data.get('name', '')} at this time.")
                 return redirect('attendance')
 
