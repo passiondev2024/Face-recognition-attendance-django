@@ -167,19 +167,18 @@ def get_week_number():
 
 
 from datetime import datetime
-
+from datetime import datetime, timedelta
 def is_within_time_range(start_time, end_time, time_format="%I:%M %p"):
-    now = datetime.now().time()
-    start = datetime.strptime(start_time, time_format).time()
-    end = datetime.strptime(end_time, time_format).time()
-
-    print(f"Now: {now}, Start: {start}, End: {end}")
+    now = datetime.now()
+    start = datetime.strptime(start_time, time_format)
+    end = datetime.strptime(end_time, time_format)
 
     if start <= end:
-        return start <= now <= end
+        return start.time() <= now.time() <= end.time()
     else:
         # Handle cases where the end time is on the next day
-        return start <= now or now <= end
+        end_datetime = datetime.combine(datetime.today(), end.time())
+        return start.time() <= now.time() or now <= (end_datetime + timedelta(days=1))
 
 
 def Attend(request):
