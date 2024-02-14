@@ -149,16 +149,16 @@
                                         </td>
                                         <td>{{data.date}}</td>
                                         <td>{{data.time}}</td>
-                                        <td>{{data.unitAttendent}}</td>
+                                        <!-- <td>{{data.unitAttendent}}</td> -->
                                         {% for unit in units_list %}
-                                        {% if data.unitAttendent == unit.code %}
+                                        {% if data.unitAttendent.code == unit.code %}
                                         {% if data.status == 'Present' %}
                                         <td><i class="fa fa-check text-success"></i></td>
                                         {% else %}
                                         <td><i class="fa fa-close text-danger"></i></td>
                                         {% endif %}
                                         {% else %}
-                                        <!-- <td><i class="fa fa-close text-danger"></i></td> -->
+                                        <td><i class="fa fa-close text-danger"></i></td>
                                         {% endif %}
                                         {% endfor %}
                                     </tr>
