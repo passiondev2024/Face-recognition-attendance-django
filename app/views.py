@@ -121,6 +121,7 @@ def Index(request):
 
 
     register = takeAttendance.objects.filter(student=student)
+    print('register', register)
     registerAttendance = (
         takeAttendance.objects
         .filter(student=student)

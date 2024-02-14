@@ -149,6 +149,7 @@
                                         </td>
                                         <td>{{data.date}}</td>
                                         <td>{{data.time}}</td>
+                                        <td>{{data.unitAttendent}}</td>
                                         {% for unit in units_list %}
                                         {% if data.unitAttendent == unit.code %}
                                         {% if data.status == 'Present' %}
@@ -159,6 +160,15 @@
                                         {% else %}
                                         <!-- <td><i class="fa fa-close text-danger"></i></td> -->
                                         {% endif %}
+                                        {% endfor %}
+                                        {% for data in register %}
+                                        <td>{{ data.unitAttendent.code }}</td>
+                                        <td>{{ data.unitAttendent.name }}</td>
+                                        <td>{{ data.unitAttendent.day }}</td>
+                                        <td>{{ data.unitAttendent.lecturer }}</td>
+                                        <td>{{ data.unitAttendent.room }}</td>
+                                        <td>{{ data.unitAttendent.startTime }}</td>
+                                        <td>{{ data.unitAttendent.endTime }}</td>
                                         {% endfor %}
                                     </tr>
                                     {% endfor %}
