@@ -89,7 +89,7 @@
                                 <td>{{data.date}}</td>
                                 <td>{{data.time}}</td>
                                 {% for unit in units_list %}
-                                {% if data.unitAttendent == unit.code %}
+                                {% if data.unitAttendent.code == unit.code %}
                                 {% if data.status == 'Present' %}
                                 <td><i class="fa fa-check text-success"></i></td>
                                 {% else %}
