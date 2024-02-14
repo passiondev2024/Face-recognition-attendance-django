@@ -53,8 +53,8 @@ class takeAttendance(models.Model):
     status = models.CharField(max_length=200, null = True, default='Absent')
     week = models.IntegerField()  # Add a new field for the week
 
-    def __str__(self):
-        return self.unitAttendent
+    # def __str__(self):
+    #     return self.unitAttendent
 
     
     

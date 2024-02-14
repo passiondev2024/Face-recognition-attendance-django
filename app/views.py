@@ -218,7 +218,6 @@ def Attend(request):
 
             # Check if the current time is within the start and end time
             if not is_within_time_range(start_time, end_time, time_format="%I:%M %p"):
-                # Record attendance as absent if the student hasn't attended within the specified time
                 absent_attendance = takeAttendance(student=student, unitAttendent=unit_attendance_data, status='Absent', week=this_week)
                 try:
                     absent_attendance.save()
