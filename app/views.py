@@ -1,7 +1,7 @@
 from django.shortcuts import render, redirect
 from django.contrib.auth.models import auth, User
 from django.contrib import messages
-from .models import Student, Profile, takeAttendance
+from .models import Student, Profile, takeAttendance, Chat
 from django.db.models import Count, F, ExpressionWrapper, FloatField
 from django.contrib.auth.forms import PasswordChangeForm
 from django.db.models import Case, When, Value, FloatField, F, Count, Q
@@ -263,7 +263,12 @@ def Attendance(request):
     context = {'units_list':units_list, 'registerAttendance':registerAttendance}
     return render(request, 'app/attendance.html', context)
 
-def Chat(request):
+def Chats(request):
+    student = request.user.student
+    if request.method == 'POST':
+        text = request.POST['text']
+
+        text_details = Chat.objects.create(student=student)
     return render(request, 'app/chating.html')
 
 def ExamCard(request):
