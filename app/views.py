@@ -218,14 +218,8 @@ def Attend(request):
 
             # Check if the current time is within the start and end time
             if not is_within_time_range(start_time, end_time, time_format="%I:%M %p"):
-                absent_attendance = takeAttendance(student=student, unitAttendent=unit_attendance_data, status='Absent', week=this_week)
-                try:
-                    absent_attendance.save()
-                    messages.success(request, 'Attendance recorded as absent.')
-                    return redirect('attendance')
-                except IntegrityError:
-                    messages.error(request, 'Error recording attendance as absent.')
-                    return redirect('attendance')
+                messages.error(request, f"You can't mark attendance for {unit_attendance_data.get('name', '')} at this time.")
+                return redirect('attendance')
 
             # Continue with attendance marking
             studentDetails = Student.objects.filter(course=student.course, year=student.year, semester=student.semester)
@@ -256,7 +250,6 @@ def Attend(request):
         # Handle other exceptions if needed
         messages.error(request, f"An error occurred: {str(e)}")
         return redirect('attendance')
-
 
 
 
