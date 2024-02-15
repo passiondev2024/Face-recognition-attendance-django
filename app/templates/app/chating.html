@@ -13,7 +13,7 @@
                                     <a href="profile.html" title="Jennifer Robinson"><img src="{{user.student.profile.profile_photo.url}}" alt="" class="w-40 rounded-circle"><span class="status online"></span></a>
                                 </div>
                                 <div class="user-info float-left">
-                                    <a href="profile.html"><span class="font-bold">Jennifer Robinson</span> <i class="typing-text">Typing...</i></a>
+                                    <a href="profile.html"><span class="font-bold">{{request.user.first_name}} {{request.user.last_name}}</span></a>
                                     <span class="last-seen">Last seen today at 7:50 AM</span>
                                 </div>
                             </div>
@@ -25,7 +25,7 @@
                                         </span>
                                 </div>
                             </div>
-                            <ul class="nav custom-menu">
+                            <!-- <ul class="nav custom-menu">
                                 <li class="nav-item">
                                     <a href="#chat_sidebar" class="nav-link task-chat profile-rightbar float-right" id="task_chat"><i class="fa fa-user"></i></a>
                                 </li>
@@ -42,7 +42,7 @@
                                         <a class="dropdown-item" href="javascript:void(0)">Settings</a>
                                     </div>
                                 </li>
-                            </ul>
+                            </ul> -->
                         </div>
                     </div>
                     <div class="chat-contents">
@@ -68,7 +68,7 @@
                                         <div class="chat chat-left">
                                             <div class="chat-avatar">
                                                 <a href="profile.html" class="avatar">
-                                                    <img alt="Jennifer Robinson" src="{{data.student.profile_photo.url}}" class="img-fluid rounded-circle">
+                                                    <img alt="" src="{{user.student.profile.profile_photo.url}}" class="img-fluid rounded-circle">
                                                 </a>
                                             </div>
                                             <div class="chat-body">

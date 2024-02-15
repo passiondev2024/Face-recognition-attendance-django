@@ -268,8 +268,8 @@ def Chats(request):
     course = student.course
     year = student.year
     semester = student.semester
-    student_course = Student.objects.get(course=course, semester=semester, year=year)
-    all_texts = Chat.objects.filter(student=student_course)
+    students = Student.objects.get(course=course, semester=semester, year=year)
+    all_texts = Chat.objects.filter(student=students)
     if request.method == 'POST':
         text = request.POST['text']
 
@@ -277,7 +277,7 @@ def Chats(request):
         text_details.save()
 
 
-    context = {'all_texts':all_texts, 'student':student}
+    context = {'all_texts':all_texts, 'student':student, 'students':students}
     return render(request, 'app/chating.html', context)
 
 def ExamCard(request):
