@@ -50,32 +50,40 @@
                             <div class="chat-wrap-inner">
                                 <div class="chat-box">
                                     <div class="chats">
+                                        {% for data in all_texts %}
+                                        {% if data.student == student %}
                                         <div class="chat chat-right">
                                             <div class="chat-body">
                                                 <div class="chat-bubble">
                                                     <div class="chat-content">
                                                         <ul class="attach-list">
-                                                            <li class="pdf-file"><i class="fa fa-file-pdf-o"></i> <a href="#">Document_2016.pdf</a></li>
+                                                            <p>{{data.text}}</p>
                                                         </ul>
-                                                        <span class="chat-time">9:00 am</span>
+                                                        <span class="chat-time">{{data.time}}</span>
                                                     </div>
                                                 </div>
                                             </div>
                                         </div>
+                                        {% else %}
                                         <div class="chat chat-left">
                                             <div class="chat-avatar">
                                                 <a href="profile.html" class="avatar">
-                                                    <img alt="Jennifer Robinson" src="assets/img/patient-thumb-02.jpg" class="img-fluid rounded-circle">
+                                                    <img alt="Jennifer Robinson" src="{{data.student.profile_photo.url}}" class="img-fluid rounded-circle">
                                                 </a>
                                             </div>
                                             <div class="chat-body">
                                                 <div class="chat-bubble">
                                                     <div class="chat-content">
-                                                        <p>Typing ...</p>
+                                                        <ul class="attach-list">
+                                                            <p>{{data.text}}</p>
+                                                        </ul>
+                                                        <span class="chat-time">{{data.time}}</span>
                                                     </div>
                                                 </div>
                                             </div>
                                         </div>
+                                        {% endif %}
+                                        {% endfor %}
                                     </div>
                                 </div>
                             </div>
@@ -89,7 +97,7 @@
                                     <form action="" method="post">
                                         {% csrf_token %}
                                     <div class="input-group">
-                                        <input type="text" name="text" class="form-control" placeholder="Type message...">
+                                        <input type="text" name="text" class="form-control" placeholder="Type message..." required>
                                         <span class="input-group-append">
                                             <button class="btn btn-primary" type="submit"><i class="fa fa-send"></i></button>
                                         </span>

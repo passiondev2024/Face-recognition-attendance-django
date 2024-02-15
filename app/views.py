@@ -265,13 +265,20 @@ def Attendance(request):
 
 def Chats(request):
     student = request.user.student
-    s
+    course = student.course
+    year = student.year
+    semester = student.semester
+    student_course = Student.objects.get(course=course, semester=semester, year=year)
+    all_texts = Chat.objects.filter(student=student_course)
     if request.method == 'POST':
         text = request.POST['text']
 
         text_details = Chat.objects.create(student=student, text=text)
         text_details.save()
-    return render(request, 'app/chating.html')
+
+
+    context = {'all_texts':all_texts, 'student':student}
+    return render(request, 'app/chating.html', context)
 
 def ExamCard(request):
     return render(request, 'app/examcard.html')
