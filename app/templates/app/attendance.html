@@ -69,11 +69,11 @@
                         <thead>
                             <tr>
                                 <th>Student</th>
+                                <th>Units</th>
                                 <th>Date</th>
-                                <th>Time</th>
-                                {% for unit in units_list %}
-                                <th>{{unit.code}}</th>
-                                {% endfor %}
+                                <th>Time Range</th>
+                                <th>Time Attendant</th>
+                                <th>Status</th>
                             </tr>
                         </thead>
                         <tbody>
@@ -86,7 +86,9 @@
                                         <span class="status online"></span>
                                     </span>
                                 </td>
-                                <td>{{data.date}}</td>
+                                <th>{{data.unitAttendent.code}}</th>
+                                <td>{{data.unitAttendent.day}}, {{data.date}}</td>
+                                <td>{{data.unitAttendent.startTime}} - {{data.unitAttendent.endTime}}</td>
                                 <td>{{data.time}}</td>
                                 {% for unit in units_list %}
                                 {% if data.unitAttendent.code == unit.code %}
