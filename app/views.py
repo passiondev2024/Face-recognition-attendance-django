@@ -265,6 +265,7 @@ def Attendance(request):
 
 def Chats(request):
     student = request.user.student
+    s
     if request.method == 'POST':
         text = request.POST['text']
 
