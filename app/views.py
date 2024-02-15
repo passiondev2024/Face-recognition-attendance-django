@@ -268,7 +268,8 @@ def Chats(request):
     if request.method == 'POST':
         text = request.POST['text']
 
-        text_details = Chat.objects.create(student=student)
+        text_details = Chat.objects.create(student=student, text=text)
+        text_details.save()
     return render(request, 'app/chating.html')
 
 def ExamCard(request):

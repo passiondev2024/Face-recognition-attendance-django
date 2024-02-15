@@ -86,12 +86,15 @@
                             <div class="message-inner">
                                 <a class="link attach-icon" href="#" data-toggle="modal" data-target="#drag_files"><img src="assets/img/attachment.png" alt=""></a>
                                 <div class="message-area">
+                                    <form action="" method="post">
+                                        {% csrf_token %}
                                     <div class="input-group">
-                                        <textarea class="form-control" placeholder="Type message..."></textarea>
+                                        <input type="text" name="text" class="form-control" placeholder="Type message...">
                                         <span class="input-group-append">
-                                            <button class="btn btn-primary" type="button"><i class="fa fa-send"></i></button>
+                                            <button class="btn btn-primary" type="submit"><i class="fa fa-send"></i></button>
                                         </span>
                                     </div>
+                                    </form>
                                 </div>
                             </div>
                         </div>
