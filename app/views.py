@@ -14,6 +14,7 @@ from json.decoder import JSONDecodeError
 from datetime import date
 from datetime import datetime
 import json
+from django.db.models import Q
 
 
 
@@ -268,8 +269,8 @@ def Chats(request):
     course = student.course
     year = student.year
     semester = student.semester
-    students = Student.objects.get(course=course, semester=semester, year=year)
-    all_texts = Chat.objects.filter(student=students)
+    students = Student.objects.filter(course=course, semester=semester, year=year)
+    all_texts = Chat.objects.filter(student__in=students)
     if request.method == 'POST':
         text = request.POST['text']
 

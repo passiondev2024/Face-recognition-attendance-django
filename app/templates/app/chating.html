@@ -14,7 +14,7 @@
                                 </div>
                                 <div class="user-info float-left">
                                     <a href="profile.html"><span class="font-bold">{{request.user.first_name}} {{request.user.last_name}}</span></a>
-                                    <span class="last-seen">Last seen today at 7:50 AM</span>
+                                    <span class="last-seen">{% for data in students %} {{data.firstname}} {% endfor %}</span>
                                 </div>
                             </div>
                             <div class="search-box">
