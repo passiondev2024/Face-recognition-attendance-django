@@ -211,6 +211,8 @@ def Attend(request):
 
             if user_coordinates is not None:
                 user_latitude, user_longitude = user_coordinates
+                print('lat', user_latitude)
+                print('log', user_longitude)
                 room_coordinates = unit_attendance_data.get('room', {}).get('coordinates', [])
                 if is_user_within_coordinates(user_latitude, user_longitude, room_coordinates):
                     this_week = get_week_number()
