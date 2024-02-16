@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>User Location</title>
+</head>
+
+<body>
+
+    <script>
+        function getUserLocation() {
+            if (navigator.geolocation) {
+                navigator.geolocation.getCurrentPosition(
+                    successCallback,
+                    errorCallback
+                );
+            } else {
+                console.error("Geolocation is not supported by this browser.");
+            }
+        }
+
+        function successCallback(position) {
+            const userLatitude = position.coords.latitude;
+            const userLongitude = position.coords.longitude;
+
+            console.log("User's Location:", userLatitude, userLongitude);
+
+            // Now you can use userLatitude and userLongitude as needed
+        }
+
+        function errorCallback(error) {
+            switch (error.code) {
+                case error.PERMISSION_DENIED:
+                    console.error("User denied the request for Geolocation.");
+                    break;
+                case error.POSITION_UNAVAILABLE:
+                    console.error("Location information is unavailable.");
+                    break;
+                case error.TIMEOUT:
+                    console.error("The request to get user location timed out.");
+                    break;
+                case error.UNKNOWN_ERROR:
+                    console.error("An unknown error occurred.");
+                    break;
+            }
+        }
+
+        // Call the function to get user location
+        getUserLocation();
+    </script>
+
+</body>
+
+</html>
