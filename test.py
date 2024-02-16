@@ -1,9 +1,11 @@
-import geocoder
+from geopy.geocoders import Nominatim
 
 def get_current_gps_coordinates():
-    g = geocoder.ip('me')#this function is used to find the current information using our IP Add
-    if g.latlng is not None: #g.latlng tells if the coordiates are found or not
-        return g.latlng
+    geolocator = Nominatim(user_agent="your_app_name", timeout=5)
+    location = geolocator.geocode("me")
+
+    if location is not None:
+        return location.latitude, location.longitude
     else:
         return None
 
