@@ -13,6 +13,7 @@ from .recognizer import Recognizer
 from json.decoder import JSONDecodeError
 from datetime import date
 from datetime import datetime
+import geocoder
 import json
 from django.db.models import Q
 
@@ -206,41 +207,48 @@ def Attend(request):
 
             current_day = datetime.now().strftime('%A')
 
-            # Check if attendance has already been taken for this unit in the current week
-            this_week = get_week_number()
-            if takeAttendance.objects.filter(week=this_week, student=student, unitAttendent=unit_attendance_data).count() != 0:
-                messages.info(request, 'Attendance already taken')
-                return redirect('attendance')
+            user_coordinates = get_current_gps_coordinates()
 
-            # Check if it's the day of the week when attendance can be marked for this unit
-            if unit_attendance_data.get('day', '') != current_day:
-                messages.error(request, f"You can't mark attendance for {unit_attendance_data.get('name', '')} on {current_day}.")
-                return redirect('attendance')
+            if user_coordinates is not None:
+                user_latitude, user_longitude = user_coordinates
+                room_coordinates = unit_attendance_data.get('room', {}).get('coordinates', [])
+                if is_user_within_coordinates(user_latitude, user_longitude, room_coordinates):
+                    this_week = get_week_number()
+                    if takeAttendance.objects.filter(week=this_week, student=student, unitAttendent=unit_attendance_data).count() != 0:
+                        messages.info(request, 'Attendance already taken')
+                        return redirect('attendance')
 
-            # Check if the current time is within the start and end time
-            if not is_within_time_range(start_time, end_time, time_format="%I:%M %p"):
-                messages.error(request, f"You can't mark attendance for {unit_attendance_data.get('name', '')} at this time.")
-                return redirect('attendance')
+                    # Check if it's the day of the week when attendance can be marked for this unit
+                    if unit_attendance_data.get('day', '') != current_day:
+                        messages.error(request, f"You can't mark attendance for {unit_attendance_data.get('name', '')} on {current_day}.")
+                        return redirect('attendance')
 
-            # Continue with attendance marking
-            studentDetails = Student.objects.filter(course=student.course, year=student.year, semester=student.semester)
-            classNames = [str(data.user) for data in studentDetails]
-            recognized_name = Recognizer({'student': student, 'unitAttendent': unit_attendance_data}, classNames)
+                    # Check if the current time is within the start and end time
+                    if not is_within_time_range(start_time, end_time, time_format="%I:%M %p"):
+                        messages.error(request, f"You can't mark attendance for {unit_attendance_data.get('name', '')} at this time.")
+                        return redirect('attendance')
 
-            if recognized_name:
-                attendance, created = takeAttendance.objects.get_or_create(
-                    week=this_week,
-                    student=student,
-                    unitAttendent=unit_attendance_data,
-                    defaults={'status': 'Present'}
-                )
+                    studentDetails = Student.objects.filter(course=student.course, year=student.year, semester=student.semester)
+                    classNames = [str(data.user) for data in studentDetails]
+                    recognized_name = Recognizer({'student': student, 'unitAttendent': unit_attendance_data}, classNames)
 
-                if not created:
-                    messages.info(request, 'Attendance already taken')
+                    if recognized_name:
+                        attendance, created = takeAttendance.objects.get_or_create(
+                            week=this_week,
+                            student=student,
+                            unitAttendent=unit_attendance_data,
+                            defaults={'status': 'Present'}
+                        )
 
-            attendances = takeAttendance.objects.filter(week=this_week, student=student, unitAttendent=unit_attendance_data)
-            messages.success(request, 'Attendance taken successfully')
+                        if not created:
+                            messages.info(request, 'Attendance already taken')
 
+                    attendances = takeAttendance.objects.filter(week=this_week, student=student, unitAttendent=unit_attendance_data)
+                    messages.success(request, 'Attendance taken successfully')
+                else:
+                    messages.warning(request, 'You are outside the specified area. Attendance not recorded.')
+            else:
+                messages.warning(request, 'Unable to retrieve your GPS coordinates. Attendance not recorded.')
         context = {'units_list': units_list}
         return render(request, 'app/attend.html', context)
 
@@ -251,6 +259,53 @@ def Attend(request):
         # Handle other exceptions if needed
         messages.error(request, f"An error occurred: {str(e)}")
         return redirect('attendance')
+
+
+def get_current_gps_coordinates():
+    try:
+        g = geocoder.ip('me')  # this function is used to find the current information using our IP Address
+        if g.latlng is not None:  # g.latlng tells if the coordinates are found or not
+            return g.latlng
+        else:
+            return None
+    except Exception as e:
+        print(f"Error retrieving GPS coordinates: {str(e)}")
+        return None
+
+def is_user_within_coordinates(user_latitude, user_longitude, room_coordinates):
+    try:
+        if len(room_coordinates) == 4:
+            # Assume a rectangle with 4 corner coordinates (top-left, top-right, bottom-right, bottom-left)
+            x, y = user_latitude, user_longitude
+
+            # Check if the user is within the specified rectangle
+            def is_point_inside_polygon(x, y, poly):
+                n = len(poly)
+                inside = False
+
+                p1x, p1y = poly[0]
+                for i in range(n + 1):
+                    p2x, p2y = poly[i % n]
+                    if y > min(p1y, p2y):
+                        if y <= max(p1y, p2y):
+                            if x <= max(p1x, p2x):
+                                if p1y != p2y:
+                                    xinters = (y - p1y) * (p2x - p1x) / (p2y - p1y) + p1x
+                                    if p1x == p2x or x <= xinters:
+                                        inside = not inside
+                    p1x, p1y = p2x, p2y
+
+                return inside
+
+            return is_point_inside_polygon(x, y, room_coordinates)
+
+        else:
+            print("Invalid number of room coordinates. Please provide exactly 4 coordinates.")
+            return False
+    except Exception as e:
+        print(f"Error checking user coordinates: {str(e)}")
+        return False
+
 
 
 
