@@ -161,8 +161,23 @@ $(document).ready(function () {
         // COMPUTER SCIENCE
         if (($('#semester').val() == 'Semester1') && ($('#year').val() == 'Year1') && ($('#course').val() == 'Computer_Science')) {
             units = [
-                {code: 'COM 110', name:'Introduction to Computer', day:'Thursday', lecturer: 'Dr.Amuomo', room: 'E409' , startTime: '11:00 PM', endTime: '11:59 PM'},
-                {code: 'PHY 110', name:'Introduction to Physics', day:'Monday', lecturer: 'Dr.Amuomo', room: 'E409' , startTime: '09:00 AM', endTime: '12:00 PM'}
+                {
+                    code: 'COM 110',
+                    name: 'Introduction to Computer',
+                    day: 'Thursday', lecturer: 'Dr.Amuomo',
+                    room: {
+                        name: 'E409',
+                        coordinates: [
+                            { latitude: 37.7749, longitude: -122.4194 }, // Top-left corner
+                            { latitude: 37.7749, longitude: -122.4184 }, // Top-right corner
+                            { latitude: 37.7739, longitude: -122.4184 }, // Bottom-right corner
+                            { latitude: 37.7739, longitude: -122.4194 }  // Bottom-left corner
+                        ]
+                    },
+                    startTime: '11:00 PM',
+                    endTime: '11:59 PM'
+                },
+                { code: 'PHY 110', name: 'Introduction to Physics', day: 'Monday', lecturer: 'Dr.Amuomo', room: 'E409', startTime: '09:00 AM', endTime: '12:00 PM' }
             ];
         }
         else if (($('#semester').val() == 'semester2') && ($('#year').val() == 'Year1') && ($('#course').val() == 'Computer_Science')) {
@@ -193,24 +208,24 @@ $(document).ready(function () {
         for (var i = 0; i < units.length; i++) {
             // Serialize the unit object to JSON
             var unitJSON = JSON.stringify(units[i]);
-        
+
             // Create a checkbox element
             var checkbox = $('<input>').attr({
                 type: 'checkbox',
                 id: 'unit' + (i + 1),
                 name: 'selected_units[]',
-                value: unitJSON // Use the serialized JSON string as the value
+                value: unitJSON
             });
-        
+
             // Create a label element associated with the checkbox
             var label = $('<label>').attr('for', 'unit' + (i + 1)).text(units[i]['name']); // Use units[i]['name'] to access the 'name' property
-        
+
             // Append additional information about the unit
             var details = $('<span>').text(` (${units[i]['day']}, ${units[i]['startTime']} - ${units[i]['endTime']})`);
-        
+
             // Append the checkbox, label, details, and a line break to the element with ID #unit-checkboxes
             $('#unit-checkboxes').append(checkbox).append(label).append(details).append('<br>');
-        }        
-        
+        }
+
     });
 });
