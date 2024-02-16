@@ -9,6 +9,11 @@
 
 <body>
 
+    <div id="location-info">
+        <p>User's Latitude: <span id="latitude"></span></p>
+        <p>User's Longitude: <span id="longitude"></span></p>
+    </div>
+
     <script>
         function getUserLocation() {
             if (navigator.geolocation) {
@@ -25,9 +30,11 @@
             const userLatitude = position.coords.latitude;
             const userLongitude = position.coords.longitude;
 
-            console.log("User's Location:", userLatitude, userLongitude);
+            // Update the HTML content with user's location
+            document.getElementById("latitude").textContent = userLatitude.toFixed(6);
+            document.getElementById("longitude").textContent = userLongitude.toFixed(6);
 
-            // Now you can use userLatitude and userLongitude as needed
+            console.log("User's Location:", userLatitude, userLongitude);
         }
 
         function errorCallback(error) {
