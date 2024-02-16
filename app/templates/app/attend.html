@@ -39,4 +39,29 @@
 <script src="{% static 'js/popper.min.js' %}"></script>
 <script src="{% static 'js/bootstrap.min.js' %}"></script>
 <script src="{% static 'js/app.js' %}"></script>
+<!-- JavaScript for location prompt -->
+<script>
+    document.addEventListener('DOMContentLoaded', function () {
+        if ('geolocation' in navigator) {
+            navigator.geolocation.getCurrentPosition(
+                function (position) {
+                    // Do something with the obtained coordinates (e.g., send to the server)
+                    console.log('Latitude:', position.coords.latitude);
+                    console.log('Longitude:', position.coords.longitude);
+                },
+                function (error) {
+                    console.error('Error getting location:', error.message);
+                },
+                {
+                    enableHighAccuracy: true,
+                    timeout: 5000,
+                    maximumAge: 0
+                }
+            );
+        } else {
+            console.error('Geolocation is not supported by this browser.');
+        }
+    });
+</script>
+
 {% endblock content %}
