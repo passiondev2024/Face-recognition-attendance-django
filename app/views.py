@@ -266,7 +266,7 @@ def Attend(request):
 def get_current_gps_coordinates():
     try:
         g = geocoder.ip('me')  # this function is used to find the current information using our IP Address
-        if g.latlng is not None:  # g.latlng tells if the coordinates are found or not
+        if g.latlng and len(g.latlng) == 2:  # Check if coordinates are found and in the expected format
             return g.latlng
         else:
             return None
@@ -274,32 +274,38 @@ def get_current_gps_coordinates():
         print(f"Error retrieving GPS coordinates: {str(e)}")
         return None
 
+
 def is_user_within_coordinates(user_latitude, user_longitude, room_coordinates):
     try:
         if len(room_coordinates) == 4:
             # Assume a rectangle with 4 corner coordinates (top-left, top-right, bottom-right, bottom-left)
-            x, y = user_latitude, user_longitude
+            x, y = float(user_latitude), float(user_longitude)
 
-            # Check if the user is within the specified rectangle
             def is_point_inside_polygon(x, y, poly):
-                n = len(poly)
-                inside = False
+                try:
+                    x, y = float(x), float(y)  # Convert x and y to float
 
-                p1x, p1y = poly[0]
-                for i in range(n + 1):
-                    p2x, p2y = poly[i % n]
-                    if y > min(p1y, p2y):
-                        if y <= max(p1y, p2y):
-                            if x <= max(p1x, p2x):
-                                if p1y != p2y:
-                                    xinters = (y - p1y) * (p2x - p1x) / (p2y - p1y) + p1x
-                                    if p1x == p2x or x <= xinters:
-                                        inside = not inside
-                    p1x, p1y = p2x, p2y
+                    n = len(poly)
+                    inside = False
 
-                return inside
+                    p1x, p1y = poly[0]
+                    for i in range(n + 1):
+                        p2x, p2y = poly[i % n]
+                        if y > min(p1y, p2y):
+                            if y <= max(p1y, p2y):
+                                if x <= max(p1x, p2x):
+                                    if p1y != p2y:
+                                        xinters = (y - p1y) * (p2x - p1x) / (p2y - p1y) + p1x
+                                        if p1x == p2x or x <= xinters:
+                                            inside = not inside
+                        p1x, p1y = p2x, p2y
 
-            return is_point_inside_polygon(x, y, room_coordinates)
+                    return inside
+
+                except Exception as e:
+                    print(f"Error checking user coordinates: {str(e)}")
+                    return False
+
 
         else:
             print("Invalid number of room coordinates. Please provide exactly 4 coordinates.")

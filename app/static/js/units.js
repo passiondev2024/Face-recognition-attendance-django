@@ -164,68 +164,68 @@ $(document).ready(function () {
                 {
                     code: 'COM 110',
                     name: 'Introduction to Computer',
-                    day: 'Tuesday', lecturer: 'Dr.Amuomo',
+                    day: 'Wednesday', lecturer: 'Dr.Amuomo',
                     room: {
                         name: 'E409',
                         coordinates: [
-                            {latitude: -0.826036, longitude: 34.609992},
-                            {latitude: -0.826032, longitude: 34.610042},
-                            {latitude: -0.825956, longitude: 34.610046},
-                            {latitude: -0.826072, longitude: 34.610132}
+                            { latitude: -1.283336, longitude: 36.816792 },
+                            { latitude: -1.283332, longitude: 36.816742 },
+                            { latitude: -1.283356, longitude: 36.816746 },
+                            { latitude: -1.283372, longitude: 36.816732 }
                         ]
                     },
-                    startTime: '1:00 PM',
-                    endTime: '4:00 PM'
+                startTime: '7:00 PM',
+                endTime: '11:00 PM'
                 },
-                { code: 'PHY 110', name: 'Introduction to Physics', day: 'Monday', lecturer: 'Dr.Amuomo', room: 'E409', startTime: '09:00 AM', endTime: '12:00 PM' }
+        { code: 'PHY 110', name: 'Introduction to Physics', day: 'Monday', lecturer: 'Dr.Amuomo', room: 'E409', startTime: '09:00 AM', endTime: '12:00 PM' }
             ];
-        }
+    }
         else if (($('#semester').val() == 'semester2') && ($('#year').val() == 'Year1') && ($('#course').val() == 'Computer_Science')) {
-            units = ['COM 120: Computer', 'PHY 121: Physics']
-        }
-        // YEAR TWO
-        else if (($('#semester').val() == 'semester1') && ($('#year').val() == 'year2') && ($('#course').val() == 'Computer_Science')) {
-            units = ['COM 210: Computer 2', 'COM 215: Computer']
-        }
-        else if (($('#semester').val() == 'semester2') && ($('#year').val() == 'year2') && ($('#course').val() == 'Computer_Science')) {
-            units = ['COM 220', 'PHY 226']
-        }
-        // YEAR 3
-        else if (($('#semester').val() == 'semester1') && ($('#year').val() == 'year3') && ($('#course').val() == 'Computer_Science')) {
-            units = ['COM 310', 'COM 311']
-        }
-        else if (($('#semester').val() == 'semester2') && ($('#year').val() == 'year3') && ($('#course').val() == 'Computer_Science')) {
-            units = ['COM 320: Computer 5', 'COM 326: Computer 6']
-        }
-        // YEAR FOUR
-        else if (($('#semester').val() == 'semester1') && ($('#year').val() == 'year4') && ($('#course').val() == 'Computer_Science')) {
-            units = ['COM 410', 'COM 411']
-        }
-        else if (($('#semester').val() == 'semester2') && ($('#year').val() == 'year4') && ($('#course').val() == 'Computer_Science')) {
-            units = ['COM 420', 'COM 421']
-        }
+        units = ['COM 120: Computer', 'PHY 121: Physics']
+    }
+    // YEAR TWO
+    else if (($('#semester').val() == 'semester1') && ($('#year').val() == 'year2') && ($('#course').val() == 'Computer_Science')) {
+        units = ['COM 210: Computer 2', 'COM 215: Computer']
+    }
+    else if (($('#semester').val() == 'semester2') && ($('#year').val() == 'year2') && ($('#course').val() == 'Computer_Science')) {
+        units = ['COM 220', 'PHY 226']
+    }
+    // YEAR 3
+    else if (($('#semester').val() == 'semester1') && ($('#year').val() == 'year3') && ($('#course').val() == 'Computer_Science')) {
+        units = ['COM 310', 'COM 311']
+    }
+    else if (($('#semester').val() == 'semester2') && ($('#year').val() == 'year3') && ($('#course').val() == 'Computer_Science')) {
+        units = ['COM 320: Computer 5', 'COM 326: Computer 6']
+    }
+    // YEAR FOUR
+    else if (($('#semester').val() == 'semester1') && ($('#year').val() == 'year4') && ($('#course').val() == 'Computer_Science')) {
+        units = ['COM 410', 'COM 411']
+    }
+    else if (($('#semester').val() == 'semester2') && ($('#year').val() == 'year4') && ($('#course').val() == 'Computer_Science')) {
+        units = ['COM 420', 'COM 421']
+    }
 
-        for (var i = 0; i < units.length; i++) {
-            // Serialize the unit object to JSON
-            var unitJSON = JSON.stringify(units[i]);
+    for (var i = 0; i < units.length; i++) {
+        // Serialize the unit object to JSON
+        var unitJSON = JSON.stringify(units[i]);
 
-            // Create a checkbox element
-            var checkbox = $('<input>').attr({
-                type: 'checkbox',
-                id: 'unit' + (i + 1),
-                name: 'selected_units[]',
-                value: unitJSON
-            });
+        // Create a checkbox element
+        var checkbox = $('<input>').attr({
+            type: 'checkbox',
+            id: 'unit' + (i + 1),
+            name: 'selected_units[]',
+            value: unitJSON
+        });
 
-            // Create a label element associated with the checkbox
-            var label = $('<label>').attr('for', 'unit' + (i + 1)).text(units[i]['name']); // Use units[i]['name'] to access the 'name' property
+        // Create a label element associated with the checkbox
+        var label = $('<label>').attr('for', 'unit' + (i + 1)).text(units[i]['name']); // Use units[i]['name'] to access the 'name' property
 
-            // Append additional information about the unit
-            var details = $('<span>').text(` (${units[i]['day']}, ${units[i]['startTime']} - ${units[i]['endTime']})`);
+        // Append additional information about the unit
+        var details = $('<span>').text(` (${units[i]['day']}, ${units[i]['startTime']} - ${units[i]['endTime']})`);
 
-            // Append the checkbox, label, details, and a line break to the element with ID #unit-checkboxes
-            $('#unit-checkboxes').append(checkbox).append(label).append(details).append('<br>');
-        }
+        // Append the checkbox, label, details, and a line break to the element with ID #unit-checkboxes
+        $('#unit-checkboxes').append(checkbox).append(label).append(details).append('<br>');
+    }
 
-    });
+});
 });
