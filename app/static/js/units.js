@@ -164,18 +164,18 @@ $(document).ready(function () {
                 {
                     code: 'COM 110',
                     name: 'Introduction to Computer',
-                    day: 'Thursday', lecturer: 'Dr.Amuomo',
+                    day: 'Tuesday', lecturer: 'Dr.Amuomo',
                     room: {
                         name: 'E409',
                         coordinates: [
-                            { latitude: -0.827321, longitude: 34.618505 },
-                            { latitude: -0.827321, longitude: 34.618505 },
-                            { latitude: -0.827321, longitude: 34.618505 },
-                            { latitude: -0.827321, longitude: 34.618505 }
+                            {latitude: -0.826036, longitude: 34.609992},
+                            {latitude: -0.826032, longitude: 34.610042},
+                            {latitude: -0.825956, longitude: 34.610046},
+                            {latitude: -0.826072, longitude: 34.610132}
                         ]
                     },
-                    startTime: '11:00 PM',
-                    endTime: '11:59 PM'
+                    startTime: '1:00 PM',
+                    endTime: '4:00 PM'
                 },
                 { code: 'PHY 110', name: 'Introduction to Physics', day: 'Monday', lecturer: 'Dr.Amuomo', room: 'E409', startTime: '09:00 AM', endTime: '12:00 PM' }
             ];
