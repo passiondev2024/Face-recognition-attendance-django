@@ -337,7 +337,12 @@ def Chats(request):
     return render(request, 'app/chating.html', context)
 
 def ExamCard(request):
-    return render(request, 'app/examcard.html')
+    logged_in_user = request.user
+    student = Student.objects.get(user=logged_in_user)
+    units_list = json.loads(student.units)
+
+    context = {'student':student, 'unit_list':units_list}
+    return render(request, 'app/examcard.html', context)
 
 def myProfile(request):
     logged_in_user = request.user
