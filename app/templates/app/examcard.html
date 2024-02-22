@@ -8,6 +8,7 @@
                 <h4 class="page-title">Exam Card</h4>
             </div>
         </div>
+
         <div class="row">
             <div class="col-12 col-md-8 col-lg-8 col-xl-10">
                 <div class="card">
@@ -15,11 +16,13 @@
                         <!-- <div class="chart-title">
                             <h4>Time Table</h4>
                         </div> -->
+                        {% if percentage %}
                         <div class="row">
                             <div class="col-md-12">
                                 <div class="table-responsive">
                                     <p style="text-align: center;">
-                                    <img style="width: 200px; height: 110px;" src="{% static 'img/logo.png' %}" alt="">
+                                        <img style="width: 200px; height: 110px;" src="{% static 'img/logo.png' %}"
+                                            alt="">
                                     </p>
                                     <p style="text-align: center;"><b>OFFICE OF THE REGISTRAR, ACADEMIC AFFAIRS</b></p>
                                     <p style="text-align: center;"><b>P.O.Box 103-40404, Rongo</b></p>
@@ -180,16 +183,18 @@
                                     </div>
                                 </div>
                             </div>
-                            <div class="row">
-                                <div class="col-lg-12">
-                                    <div class="table-responsive">
-                                        <table class="table table-striped custom-table mb-0">
-                                            Sorry you have not reached minimum requirements for class attendance
-                                        </table>
-                                    </div>
+                        </div>
+                        {% else %}
+                        <div class="row">
+                            <div class="col-lg-12">
+                                <div class="table-responsive">
+                                    <table class="table table-striped custom-table mb-0">
+                                        Sorry you have not reached minimum requirements for class attendance
+                                    </table>
                                 </div>
                             </div>
                         </div>
+                        {% endif %}
                     </div>
                 </div>
                 <div class="sidebar-overlay" data-reff=""></div>
