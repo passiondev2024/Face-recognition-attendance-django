@@ -1,7 +1,17 @@
 {% extends 'main.html' %}
 {% load static %}
 {% block content %}
+<script src="https://code.jquery.com/jquery-3.6.3.min.js"
+    integrity="sha256-pvPw+upLPUjgMXY0G+8O0xUf+/Im1MZjXxxgOcBQBXU=" crossorigin="anonymous">
+    </script>
 <link rel="stylesheet" href="{% static 'css/emoji.css' %}">
+<style>
+    input[type=text] {
+        width: 70%;
+    }
+</style>
+
+
 <div class="page-wrapper">
     <div class="chat-main-row">
         <div class="chat-main-wrapper">
@@ -11,19 +21,23 @@
                         <div class="navbar">
                             <div class="user-details mr-auto">
                                 <div class="float-left user-img m-r-10">
-                                    <a href="profile.html" title="Jennifer Robinson"><img src="{{user.student.profile.profile_photo.url}}" alt="" class="w-40 rounded-circle"><span class="status online"></span></a>
+                                    <a href="profile.html" title="Jennifer Robinson"><img
+                                            src="{{user.student.profile.profile_photo.url}}" alt=""
+                                            class="w-40 rounded-circle"><span class="status online"></span></a>
                                 </div>
                                 <div class="user-info float-left">
-                                    <a href="profile.html"><span class="font-bold">{{request.user.first_name}} {{request.user.last_name}}</span></a>
-                                    <span class="last-seen text-primary">{% for data in students %} {{data.first_name}}, {% endfor %}</span>
+                                    <a href="profile.html"><span class="font-bold">{{request.user.first_name}}
+                                            {{request.user.last_name}}</span></a>
+                                    <span class="last-seen text-primary">{% for data in students %} {{data.first_name}},
+                                        {% endfor %}</span>
                                 </div>
                             </div>
                             <div class="search-box">
                                 <div class="input-group input-group-sm">
                                     <input type="text" class="form-control" placeholder="Search">
                                     <span class="input-group-append">
-                                            <button class="btn" type="button"><i class="fa fa-search"></i></button>
-                                        </span>
+                                        <button class="btn" type="button"><i class="fa fa-search"></i></button>
+                                    </span>
                                 </div>
                             </div>
                             <!-- <ul class="nav custom-menu">
@@ -60,7 +74,8 @@
                                                         <ul class="attach-list">
                                                             <p style="color: black;">{{data.text}}</p>
                                                         </ul>
-                                                        <span style="color: green;" class="chat-time">{{data.time}}</span>
+                                                        <span style="color: green;"
+                                                            class="chat-time">{{data.time}}</span>
                                                     </div>
                                                 </div>
                                             </div>
@@ -69,7 +84,8 @@
                                         <div class="chat chat-left">
                                             <div class="chat-avatar">
                                                 <a href="#" class="avatar">
-                                                    <img alt="" src="{{data.student.profile.profile_photo.url}}" class="img-fluid rounded-circle">
+                                                    <img alt="" src="{{data.student.profile.profile_photo.url}}"
+                                                        class="img-fluid rounded-circle">
                                                 </a>
                                             </div>
                                             <div class="chat-body">
@@ -93,16 +109,17 @@
                     <div class="chat-footer">
                         <div class="message-bar">
                             <div class="message-inner">
-                                <a class="link attach-icon" href="#" data-toggle="modal" data-target="#drag_files"><img src="assets/img/attachment.png" alt=""></a>
                                 <div class="message-area">
                                     <form action="" method="post">
                                         {% csrf_token %}
-                                    <div class="input-group">
-                                        <input type="text" name="text" class="form-control" id="message" placeholder="Type message..." required>
-                                        <span class="input-group-append">
-                                            <button class="btn btn-primary" type="submit"><i class="fa fa-send"></i></button>
-                                        </span>
-                                    </div>
+                                        <div class="input-group">
+                                            <input type="text" id="message" name="text" class="form-control"
+                                                placeholder="Type message..." required>
+                                            <!-- <span class="input-group-append"> -->
+                                                <button class="btn btn-primary" type="submit"><i
+                                                        class="fa fa-send"></i></button>
+                                            </span>
+                                        </div>
                                     </form>
                                 </div>
                             </div>
@@ -125,7 +142,7 @@
 </script>
 <div class="sidebar-overlay" data-reff=""></div>
 <script src="{% static 'js/emoji.js' %}"></script>
-<script src="{% static 'js/jquery-3.2.1.min.js' %}"></script>
+<!-- <script src="{% static 'js/jquery-3.2.1.min.js' %}"></script> -->
 <script src="{% static 'js/popper.min.js' %}"></script>
 <script src="{% static 'js/bootstrap.min.js' %}"></script>
 <script src="{% static 'js/jquery.slimscroll.js' %}"></script>
