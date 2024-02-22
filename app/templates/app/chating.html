@@ -1,6 +1,7 @@
 {% extends 'main.html' %}
 {% load static %}
 {% block content %}
+<link rel="stylesheet" href="{% static 'css/emoji.css' %}">
 <div class="page-wrapper">
     <div class="chat-main-row">
         <div class="chat-main-wrapper">
@@ -57,9 +58,9 @@
                                                 <div class="chat-bubble">
                                                     <div class="chat-content">
                                                         <ul class="attach-list">
-                                                            <p>{{data.text}}</p>
+                                                            <p style="color: black;">{{data.text}}</p>
                                                         </ul>
-                                                        <span class="chat-time">{{data.time}}</span>
+                                                        <span style="color: green;" class="chat-time">{{data.time}}</span>
                                                     </div>
                                                 </div>
                                             </div>
@@ -75,7 +76,7 @@
                                                 <div class="chat-bubble">
                                                     <div class="chat-content">
                                                         <ul class="attach-list">
-                                                            <p>{{data.text}}</p>
+                                                            <p style="color: black;">{{data.text}}</p>
                                                         </ul>
                                                         <span class="chat-time">{{data.time}}</span>
                                                     </div>
@@ -97,7 +98,7 @@
                                     <form action="" method="post">
                                         {% csrf_token %}
                                     <div class="input-group">
-                                        <input type="text" name="text" class="form-control" placeholder="Type message..." required>
+                                        <input type="text" name="text" class="form-control" id="message" placeholder="Type message..." required>
                                         <span class="input-group-append">
                                             <button class="btn btn-primary" type="submit"><i class="fa fa-send"></i></button>
                                         </span>
@@ -113,7 +114,17 @@
     </div>
 </div>
 </div>
+<script>
+    $(document).ready(function () {
+        $("#message").emojioneArea({
+            pickerPosition: "top",
+            // emojiPlaceholder: "smile_cat",
+            recentEmojis: false,
+        });
+    })
+</script>
 <div class="sidebar-overlay" data-reff=""></div>
+<script src="{% static 'js/emoji.js' %}"></script>
 <script src="{% static 'js/jquery-3.2.1.min.js' %}"></script>
 <script src="{% static 'js/popper.min.js' %}"></script>
 <script src="{% static 'js/bootstrap.min.js' %}"></script>
