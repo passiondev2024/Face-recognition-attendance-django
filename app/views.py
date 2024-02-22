@@ -281,24 +281,32 @@ from shapely.geometry import Point, Polygon
 
 def is_user_within_coordinates(user_latitude, user_longitude, room_coordinates):
     try:
+        print(f"User Coordinates: {user_latitude}, {user_longitude}")
+        print(f"Room Coordinates: {room_coordinates}")
+
         if len(room_coordinates) == 4:
-            # Assuming room_coordinates is a list of dictionaries with 'latitude' and 'longitude' keys
             polygon_coordinates = [(float(coord['longitude']), float(coord['latitude'])) for coord in room_coordinates]
 
-            user_point = Point(float(user_longitude), float(user_latitude))
+            print(f"Polygon Coordinates: {polygon_coordinates}")
+
             room_polygon = Polygon(polygon_coordinates)
 
-            return room_polygon.contains(user_point)
+            user_point = Point(float(user_longitude), float(user_latitude))
 
+            print(f"User Point: {user_point}")
+            print(f"Room Polygon: {room_polygon}")
+
+            if room_polygon.contains(user_point.xy):
+                return True
+            else:
+                print("User is outside the room polygon.")
+                return False
         else:
             print("Invalid number of room coordinates. Please provide exactly 4 coordinates.")
             return False
-
     except Exception as e:
         print(f"Error checking user coordinates: {str(e)}")
         return False
-
-
 
 
 def Attendance(request):
