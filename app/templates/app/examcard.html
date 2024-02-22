@@ -1,6 +1,9 @@
 {% extends 'main.html' %}
 {% load static %}
 {% block content %}
+<script src="https://code.jquery.com/jquery-3.6.3.min.js"
+    integrity="sha256-pvPw+upLPUjgMXY0G+8O0xUf+/Im1MZjXxxgOcBQBXU=" crossorigin="anonymous">
+    </script>
 <div class="page-wrapper">
     <div class="content">
         <div class="row">
@@ -194,7 +197,7 @@
                                 </div>
                             </div>
                         </div>
-<button id="downloadButton" class="btn btn-primary">Download Exam Card as PDF</button>
+                        <button id="downloadButton" class="btn btn-primary">Download Exam Card as PDF</button>
                     </div>
                 </div>
             </div>
@@ -204,8 +207,6 @@
 <div class="sidebar-overlay" data-reff=""></div>
 <script src="https://rawgit.com/eKoopmans/html2pdf/master/dist/html2pdf.bundle.js"></script>
 
-<!-- Add a button or link to trigger the download -->
-<button id="downloadButton" class="btn btn-primary">Download Exam Card as PDF</button>
 
 <!-- Your existing scripts -->
 <script src="{% static 'js/jquery-3.2.1.min.js' %}"></script>
@@ -254,6 +255,7 @@
         });
     });
 </script>
+
 </script>
 <script src="{% static 'js/jquery-3.2.1.min.js' %}"></script>
 <script src="{% static 'js/popper.min.js' %}"></script>
