@@ -341,8 +341,37 @@ def ExamCard(request):
     student = Student.objects.get(user=logged_in_user)
     units_list = json.loads(student.units)
 
-    context = {'student':student, 'unit_list':units_list}
+    registerAttendance = (
+        takeAttendance.objects
+        .filter(student=student)
+        .values('unitAttendent')
+        .annotate(
+            total_sessions=Value(14, output_field=FloatField()),
+            attendance_count=Count('id'),
+            present_count=Count(Case(When(status='Present', then=1), output_field=FloatField()))
+        )
+    )
+
+    # Calculate the percentage attendance for each unit for 'Present' status
+    registerAttendance = registerAttendance.annotate(
+        attendance_percentage=Case(
+            When(present_count__gt=0, then=ExpressionWrapper(
+                (F('present_count') / F('total_sessions')) * 100,
+                output_field=FloatField()
+            )),
+            default=Value(0.0),
+            output_field=FloatField()
+        )
+    )
+
+    # Check if the attendance percentage for all units is greater than 80%
+    all_units_above_80 = all(unit['attendance_percentage'] > 80 for unit in registerAttendance)
+
+    print('percentage', registerAttendance)
+
+    context = {'student': student, 'unit_list': units_list, 'percentage': all_units_above_80}
     return render(request, 'app/examcard.html', context)
+
 
 def myProfile(request):
     logged_in_user = request.user
