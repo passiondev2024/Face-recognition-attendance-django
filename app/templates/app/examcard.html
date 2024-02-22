@@ -9,7 +9,7 @@
             </div>
         </div>
         <div class="row">
-            <div class="col-12 col-md-8 col-lg-8 col-xl-8">
+            <div class="col-12 col-md-8 col-lg-8 col-xl-10">
                 <div class="card">
                     <div class="card-body">
                         <!-- <div class="chart-title">
@@ -18,6 +18,9 @@
                         <div class="row">
                             <div class="col-md-12">
                                 <div class="table-responsive">
+                                    <p style="text-align: center;">
+                                    <img style="width: 200px; height: 110px;" src="{% static 'img/logo.png' %}" alt="">
+                                    </p>
                                     <p style="text-align: center;"><b>OFFICE OF THE REGISTRAR, ACADEMIC AFFAIRS</b></p>
                                     <p style="text-align: center;"><b>P.O.Box 103-40404, Rongo</b></p>
                                     <hr>
@@ -27,38 +30,173 @@
                                         {{student.school}}</p>
                                     <p><b>PROGRAM:</b> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
                                         {{student.course}}</p>
-                                    <div class="col-md-6">
-                                        <p><b>ACADEMIC YEAR:</b> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-                                            2023/2024</p>
+                                    <div class="row container-fluid">
+                                        <div class="col-12 col-md-6 col-lg-6 col-xl-6">
+                                            <div class="car">
+                                                <div class="card-boy">
+                                                    <div class="col-md-12">
+                                                        <p><b>ACADEMIC YEAR:</b>
+                                                            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                                                            2023/2024</p>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="col-12 col-md-6 col-lg-6 col-xl-6">
+                                            <div class="car">
+                                                <div class="card-bod">
+                                                    <div class="col-md-12">
+                                                        <p><b>SESSION:</b>
+                                                            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                                                            {{student.semester}}</p>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="col-12 col-md-6 col-lg-6 col-xl-6">
+                                            <div class="car">
+                                                <div class="card-bd">
+                                                    <div class="col-md-12">
+                                                        <p><b>YEAR OF STUDY:</b>
+                                                            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                                                            {{student.year}}</p>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="col-12 col-md-6 col-lg-6 col-xl-6">
+                                            <div class="car">
+                                                <div class="card-bd">
+                                                    <div class="col-md-12">
+                                                        <p><b>STUDY METHOD:</b>
+                                                            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                                                            Regular</p>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="col-12 col-md-6 col-lg-6 col-xl-6">
+                                            <div class="car">
+                                                <div class="card-bd">
+                                                    <div class="col-md-12">
+                                                        <p><b>ADMISSION NUMBER:</b>
+                                                            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                                                            {{student.user.username}}</p>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="col-12 col-md-6 col-lg-6 col-xl-6">
+                                            <div class="car">
+                                                <div class="card-bd">
+                                                    <div class="col-md-12">
+                                                        <p><b>NAME:</b>
+                                                            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                                                            {{student.first_name}} {{student.last_name}}</p>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
                                     </div>
-                                    <div class="col-md-6">
-                                        <p><b>YEAR OF STUDY:</b> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-                                            {{student.year}}</p>
+                                </div>
+                            </div>
+                            <div class="col-12 col-md-6 col-lg-6 col-xl-12">
+                                <div class="card">
+                                    <div class="card-body">
+                                        <div class="row">
+                                            <div class="col-md-12">
+                                                <div class="table-responsive">
+                                                    <table class="table table-striped custom-table mb-0 datatable">
+                                                        <thead>
+                                                            <tr>
+                                                                <th style="text-decoration: none;">Units for
+                                                                    {{student.user.username}} {{student.first_name}}
+                                                                    {{student.last_name}}</th>
+                                                            </tr>
+                                                            <tr>
+                                                                <th>#</th>
+                                                                <th>COURSE CODE</th>
+                                                                <th>COURSE NAME</th>
+                                                                <th>BOOKLET SERIAL No.</th>
+                                                                <th>LECTURE SIGNATURE</th>
+                                                            </tr>
+                                                        </thead>
+                                                        <tbody>
+                                                            {% for unit in unit_list %}
+                                                            <tr>
+                                                                <td>1</td>
+                                                                <td>
+                                                                    {{unit.code}}
+                                                                </td>
+                                                                <td>{{unit.name}}</td>
+                                                                <td></td>
+                                                                <td></td>
+                                                            </tr>
+                                                            {% endfor %}
+                                                        </tbody>
+                                                    </table>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <br><br>
+                                    <div class="row container-fluid">
+                                        <div class="col-12 col-md-6 col-lg-6 col-xl-4">
+                                            <div class="car">
+                                                <div class="card-boy">
+                                                    <div class="col-md-12">
+                                                        <p><b>
+                                                                <hr>
+                                                            </b>
+                                                            STUDENT SIGNATURE</p>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="col-12 col-md-6 col-lg-6 col-xl-4">
+                                            <div class="car">
+                                                <div class="card-bod">
+                                                    <div class="col-md-12">
+                                                        <p><b>
+                                                                <hr>
+                                                            </b>
+                                                            DEAN SIGNATURE AND STAMP</p>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="col-12 col-md-6 col-lg-6 col-xl-4">
+                                            <div class="car">
+                                                <div class="card-bd">
+                                                    <div class="col-md-12">
+                                                        <p><b>
+                                                                <hr>
+                                                            </b>
+                                                            REGISTRAR-AA`S SIGNATURE AND STAMP</p>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-lg-12">
+                                    <div class="table-responsive">
+                                        <table class="table table-striped custom-table mb-0">
+                                            Sorry you have not reached minimum requirements for class attendance
+                                        </table>
                                     </div>
                                 </div>
                             </div>
                         </div>
                     </div>
                 </div>
-            </div>
-        </div>
-        <div class="row">
-            <div class="col-lg-12">
-                <div class="table-responsive">
-                    <table class="table table-striped custom-table mb-0">
-                        Sorry you have not reached minimum requirements for class attendance
-                    </table>
-                </div>
-            </div>
-        </div>
-    </div>
-</div>
-</div>
-<div class="sidebar-overlay" data-reff=""></div>
-<script src="{% static 'js/jquery-3.2.1.min.js' %}"></script>
-<script src="{% static 'js/popper.min.js' %}"></script>
-<script src="{% static 'js/bootstrap.min.js' %}"></script>
-<script src="{% static 'js/jquery.slimscroll.js' %}"></script>
-<script src="{% static 'js/select2.min.js' %}"></script>
-<script src="{% static 'js/app.js' %}"></script>
-{% endblock content %}
+                <div class="sidebar-overlay" data-reff=""></div>
+                <script src="{% static 'js/jquery-3.2.1.min.js' %}"></script>
+                <script src="{% static 'js/popper.min.js' %}"></script>
+                <script src="{% static 'js/bootstrap.min.js' %}"></script>
+                <script src="{% static 'js/jquery.slimscroll.js' %}"></script>
+                <script src="{% static 'js/select2.min.js' %}"></script>
+                <script src="{% static 'js/app.js' %}"></script>
+                {% endblock content %}
