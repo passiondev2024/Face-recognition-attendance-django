@@ -168,10 +168,10 @@ $(document).ready(function () {
                     room: {
                         name: 'E409',
                         coordinates: [
-                            { 'latitude': -1.2833, 'longitude': 36.8168 },
-                            { 'latitude': -1.2835, 'longitude': 36.8168 },
-                            { 'latitude': -1.2831, 'longitude': 36.8166 },
-                            { 'latitude': -1.2831, 'longitude': 36.8166 },
+                            { 'latitude': -1.3333, 'longitude': 36.7667 },
+                            { 'latitude': -1.2333, 'longitude': 36.8667 },
+                            { 'latitude': -1.2333, 'longitude': 36.8667 },
+                            { 'latitude': -1.3333, 'longitude': 36.7667 }
                         ]
                     },
                     startTime: '01:00 PM',
