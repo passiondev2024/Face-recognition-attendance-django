@@ -164,7 +164,7 @@ $(document).ready(function () {
                 {
                     code: 'COM 110',
                     name: 'Introduction to Computer',
-                    day: 'Thursday', lecturer: 'Dr.Amuomo',
+                    day: 'Saturday', lecturer: 'Dr.Amuomo',
                     room: {
                         name: 'E409',
                         coordinates: [
@@ -177,7 +177,7 @@ $(document).ready(function () {
                     startTime: '01:00 PM',
                     endTime: '11:00 PM'
                 },
-                { code: 'PHY 110', name: 'Introduction to Physics', day: 'Monday', lecturer: 'Dr.Amuomo', room: 'E409', startTime: '09:00 AM', endTime: '12:00 PM' }
+                { code: 'PHY 110', name: 'Introduction to Physics', day: 'Saturday', lecturer: 'Dr.Amuomo', room: 'E409', startTime: '09:00 AM', endTime: '12:00 PM' }
             ];
         }
         else if (($('#semester').val() == 'semester2') && ($('#year').val() == 'Year1') && ($('#course').val() == 'Computer_Science')) {
