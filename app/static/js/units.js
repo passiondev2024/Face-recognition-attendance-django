@@ -174,8 +174,8 @@ $(document).ready(function () {
                             { 'latitude': -1.2831, 'longitude': 36.8166 },
                         ]                        
                     },
-                    startTime: '01:00 AM',
-                    endTime: '11:59 AM'
+                    startTime: '12:00 PM',
+                    endTime: '11:59 PM'
                 },
                 { code: 'PHY 110', name: 'Introduction to Physics', day: 'Saturday', lecturer: 'Dr.Amuomo', room: 'E409', startTime: '09:00 AM', endTime: '12:00 PM' }
             ];

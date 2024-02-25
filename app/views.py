@@ -245,8 +245,11 @@ def Attend(request):
                         if not created:
                             messages.info(request, 'Attendance already taken')
 
-                    attendances = takeAttendance.objects.filter(week=this_week, student=student, unitAttendent=unit_attendance_data)
-                    messages.success(request, 'Attendance taken successfully')
+                        attendances = takeAttendance.objects.filter(week=this_week, student=student, unitAttendent=unit_attendance_data)
+                        messages.success(request, 'Attendance taken successfully')
+                    else:
+                        messages.error(request, 'Attendance not taken, try again within the secified time')
+                    
                 else:
                     messages.warning(request, 'You are outside the specified area. Attendance not recorded.')
             else:
