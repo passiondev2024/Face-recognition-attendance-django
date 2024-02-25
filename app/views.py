@@ -233,8 +233,9 @@ def Attend(request):
                     studentDetails = Student.objects.filter(course=student.course, year=student.year, semester=student.semester)
                     classNames = [str(data.user) for data in studentDetails]
                     recognized_name = Recognizer({'student': student, 'unitAttendent': unit_attendance_data}, classNames)
+                    print(f"Recognized Name: {recognized_name}")
 
-                    if recognized_name:
+                    if recognized_name != 'Unknown':
                         attendance, created = takeAttendance.objects.get_or_create(
                             week=this_week,
                             student=student,
