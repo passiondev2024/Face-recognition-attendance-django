@@ -247,9 +247,10 @@ def Attend(request):
 
                         attendances = takeAttendance.objects.filter(week=this_week, student=student, unitAttendent=unit_attendance_data)
                         messages.success(request, 'Attendance taken successfully')
+                        return redirect('attendance')
                     else:
                         messages.error(request, 'Attendance not taken, try again within the secified time')
-                    
+                        return redirect('attend')
                 else:
                     messages.warning(request, 'You are outside the specified area. Attendance not recorded.')
             else:
