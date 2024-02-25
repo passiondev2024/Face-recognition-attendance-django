@@ -196,10 +196,10 @@ def Attend(request):
 
         if request.method == 'POST':
             unit_attendance_data_raw = request.POST.get('unitAttendent', '{}')
-            print(f"Raw Data: {unit_attendance_data_raw}")
+            # print(f"Raw Data: {unit_attendance_data_raw}")
 
             unit_attendance_data = eval(unit_attendance_data_raw)
-            print(f"Parsed Data: {unit_attendance_data}")
+            # print(f"Parsed Data: {unit_attendance_data}")
 
             day = unit_attendance_data.get('day', '')
             start_time = unit_attendance_data.get('startTime', '')
@@ -281,20 +281,20 @@ from shapely.geometry import Point, Polygon
 
 def is_user_within_coordinates(user_latitude, user_longitude, room_coordinates):
     try:
-        print(f"User Coordinates: {user_latitude}, {user_longitude}")
-        print(f"Room Coordinates: {room_coordinates}")
+        # print(f"User Coordinates: {user_latitude}, {user_longitude}")
+        # print(f"Room Coordinates: {room_coordinates}")
 
         if len(room_coordinates) == 4:
             # Fix the order of coordinates here
             polygon_coordinates = [(float(coord['longitude']), float(coord['latitude'])) for coord in room_coordinates]
 
-            print(f"Polygon Coordinates: {polygon_coordinates}")
+            # print(f"Polygon Coordinates: {polygon_coordinates}")
 
             user_point = Point(float(user_longitude), float(user_latitude))
             room_polygon = Polygon(polygon_coordinates)
 
-            print(f"User Point: {user_point}")
-            print(f"Room Polygon: {room_polygon}")
+            # print(f"User Point: {user_point}")
+            # print(f"Room Polygon: {room_polygon}")
 
             if room_polygon.contains(user_point):
                 return True
