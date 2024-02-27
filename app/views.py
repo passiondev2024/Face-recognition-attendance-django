@@ -235,7 +235,7 @@ def Attend(request):
                     recognized_name = Recognizer({'student': student, 'unitAttendent': unit_attendance_data}, classNames)
                     print(f"Recognized Name: {recognized_name}")
 
-                    if recognized_name != 'Unknown':
+                    if recognized_name != 'Unknown' and recognized_name == logged_in_user.username:
                         attendance, created = takeAttendance.objects.get_or_create(
                             week=this_week,
                             student=student,
@@ -270,8 +270,8 @@ def Attend(request):
 
 def get_current_gps_coordinates():
     try:
-        g = geocoder.ip('me')  # this function is used to find the current information using our IP Address
-        if g.latlng and len(g.latlng) == 2:  # Check if coordinates are found and in the expected format
+        g = geocoder.ip('me')
+        if g.latlng and len(g.latlng) == 2: 
             return g.latlng
         else:
             return None
