@@ -25,6 +25,8 @@
                             {% for unit in units_list %}
                             {% if unit.day == day %}
                             <option value="{{unit}}" aria-required="true">{{unit.code}}: {{unit.name}}</option>
+                            {% else %}
+                            <p>No units to attend today</p>
                             {% endif %}
                             {% endfor %}
                         </select>
