@@ -30,14 +30,18 @@
                                         {% endfor %}</span>
                                 </div>
                             </div>
-                            <div class="search-box">
-                                <div class="input-group input-group-sm">
-                                    <input type="text" class="form-control" placeholder="Search">
-                                    <span class="input-group-append">
-                                        <button class="btn" type="button"><i class="fa fa-search"></i></button>
-                                    </span>
+                            <form method="post">
+                                {% csrf_token %}
+                                <div class="search-box">
+                                    <div class="input-group input-group-sm">
+                                        <input type="text" class="form-control" name="search_text" placeholder="Search">
+                                        <span class="input-group-append">
+                                            <button class="btn" type="submit"><i class="fa fa-search"></i></button>
+                                        </span>
+                                    </div>
                                 </div>
-                            </div>
+                            </form>
+
                             <!-- <ul class="nav custom-menu">
                                 <li class="nav-item">
                                     <a href="#chat_sidebar" class="nav-link task-chat profile-rightbar float-right" id="task_chat"><i class="fa fa-user"></i></a>
@@ -114,8 +118,8 @@
                                             <input type="text" id="messag" name="text" class="form-control"
                                                 placeholder="Type message..." required>
                                             <!-- <span class="input-group-append"> -->
-                                                <button class="btn btn-primary" type="submit"><i
-                                                        class="fa fa-send"></i></button>
+                                            <button class="btn btn-primary" type="submit"><i
+                                                    class="fa fa-send"></i></button>
                                             </span>
                                         </div>
                                     </form>
