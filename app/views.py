@@ -195,11 +195,11 @@ def Attend(request):
         now = datetime.now()
         now_time = now.time()
         day_of_week = now.strftime("%A")
-        print(day_of_week)
+        # print(day_of_week)
 
         if request.method == 'POST':
             unit_attendance_data_raw = request.POST.get('unitAttendent', '{}')
-            print(f"Raw Data: {unit_attendance_data_raw}")
+            # print(f"Raw Data: {unit_attendance_data_raw}")
 
             unit_attendance_data = eval(unit_attendance_data_raw)
             # print(f"Parsed Data: {unit_attendance_data}")
