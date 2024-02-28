@@ -335,11 +335,15 @@ def Chats(request):
     students = Student.objects.filter(course=course, semester=semester, year=year)
     all_texts = Chat.objects.filter(student__in=students)
     if request.method == 'POST':
-        text = request.POST['text']
+        search_query = request.POST.get('search_text', '')
+        text = request.POST.get('text', '')
 
-        text_details = Chat.objects.create(student=student, text=text)
-        text_details.save()
+        if search_query:
+            all_texts = all_texts.filter(Q(text__icontains=search_query) | Q(student__user__username__icontains=search_query))
 
+        if text:
+            text_details = Chat.objects.create(student=student, text=text)
+            text_details.save()
 
     context = {'all_texts':all_texts, 'student':student, 'students':students}
     return render(request, 'app/chating.html', context)
