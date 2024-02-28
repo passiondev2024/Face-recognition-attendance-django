@@ -23,4 +23,7 @@ from datetime import datetime, timedelta
 
 
 now = datetime.now()
-print(now.time())
+
+# Print the day of the week
+day_of_week = now.strftime("%A")
+print(day_of_week)
