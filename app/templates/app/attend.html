@@ -23,8 +23,9 @@
                         <select name="unitAttendent" id="" class="form-control">
                             <option value="">Select unit.......</option>
                             {% for unit in units_list %}
-                            {% if unit.day ==  %}
+                            {% if unit.day == day_of_week %}
                             <option value="{{unit}}" aria-required="true">{{unit.code}}: {{unit.name}}</option>
+                            {% endif %}
                             {% endfor %}
                         </select>
                     </div>

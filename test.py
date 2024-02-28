@@ -24,6 +24,5 @@ from datetime import datetime, timedelta
 
 now = datetime.now()
 
-# Print the day of the week
 day_of_week = now.strftime("%A")
 print(day_of_week)
