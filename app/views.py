@@ -13,6 +13,7 @@ from .recognizer import Recognizer
 from json.decoder import JSONDecodeError
 from datetime import date
 from datetime import datetime
+from datetime import datetime, timedelta
 import geocoder
 import json
 from django.db.models import Q
@@ -169,8 +170,6 @@ def get_week_number():
         return now.date().weekday() + 1
 
 
-from datetime import datetime
-from datetime import datetime, timedelta
 def is_within_time_range(start_time, end_time, time_format="%I:%M %p"):
     now = datetime.now()
     start = datetime.strptime(start_time, time_format)
@@ -193,10 +192,14 @@ def Attend(request):
         logged_in_user = request.user
         student = Student.objects.get(user=logged_in_user)
         units_list = json.loads(student.units)
+        now = datetime.now()
+        now_time = now.time()
+        day_of_week = now.strftime("%A")
+        print(day_of_week)
 
         if request.method == 'POST':
             unit_attendance_data_raw = request.POST.get('unitAttendent', '{}')
-            # print(f"Raw Data: {unit_attendance_data_raw}")
+            print(f"Raw Data: {unit_attendance_data_raw}")
 
             unit_attendance_data = eval(unit_attendance_data_raw)
             # print(f"Parsed Data: {unit_attendance_data}")
@@ -256,7 +259,7 @@ def Attend(request):
                     messages.warning(request, 'You are outside the specified area. Attendance not recorded.')
             else:
                 messages.warning(request, 'Unable to retrieve your GPS coordinates. Attendance not recorded.')
-        context = {'units_list': units_list}
+        context = {'units_list': units_list, 'now_time':now_time, 'day_of_week':day_of_week}
         return render(request, 'app/attend.html', context)
 
     except JSONDecodeError as e:
