@@ -327,16 +327,25 @@ def Attendance(request):
     context = {'units_list':units_list, 'registerAttendance':registerAttendance}
     return render(request, 'app/attendance.html', context)
 
+
 def ClassAttendance(request):
     student = request.user.student
     course = student.course
     year = student.year
     semester = student.semester
     students = Student.objects.filter(course=course, semester=semester, year=year)
-    all_attendands = takeAttendance.objects.filter(student__in=students)
+    units_list = json.loads(student.units)
 
-    context = {'all':all_attendands, 'student':student, 'students':students}
+    unit_attendance_data = []
+
+    for unit in units_list:
+        # Fetch attendance data for each unit
+        unit_attendance = takeAttendance.objects.filter(unitAttendent=unit, student__in=students)
+        unit_attendance_data.append({'unit': unit, 'attendance': unit_attendance})
+
+    context = {'unit_attendance_data': unit_attendance_data, 'student': student, 'students': students}
     return render(request, 'app/fullAttendance.html', context)
+
 
 def Chats(request):
     student = request.user.student
