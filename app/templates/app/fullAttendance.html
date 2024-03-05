@@ -2,7 +2,11 @@
 {% load static %}
 {% block content %}
 <script src="https://code.jquery.com/jquery-3.6.4.min.js"></script>
-
+<style>
+    #myTable tr.no-border {
+        border: none;
+    }
+</style>
 <div class="page-wrapper">
     <div class="content">
         <div class="card-box profile-header">
@@ -25,65 +29,115 @@
                 </li>
                 {% endfor %}
             </ul>
-            <div class="tab-content">
+            <section class="page">
                 <div class="tab-content">
-                    {% for unit_data in unit_attendance_data %}
-                    <div class="tab-pane show" id="unit-{{ unit_data.unit.code }}">
-                        {% for week, attendance_list in unit_data.attendance_by_week.items reversed %}
-                        <div class="row">
-                            <div class="col-md-12">
-                                <div class="card-box">
-                                    <h3 class="card-title">Attendance for {{ unit_data.unit.code }} - Week {{ week }}
-                                    </h3>
-                                    <div class="experience-box">
-                                        <div class="table-responsive">
-                                            <table class="table mb-0 new-patient-table">
-                                                <thead>
-                                                    <tr>
-                                                        <th>Lecturer: </th>
+                    <div class="tab-content">
+                        {% for unit_data in unit_attendance_data %}
+                        <div class="tab-pane show" id="unit-{{ unit_data.unit.code }}">
+                            {% for week, attendance_list in unit_data.attendance_by_week.items reversed %}
+                            <div class="row">
+                                <div class="col-md-12">
+                                    <div class="card-box">
+                                        <h3 class="card-title">Attendance for {{ unit_data.unit.code }} - Week 
+                                            {{ week }}
+                                        </h3>
+                                        <div class="experience-box">
+                                            <div class="table-responsive">
+                                                <table id="myTable" class="table mb-0 new-patient-table">
+                                                    <thead>
+                                                        <tr class="no-border" style="border: none;">
+                                                            <th>Unit: </th>
+                                                            {% for attendance in attendance_list %}
+                                                            <td>{{attendance.unitAttendent.code}}:
+                                                                {{attendance.unitAttendent.name}}</td>
+                                                            {% endfor %}
+                                                            <th>School: </th>
+                                                            {% for attendance in attendance_list %}
+                                                            <td>{{attendance.student.school}}</td>
+                                                            {% endfor %}
+                                                        </tr>
+                                                        <tr style="border: none;">
+                                                            <th>Course: </th>
+                                                            {% for attendance in attendance_list %}
+                                                            <td>{{attendance.student.course}}</td>
+                                                            {% endfor %}
+                                                            <th>Lecturer: </th>
+                                                            {% for attendance in attendance_list %}
+                                                            <td>{{attendance.unitAttendent.lecturer}}</td>
+                                                            {% endfor %}
+                                                        </tr><br><br>
+
+                                                        <tr>
+                                                            <th>Admission Number</th>
+                                                            <th>Name</th>
+                                                            <th>Date</th>
+                                                            <th>Time</th>
+                                                            <th>Status</th>
+                                                        </tr>
+                                                    </thead>
+                                                    <tbody>
                                                         {% for attendance in attendance_list %}
-                                                        <th>{{attendance.unitAttendent.lecturer}}</th>
+                                                        <tr>
+                                                            <td>{{ attendance.student.user }}</td>
+                                                            <td>{{ attendance.student.first_name }}
+                                                                {{ attendance.student.last_name }}
+                                                            </td>
+                                                            <td>{{ attendance.date }}</td>
+                                                            <td>{{ attendance.time }}</td>
+                                                            {% if attendance.status == 'Present' %}
+                                                            <td><i class="fa fa-check text-success"></i></td>
+                                                            {% else %}
+                                                            <td><i class="fa fa-close text-danger"></i></td>
+                                                            {% endif %}
+                                                        </tr>
                                                         {% endfor %}
-                                                    </tr>
-                                                    <tr>
-                                                        <th>Admission Number</th>
-                                                        <th>Name</th>
-                                                        <th>Date</th>
-                                                        <th>Time</th>
-                                                        <th>Status</th>
-                                                    </tr>
-                                                </thead>
-                                                <tbody>
-                                                    {% for attendance in attendance_list %}
-                                                    <tr>
-                                                        <td>{{ attendance.student.user }}</td>
-                                                        <td>{{ attendance.student.first_name }}
-                                                            {{ attendance.student.last_name }}
-                                                        </td>
-                                                        <td>{{ attendance.date }}</td>
-                                                        <td>{{ attendance.time }}</td>
-                                                        {% if attendance.status == 'Present' %}
-                                                        <td><i class="fa fa-check text-success"></i></td>
-                                                        {% else %}
-                                                        <td><i class="fa fa-close text-danger"></i></td>
-                                                        {% endif %}
-                                                    </tr>
-                                                    {% endfor %}
-                                                </tbody>
-                                            </table>
+                                                    </tbody>
+                                                </table>
+                                                <div style="text-align: center;" class="">
+                                                    <button id="downloadButton" class="btn btn-primary w-90">Download
+                                                        ID</button>
+                                                </div>
+                                                {% endfor %}
+                                            </div>
                                         </div>
                                     </div>
                                 </div>
                             </div>
+
                         </div>
                         {% endfor %}
                     </div>
-                    {% endfor %}
                 </div>
-            </div>
+            </section>
         </div>
     </div>
+    <script>
+        document.getElementById('downloadButton').addEventListener('click', function () {
+            var jsPDF = window.jspdf.jsPDF;
+            var section = document.querySelector('.page');
+            var originalWidth = section.offsetWidth;
+            var originalHeight = section.offsetHeight;
 
+            // Set the desired scaling factors for width and height (you can adjust these values)
+            var scaleWidth = 1.5;
+            var scaleHeight = 2;
+
+            // Set the new width and height to the section
+            section.style.width = originalWidth * scaleWidth + 'px';
+            section.style.height = originalHeight * scaleHeight + 'px';
+
+            html2canvas(section, { scale: 2 }).then(function (canvas) {
+                var imgData = canvas.toDataURL('image/png');
+                var pdf = new jsPDF('p', 'mm', 'a4');
+                pdf.addImage(imgData, 'PNG', 0, 0, pdf.internal.pageSize.getWidth(), pdf.internal.pageSize.getHeight());
+                pdf.save('downloaded_section.pdf');
+
+                // Restore the original width and height
+                section.style.width = originalWidth + 'px';
+                section.style.height = originalHeight + 'px';
+            });
+        });
+    </script>
     <script>
         // Add click event listener to handle tab clicks
         document.addEventListener("DOMContentLoaded", function () {
