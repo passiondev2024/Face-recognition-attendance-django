@@ -129,11 +129,11 @@
                                 <thead>
                                     <tr>
                                         <th>Student</th>
+                                        <th>Unit</th>
                                         <th>Date</th>
-                                        <th>Time</th>
-                                        {% for unit in units_list %}
-                                        <th>{{unit.code}}</th>
-                                        {% endfor %}
+                                        <th>Time Range</th>
+                                        <th>Time Attendant</th>
+                                        <th>Status</th>
                                     </tr>
                                 </thead>
                                 <tbody>
@@ -144,12 +144,13 @@
                                                 <img class="rounded-circle"
                                                     src="{{user.student.profile.profile_photo.url}}" width="24"
                                                     alt="Admin">
-                                                <!-- <span class="status online"></span> -->
+                                                <span class="status online"></span>
                                             </span>
                                         </td>
-                                        <td>{{data.date}}</td>
+                                        <th>{{data.unitAttendent.code}}</th>
+                                        <td>{{data.unitAttendent.day}}, {{data.date}}</td>
+                                        <td>{{data.unitAttendent.startTime}} - {{data.unitAttendent.endTime}}</td>
                                         <td>{{data.time}}</td>
-                                        <!-- <td>{{data.unitAttendent}}</td> -->
                                         {% for unit in units_list %}
                                         {% if data.unitAttendent.code == unit.code %}
                                         {% if data.status == 'Present' %}
@@ -158,7 +159,7 @@
                                         <td><i class="fa fa-close text-danger"></i></td>
                                         {% endif %}
                                         {% else %}
-                                        <!-- <td><i class="fa fa-close text-danger"></i></td> -->
+                                        <td></td>
                                         {% endif %}
                                         {% endfor %}
                                     </tr>
