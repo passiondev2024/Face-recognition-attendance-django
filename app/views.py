@@ -348,10 +348,20 @@ def ClassAttendance(request):
     for unit in units_list:
         # Fetch attendance data for each unit
         unit_attendance = takeAttendance.objects.filter(unitAttendent=unit, student__in=students)
-        unit_attendance_data.append({'unit': unit, 'attendance': unit_attendance})
+        
+        # Group attendance data by week
+        attendance_by_week = {}
+        for attendance_entry in unit_attendance:
+            week = attendance_entry.week
+            if week not in attendance_by_week:
+                attendance_by_week[week] = []
+            attendance_by_week[week].append(attendance_entry)
+
+        unit_attendance_data.append({'unit': unit, 'attendance_by_week': attendance_by_week})
 
     context = {'unit_attendance_data': unit_attendance_data, 'student': student, 'students': students}
     return render(request, 'app/fullAttendance.html', context)
+
 
 
 def Chats(request):
