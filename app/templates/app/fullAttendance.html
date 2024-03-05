@@ -27,9 +27,9 @@
             </ul>
             <div class="tab-content">
                 <div class="tab-content">
-                    {% for unit_data in unit_attendance_data reversed %}
+                    {% for unit_data in unit_attendance_data %}
                     <div class="tab-pane show" id="unit-{{ unit_data.unit.code }}">
-                        {% for week, attendance_list in unit_data.attendance_by_week.items %}
+                        {% for week, attendance_list in unit_data.attendance_by_week.items reversed %}
                         <div class="row">
                             <div class="col-md-12">
                                 <div class="card-box">
@@ -39,6 +39,12 @@
                                         <div class="table-responsive">
                                             <table class="table mb-0 new-patient-table">
                                                 <thead>
+                                                    <tr>
+                                                        <th>Lecturer: </th>
+                                                        {% for attendance in attendance_list %}
+                                                        <th>{{attendance.unitAttendent.lecturer}}</th>
+                                                        {% endfor %}
+                                                    </tr>
                                                     <tr>
                                                         <th>Admission Number</th>
                                                         <th>Name</th>
