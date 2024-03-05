@@ -17,7 +17,7 @@
                 <div class="card">
                     <div class="card-body">
                     </div>
-                    {% if percentage %}
+                    
                     <section class="page">
                         <div class="row">
                             <div class="download-exam-card">
@@ -113,7 +113,7 @@
                                         <div class="row">
                                             <div class="col-md-12">
                                                 <div class="table-responsive">
-                                                    <table class="table table-striped custom-table mb-0 datatable">
+                                                    <table class="table custom-table mb-0 datatable">
                                                         <thead>
                                                             <tr>
                                                                 <th style="text-decoration: none;">Units for
@@ -190,7 +190,7 @@
                         </div>
                     </section>
                     <button id="downloadButton" class="btn btn-primary">Download Exam Card as PDF</button>
-                    {% else %}
+                    
 
                     <div class="row">
                         <div class="col-lg-12">
@@ -201,7 +201,7 @@
                             </div>
                         </div>
                     </div>
-                    {% endif %}
+
                 </div>
             </div>
         </div>
@@ -223,40 +223,28 @@
 
 <script>
     document.getElementById('downloadButton').addEventListener('click', function () {
-        // Get the HTML content of the specified div
-        var htmlContent = document.querySelector('.download-exam-card').outerHTML;
+        var jsPDF = window.jspdf.jsPDF;
+        var section = document.querySelector('.page');
+        var originalWidth = section.offsetWidth;
+        var originalHeight = section.offsetHeight;
 
-        // Create an options object for html2pdf.js
-        var options = {
-            margin: 10,
-            filename: 'student_exam_card.pdf',
-            image: { type: 'jpeg', quality: 0.98 },
-            html2canvas: { scale: 2 },
-            jsPDF: { unit: 'mm', format: 'a4', orientation: 'portrait' }
-        };
+        // Set the desired scaling factors for width and height (you can adjust these values)
+        var scaleWidth = 1.5;
+        var scaleHeight = 2;
 
-        // Use html2pdf.js to convert HTML to PDF
-        html2pdf().from(htmlContent).set(options).outputPdf(function (pdf) {
-            // Create a Blob from the PDF data
-            var blob = new Blob([pdf], { type: 'application/pdf' });
+        // Set the new width and height to the section
+        section.style.width = originalWidth * scaleWidth + 'px';
+        section.style.height = originalHeight * scaleHeight + 'px';
 
-            // Create a temporary link element
-            var a = document.createElement('a');
+        html2canvas(section, { scale: 2 }).then(function (canvas) {
+            var imgData = canvas.toDataURL('image/png');
+            var pdf = new jsPDF('p', 'mm', 'a4');
+            pdf.addImage(imgData, 'PNG', 0, 0, pdf.internal.pageSize.getWidth(), pdf.internal.pageSize.getHeight());
+            pdf.save('exam_card.pdf');
 
-            // Set the link's href attribute to a data URI representing the Blob
-            a.href = URL.createObjectURL(blob);
-
-            // Set the download attribute to specify the file name
-            a.download = 'student_exam_card.pdf';
-
-            // Append the link to the document body
-            document.body.appendChild(a);
-
-            // Trigger a click on the link to initiate the download
-            a.click();
-
-            // Remove the link from the document body
-            document.body.removeChild(a);
+            // Restore the original width and height
+            section.style.width = originalWidth + 'px';
+            section.style.height = originalHeight + 'px';
         });
     });
 </script>
