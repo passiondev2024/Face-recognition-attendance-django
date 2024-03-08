@@ -30,9 +30,8 @@ def Recognizer(details, classNames):
     
     
     encodeListKnown = findEncondings(images)
-    cap = cv2.VideoCapture(0, cv2.CAP_DSHOW)
+    cap = cv2.VideoCapture(0)
 
-    
     while True:
         success, img = cap.read()
         cv2.imshow('Class Attendance', img)
