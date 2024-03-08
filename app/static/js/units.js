@@ -164,7 +164,7 @@ $(document).ready(function () {
                 {
                     code: 'COM 110',
                     name: 'Introduction to Computer',
-                    day: 'Tuesday', lecturer: 'Dr.Amuomo',
+                    day: 'Friday', lecturer: 'Dr.Amuomo',
                     room: {
                         name: 'E409',
                         coordinates: [
