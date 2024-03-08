@@ -30,7 +30,7 @@ def Recognizer(details, classNames):
     
     
     encodeListKnown = findEncondings(images)
-    cap = cv2.VideoCapture(0, cv2.CAP_MSMF)
+    cap = cv2.VideoCapture(0, cv2.CAP_DSHOW)
     
     while True:
         success, img = cap.read()
