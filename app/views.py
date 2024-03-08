@@ -231,8 +231,8 @@ def Attend(request):
 
             if user_coordinates is not None:
                 user_latitude, user_longitude = user_coordinates
-                print('lat', user_latitude)
-                print('log', user_longitude)
+                print('latitude', user_latitude)
+                print('logitude', user_longitude)
                 room_coordinates = unit_attendance_data.get('room', {}).get('coordinates', [])
                 if is_user_within_coordinates(user_latitude, user_longitude, room_coordinates):
                     this_week = get_week_number()
@@ -316,6 +316,7 @@ def is_user_within_coordinates(user_latitude, user_longitude, room_coordinates):
             # print(f"Polygon Coordinates: {polygon_coordinates}")
 
             user_point = Point(float(user_longitude), float(user_latitude))
+
             room_polygon = Polygon(polygon_coordinates)
 
             # print(f"User Point: {user_point}")

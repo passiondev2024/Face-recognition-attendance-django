@@ -29,19 +29,21 @@
 import asyncio
 import winsdk.windows.devices.geolocation as wdg
 
-
 async def getCoords():
     locator = wdg.Geolocator()
     pos = await locator.get_geoposition_async()
     return [round(pos.coordinate.latitude, 8),  round(pos.coordinate.longitude, 8)]
 
-
 def getLoc():
     try:
         return asyncio.run(getCoords())
     except PermissionError:
-        print("ERROR: You need to allow applications to access you location in Windows settings")
+        print("ERROR: You need to allow applications to access your location in Windows settings")
 
+if __name__ == "__main__":
+    coordinates = getLoc()
+    if coordinates:
+        print("Latitude:", coordinates[0])
+        print("Longitude:", coordinates[1])
 
-print(getLoc())
 
