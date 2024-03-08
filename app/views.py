@@ -184,9 +184,25 @@ def is_within_time_range(start_time, end_time, time_format="%I:%M %p"):
         return start.time() <= now.time() or now <= (end_datetime + timedelta(days=1))
 
 
-from django.db import IntegrityError
+import asyncio
+import winsdk.windows.devices.geolocation as wdg
 
-# ... (other imports and functions)
+async def getCoords():
+    locator = wdg.Geolocator()
+    pos = await locator.get_geoposition_async()
+    return [pos.coordinate.latitude, pos.coordinate.longitude]
+
+def get_current_gps_coordinates():
+    try:
+        coordinates = asyncio.run(getCoords())
+        return coordinates
+    except PermissionError:
+        print("ERROR: You need to allow applications to access your location in Windows settings")
+        return None
+    except Exception as e:
+        print(f"Error retrieving GPS coordinates: {str(e)}")
+        return None
+
 
 def Attend(request):
     try:
@@ -272,16 +288,16 @@ def Attend(request):
         return redirect('attendance')
 
 
-def get_current_gps_coordinates():
-    try:
-        g = geocoder.ip('me')
-        if g.latlng and len(g.latlng) == 2: 
-            return g.latlng
-        else:
-            return None
-    except Exception as e:
-        print(f"Error retrieving GPS coordinates: {str(e)}")
-        return None
+# def get_current_gps_coordinates():
+#     try:
+#         g = geocoder.ip('me')
+#         if g.latlng and len(g.latlng) == 2: 
+#             return g.latlng
+#         else:
+#             return None
+#     except Exception as e:
+#         print(f"Error retrieving GPS coordinates: {str(e)}")
+#         return None
 
 
 from shapely.geometry import Point, Polygon
