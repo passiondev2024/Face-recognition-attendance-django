@@ -167,12 +167,12 @@ $(document).ready(function () {
                     day: 'Friday', lecturer: 'Dr.Amuomo',
                     room: {
                         name: 'E409',
-                        coordinates: [
-                            { 'latitude': -0.82720166, 'longitude': 34.61829969 },
-                            { 'latitude': -0.82719410, 'longitude': 34.61829417 },
-                            { 'latitude': -0.82719366, 'longitude': 34.61829382 },
-                            { 'latitude': -0.82719410, 'longitude': 34.61829417 },
-                        ]                        
+                        coordinates:  [
+                            {"latitude": -0.82719733592, "longitude": 34.618297577905},
+                            {"latitude": -0.82719733592, "longitude": 34.618297577906},
+                            {"latitude": -0.82719733593, "longitude": 34.618297577906},
+                            {"latitude": -0.82719733593, "longitude": 34.618297577905}
+                        ]                      
                     },
                     startTime: '12:00 PM',
                     endTime: '11:59 PM'

@@ -187,23 +187,23 @@ def is_within_time_range(start_time, end_time, time_format="%I:%M %p"):
 
 
 
-async def getCoords():
-    locator = wdg.Geolocator()
-    pos = await locator.get_geoposition_async()
-    return [round(pos.coordinate.latitude, 12), round(pos.coordinate.longitude, 12)]
+# async def getCoords():
+#     locator = wdg.Geolocator()
+#     pos = await locator.get_geoposition_async()
+#     return [round(pos.coordinate.latitude, 12), round(pos.coordinate.longitude, 12)]
 
-def get_current_gps_coordinates():
-    try:
-        coordinates = asyncio.run(getCoords())
-        return coordinates
-    except PermissionError:
-        print("ERROR: You need to allow applications to access your location in Windows settings")
-        return None
-    except Exception as e:
-        print(f"Error retrieving GPS coordinates: {str(e)}")
-        return None
+# def get_current_gps_coordinates():
+#     try:
+#         coordinates = asyncio.run(getCoords())
+#         return coordinates
+#     except PermissionError:
+#         print("ERROR: You need to allow applications to access your location in Windows settings")
+#         return None
+#     except Exception as e:
+#         print(f"Error retrieving GPS coordinates: {str(e)}")
+#         return None
 
-def is_user_within_coordinates(user_latitude, user_longitude, room_coordinates, tolerance=1e-6):
+def is_user_within_coordinates(user_latitude, user_longitude, room_coordinates):
     try:
         # print(f"User Coordinates: {user_latitude}, {user_longitude}")
         # print(f"Room Coordinates: {room_coordinates}")
@@ -221,7 +221,7 @@ def is_user_within_coordinates(user_latitude, user_longitude, room_coordinates, 
             # print(f"User Point: {user_point}")
             # print(f"Room Polygon: {room_polygon}")
 
-            if room_polygon.contains(user_point) < tolerance:
+            if room_polygon.contains(user_point):
                 return True
             else:
                 print("User is outside the room polygon.")
@@ -232,6 +232,17 @@ def is_user_within_coordinates(user_latitude, user_longitude, room_coordinates, 
     except Exception as e:
         print(f"Error checking user coordinates: {str(e)}")
         return False
+
+def get_current_gps_coordinates():
+    try:
+        g = geocoder.ip('me')
+        if g.latlng and len(g.latlng) == 2: 
+            return g.latlng
+        else:
+            return None
+    except Exception as e:
+        print(f"Error retrieving GPS coordinates: {str(e)}")
+        return None
 
 def Attend(request):
     try:
@@ -315,18 +326,6 @@ def Attend(request):
         # Handle other exceptions if needed
         messages.error(request, f"An error occurred: {str(e)}")
         return redirect('attendance')
-
-
-# def get_current_gps_coordinates():
-#     try:
-#         g = geocoder.ip('me')
-#         if g.latlng and len(g.latlng) == 2: 
-#             return g.latlng
-#         else:
-#             return None
-#     except Exception as e:
-#         print(f"Error retrieving GPS coordinates: {str(e)}")
-#         return None
 
 
 
