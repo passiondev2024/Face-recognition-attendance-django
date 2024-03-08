@@ -33,7 +33,7 @@ import winsdk.windows.devices.geolocation as wdg
 async def getCoords():
     locator = wdg.Geolocator()
     pos = await locator.get_geoposition_async()
-    return [round(pos.coordinate.latitude, 6),  round(pos.coordinate.longitude, 6)]
+    return [round(pos.coordinate.latitude, 8),  round(pos.coordinate.longitude, 8)]
 
 
 def getLoc():
