@@ -8,7 +8,9 @@ from django.db.models import Case, When, Value, FloatField, F, Count, Q
 from django.db.models import Subquery, OuterRef
 from datetime import datetime, timedelta
 from .forms import ProfileForm, StudentForm
-from .utils import get_student_units
+from shapely.geometry import Point, Polygon
+import asyncio
+import winsdk.windows.devices.geolocation as wdg
 from .recognizer import Recognizer
 from json.decoder import JSONDecodeError
 from datetime import date
@@ -184,8 +186,6 @@ def is_within_time_range(start_time, end_time, time_format="%I:%M %p"):
         return start.time() <= now.time() or now <= (end_datetime + timedelta(days=1))
 
 
-import asyncio
-import winsdk.windows.devices.geolocation as wdg
 
 async def getCoords():
     locator = wdg.Geolocator()
@@ -203,6 +203,35 @@ def get_current_gps_coordinates():
         print(f"Error retrieving GPS coordinates: {str(e)}")
         return None
 
+def is_user_within_coordinates(user_latitude, user_longitude, room_coordinates):
+    try:
+        # print(f"User Coordinates: {user_latitude}, {user_longitude}")
+        # print(f"Room Coordinates: {room_coordinates}")
+
+        if len(room_coordinates) == 4:
+            # Fix the order of coordinates here
+            polygon_coordinates = [(float(coord['longitude']), float(coord['latitude'])) for coord in room_coordinates]
+
+            # print(f"Polygon Coordinates: {polygon_coordinates}")
+
+            user_point = Point(float(user_longitude), float(user_latitude))
+
+            room_polygon = Polygon(polygon_coordinates)
+
+            # print(f"User Point: {user_point}")
+            # print(f"Room Polygon: {room_polygon}")
+
+            if room_polygon.contains(user_point):
+                return True
+            else:
+                print("User is outside the room polygon.")
+                return False
+        else:
+            print("Invalid number of room coordinates. Please provide exactly 4 coordinates.")
+            return False
+    except Exception as e:
+        print(f"Error checking user coordinates: {str(e)}")
+        return False
 
 def Attend(request):
     try:
@@ -299,40 +328,6 @@ def Attend(request):
 #         print(f"Error retrieving GPS coordinates: {str(e)}")
 #         return None
 
-
-from shapely.geometry import Point, Polygon
-
-from shapely.geometry import Point, Polygon
-
-def is_user_within_coordinates(user_latitude, user_longitude, room_coordinates):
-    try:
-        # print(f"User Coordinates: {user_latitude}, {user_longitude}")
-        # print(f"Room Coordinates: {room_coordinates}")
-
-        if len(room_coordinates) == 4:
-            # Fix the order of coordinates here
-            polygon_coordinates = [(float(coord['longitude']), float(coord['latitude'])) for coord in room_coordinates]
-
-            # print(f"Polygon Coordinates: {polygon_coordinates}")
-
-            user_point = Point(float(user_longitude), float(user_latitude))
-
-            room_polygon = Polygon(polygon_coordinates)
-
-            # print(f"User Point: {user_point}")
-            # print(f"Room Polygon: {room_polygon}")
-
-            if room_polygon.contains(user_point):
-                return True
-            else:
-                print("User is outside the room polygon.")
-                return False
-        else:
-            print("Invalid number of room coordinates. Please provide exactly 4 coordinates.")
-            return False
-    except Exception as e:
-        print(f"Error checking user coordinates: {str(e)}")
-        return False
 
 
 def Attendance(request):
