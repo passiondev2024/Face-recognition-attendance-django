@@ -190,7 +190,7 @@ import winsdk.windows.devices.geolocation as wdg
 async def getCoords():
     locator = wdg.Geolocator()
     pos = await locator.get_geoposition_async()
-    return [pos.coordinate.latitude, pos.coordinate.longitude]
+    return [round(pos.coordinate.latitude, 8), round(pos.coordinate.longitude, 8)]
 
 def get_current_gps_coordinates():
     try:
