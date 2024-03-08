@@ -16,6 +16,7 @@ from datetime import datetime
 from datetime import datetime, timedelta
 import geocoder
 import json
+from django.http import JsonResponse
 from django.db.models import Q
 
 
