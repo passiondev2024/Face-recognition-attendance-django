@@ -107,66 +107,73 @@
 </div>
 
 <script>
-    // Function to create a bar chart
-    function createBarChart(unitsList, attendanceData) {
-        var ctx = document.getElementById('bargraph').getContext('2d');
-        var myBarChart = new Chart(ctx, {
-            type: 'bar',
-            data: {
-                labels: unitsList.map(item => item.code),  // Extracting 'code' from each item
-                datasets: [{
-                    label: 'Percentage Attendance',
-                    backgroundColor: 'rgba(0, 158, 251, 0.5)',
-                    borderColor: 'rgba(0, 158, 251, 1)',
-                    borderWidth: 1,
-                    data: unitsList.map(unit => {
-                        // Find the corresponding attendance data for this unit
-                        var attendance = attendanceData.find(item => item.unitAttendent === unit.code);
-                        // If attendance data found, return the attendance percentage, otherwise return 0
-                        return attendance ? attendance.attendance_percentage : 0;
-                    })
-                }]
+// Function to create a bar chart
+function createBarChart(unitsList, attendanceData) {
+    var ctx = document.getElementById('bargraph').getContext('2d');
+    var data = {
+        labels: unitsList.map(item => item.code),  // Extracting 'code' from each item
+        datasets: [{
+            label: 'Percentage Attendance',
+            backgroundColor: 'rgba(0, 158, 251, 0.5)',
+            borderColor: 'rgba(0, 158, 251, 1)',
+            borderWidth: 1,
+            data: unitsList.map(unit => {
+            // Find the corresponding attendance data for this unit
+            var attendance = attendanceData.find(item => item.unitAttendent.code === unit.code);
+            console.log("Unit:", unit.code, "Attendance:", attendance);
+            // If attendance data found, return the attendance percentage, otherwise return 0
+            return attendance && attendance.attendance_percentage ? attendance.attendance_percentage : 0;
+        })
+        }]
+    };
+    console.log("Data:", data); // Check the data before creating the chart
+    var myBarChart = new Chart(ctx, {
+        type: 'bar',
+        data: data,
+        options: {
+            responsive: true,
+            legend: {
+                display: true,
+                position: 'top'
             },
-            options: {
-                responsive: true,
-                legend: {
-                    display: true,
-                    position: 'top'
-                },
-                scales: {
-                    y: {
-                        beginAtZero: true,
-                        max: 100
-                    }
-                },
-                plugins: {
-                    tooltip: {
-                        callbacks: {
-                            label: function (context) {
-                                var label = context.dataset.label || '';
-                                if (label) {
-                                    label += ': ';
-                                }
-                                label += context.parsed.y + '%';
-                                return label;
+            scales: {
+                y: {
+                    beginAtZero: true,
+                    max: 100
+                }
+            },
+            plugins: {
+                tooltip: {
+                    callbacks: {
+                        label: function (context) {
+                            var label = context.dataset.label || '';
+                            if (label) {
+                                label += ': ';
                             }
+                            label += context.parsed.y + '%';
+                            return label;
                         }
                     }
                 }
             }
-        });
-    }
+        }
+    });
+}
 
-    // Convert units_list to a JavaScript array
-    var unitsList = JSON.parse('{{ units_list_json|escapejs }}');
+// Convert units_list to a JavaScript array
+var unitsList = JSON.parse('{{ units_list_json|escapejs }}');
 
-    // Convert attendance_data to a JavaScript array
-    var attendanceData = JSON.parse('{{ attendance_data_json|escapejs }}');
+// Convert attendance_data to a JavaScript array
+var attendanceData = JSON.parse('{{ attendance_data_json|escapejs }}');
 
-    // Call the function with data from Django template
-    createBarChart(unitsList, attendanceData);
-    console.log(attendanceData)
+console.log("Units List:", unitsList); // Check units list
+console.log("Attendance Data:", attendanceData); // Check attendance data
+
+// Call the function with data from Django template
+createBarChart(unitsList, attendanceData);
+
 </script>
+
 
 
 <div class="sidebar-overlay" data-reff=""></div>
