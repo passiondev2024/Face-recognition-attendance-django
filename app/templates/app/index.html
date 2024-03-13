@@ -119,7 +119,12 @@
                     backgroundColor: 'rgba(0, 158, 251, 0.5)',
                     borderColor: 'rgba(0, 158, 251, 1)',
                     borderWidth: 1,
-                    data: attendanceData.map(item => item.attendance_percentage)
+                    data: unitsList.map(unit => {
+                        // Find the corresponding attendance data for this unit
+                        var attendance = attendanceData.find(item => item.unitAttendent === unit.code);
+                        // If attendance data found, return the attendance percentage, otherwise return 0
+                        return attendance ? attendance.attendance_percentage : 0;
+                    })
                 }]
             },
             options: {
