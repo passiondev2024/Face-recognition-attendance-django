@@ -661,12 +661,12 @@ $(document).ready(function () {
                     day: 'Tuesday', lecturer: 'None',
                     room: {
                         name: 'Rongo University',
-                        coordinates:  [
-                            {"latitude": -0.82719733592, "longitude": 34.618297577905},
-                            {"latitude": -0.82719733592, "longitude": 34.618297577906},
-                            {"latitude": -0.82719733593, "longitude": 34.618297577906},
-                            {"latitude": -0.82719733593, "longitude": 34.618297577905}
-                        ]                      
+                        coordinates: [
+                            {"latitude": -0.8271909 - 0.000005, "longitude": 34.61829111 - 0.000005},
+                            {"latitude": -0.8271909 - 0.000005, "longitude": 34.61829111 + 0.000005},
+                            {"latitude": -0.8271909 + 0.000005, "longitude": 34.61829111 + 0.000005},
+                            {"latitude": -0.8271909 + 0.000005, "longitude": 34.61829111 - 0.000005}
+                        ]                   
                     },
                     startTime: '12:00 PM',
                     endTime: '11:59 PM'
