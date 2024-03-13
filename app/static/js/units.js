@@ -17,25 +17,25 @@ $(document).ready(function () {
             text: '-- Select Department --'
         }));
 
-        if ($('#school').val() == 'Science_TechnologyAndEngineering') {
+        if ($('#school').val() == 'Science Technology And Environmental Studies') {
             $('#department').append($('<option>', {
-                value: 'Mathematics,Statistics&Computing',
+                value: 'Mathematics, Statistics and Computing',
                 text: 'Department of Mathematics and Computing'
             }));
             $('#department').append($('<option>', {
-                value: 'Physical_Sciences',
+                value: 'Physical Sciences',
                 text: 'Department of Physical Sciences'
             }));
             $('#department').append($('<option>', {
-                value: 'Biological_Sciences',
+                value: 'Biological Sciences',
                 text: 'Department of Biological Sciences'
             }));
-        } else if ($('#school').val() == 'school2') {
+        } else if ($('#school').val() == 'Infocoms') {
             $('#department').append($('<option>', {
                 value: 'department2',
                 text: 'Department 2'
             }));
-        } else if ($('#school').val() == 'school3') {
+        } else if ($('#school').val() == 'Business') {
             $('#department').append($('<option>', {
                 value: 'department3',
                 text: 'Department 3'
@@ -59,9 +59,9 @@ $(document).ready(function () {
             text: '-- Select Course --'
         }));
 
-        if ($('#department').val() == 'Mathematics,Statistics&Computing') {
+        if ($('#department').val() == 'Mathematics Statistics nad Computing') {
             $('#course').append($('<option>', {
-                value: 'Computer_Science',
+                value: 'Computer Science',
                 text: 'Computer Science'
             }));
             $('#course').append($('<option>', {
@@ -69,15 +69,15 @@ $(document).ready(function () {
                 text: 'Statistics'
             }));
             $('#course').append($('<option>', {
-                value: 'Mathematics',
+                value: 'Pure Mathematics',
                 text: 'Pure Mathematics'
             }));
-        } else if ($('#department').val() == 'department2') {
+        } else if ($('#department').val() == 'Physical Sciences') {
             $('#course').append($('<option>', {
                 value: 'course2',
                 text: 'Course 2'
             }));
-        } else if ($('#department').val() == 'department3') {
+        } else if ($('#department').val() == 'Biological Sciences') {
             $('#course').append($('<option>', {
                 value: 'course3',
                 text: 'Course 3'
@@ -99,23 +99,23 @@ $(document).ready(function () {
             text: '-- Select Year --'
         }));
 
-        if (($('#course').val() == 'Computer_Science')
+        if (($('#course').val() == 'Computer Science')
             || ($('#course').val() == 'Statistics')
-            || ($('#course').val() == 'Mathematics')) {
+            || ($('#course').val() == 'Pure Mathematics')) {
             $('#year').append($('<option>', {
-                value: 'Year1',
+                value: 'Year 1',
                 text: 'Year 1'
             }));
             $('#year').append($('<option>', {
-                value: 'Year2',
+                value: 'Year 2',
                 text: 'Year 2'
             }));
             $('#year').append($('<option>', {
-                value: 'Year3',
+                value: 'Year 3',
                 text: 'Year 3'
             }));
             $('#year').append($('<option>', {
-                value: 'Year4',
+                value: 'Year 4',
                 text: 'Year 4'
             }));
         }
