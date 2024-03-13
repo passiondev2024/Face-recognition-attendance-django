@@ -48,9 +48,11 @@
 
                         {{form.student.as_hidden}}
                         <div class="form-group">
-                            <label>Profile Photo</label>
+                            <label>Profile Photo</label><br>
+                            <button id="openCameraButton" class="btn btn-danger account-btn">Open Camera</button><br> OR <br>
                             {{form.profile_photo}}
                         </div>
+
                         <div class="form-group text-center">
                             <button class="btn btn-primary account-btn" type="submit">Enroll</button>
                         </div>
