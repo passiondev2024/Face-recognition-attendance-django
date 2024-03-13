@@ -414,9 +414,317 @@ $(document).ready(function () {
                 {
                     code: 'MAT 212',
                     name: 'Linear Algebra I',
-                    day: '', lecturer: 'E003',
+                    day: 'Tuesday', lecturer: 'E003',
+                    room: {
+                        name: 'E003',
+                        coordinates:  [
+                            {"latitude": -0.82719733592, "longitude": 34.618297577905},
+                            {"latitude": -0.82719733592, "longitude": 34.618297577906},
+                            {"latitude": -0.82719733593, "longitude": 34.618297577906},
+                            {"latitude": -0.82719733593, "longitude": 34.618297577905}
+                        ]                      
+                    },
+                    startTime: '8:00 AM',
+                    endTime: '11:00 AM'
+                },
+            ]
+        }
+        else if (($('#semester').val() == 'semester2') && ($('#year').val() == 'year2') && ($('#course').val() == 'Computer_Science')) {
+            units = [
+                {
+                    code: 'COM 220',
+                    name: 'Software Engineering I',
+                    day: 'Monday', lecturer: 'Jane Juma',
+                    room: {
+                        name: 'Lecture Room 13',
+                        coordinates:  [
+                            {"latitude": -0.82719733592, "longitude": 34.618297577905},
+                            {"latitude": -0.82719733592, "longitude": 34.618297577906},
+                            {"latitude": -0.82719733593, "longitude": 34.618297577906},
+                            {"latitude": -0.82719733593, "longitude": 34.618297577905}
+                        ]                      
+                    },
+                    startTime: '9:00 AM',
+                    endTime: '11:59 AM'
+                },
+                {
+                    code: 'COM 221',
+                    name: 'Computer Organization',
+                    day: 'Tuesday', lecturer: 'Francis Onyango',
+                    room: {
+                        name: 'Lecture room 9',
+                        coordinates:  [
+                            {"latitude": -0.82719733592, "longitude": 34.618297577905},
+                            {"latitude": -0.82719733592, "longitude": 34.618297577906},
+                            {"latitude": -0.82719733593, "longitude": 34.618297577906},
+                            {"latitude": -0.82719733593, "longitude": 34.618297577905}
+                        ]                      
+                    },
+                    startTime: '2:00 PM',
+                    endTime: '4:00 PM'
+                },
+                {
+                    code: 'COM 223',
+                    name: 'Operating Systems and Networks',
+                    day: 'Wednesday', lecturer: 'Jane Juma',
+                    room: {
+                        name: 'Lecture room 13',
+                        coordinates:  [
+                            {"latitude": -0.82719733592, "longitude": 34.618297577905},
+                            {"latitude": -0.82719733592, "longitude": 34.618297577906},
+                            {"latitude": -0.82719733593, "longitude": 34.618297577906},
+                            {"latitude": -0.82719733593, "longitude": 34.618297577905}
+                        ]                      
+                    },
+                    startTime: '12:00 PM',
+                    endTime: '1:00 PM'
+                },
+                {
+                    code: 'COM 224',
+                    name: 'Data Structures',
+                    day: 'Thursday', lecturer: 'Abanti Cyrus',
+                    room: {
+                        name: 'Computer Lab',
+                        coordinates:  [
+                            {"latitude": -0.82719733592, "longitude": 34.618297577905},
+                            {"latitude": -0.82719733592, "longitude": 34.618297577906},
+                            {"latitude": -0.82719733593, "longitude": 34.618297577906},
+                            {"latitude": -0.82719733593, "longitude": 34.618297577905}
+                        ]                      
+                    },
+                    startTime: '7:00 AM',
+                    endTime: '10:00 AM'
+                },
+                {
+                    code: 'COM 225',
+                    name: 'Mathematics for Computer Science',
+                    day: 'Friday', lecturer: 'Oyaro Cyrus',
+                    room: {
+                        name: 'Computer Lab',
+                        coordinates:  [
+                            {"latitude": -0.82719733592, "longitude": 34.618297577905},
+                            {"latitude": -0.82719733592, "longitude": 34.618297577906},
+                            {"latitude": -0.82719733593, "longitude": 34.618297577906},
+                            {"latitude": -0.82719733593, "longitude": 34.618297577905}
+                        ]                      
+                    },
+                    startTime: '9:00 AM',
+                    endTime: '11:00 AM'
+                },
+                {
+                    code: 'MAT 220',
+                    name: 'Linear Algebra II',
+                    day: 'Tuesday', lecturer: 'Anyango George',
+                    room: {
+                        name: 'E003',
+                        coordinates:  [
+                            {"latitude": -0.82719733592, "longitude": 34.618297577905},
+                            {"latitude": -0.82719733592, "longitude": 34.618297577906},
+                            {"latitude": -0.82719733593, "longitude": 34.618297577906},
+                            {"latitude": -0.82719733593, "longitude": 34.618297577905}
+                        ]                      
+                    },
+                    startTime: '8:00 AM',
+                    endTime: '11:00 AM'
+                },
+            ]
+        }
+        // YEAR 3
+        else if (($('#semester').val() == 'semester1') && ($('#year').val() == 'year3') && ($('#course').val() == 'Computer_Science')) {
+            units = ['COM 310', 'COM 311']
+        }
+        else if (($('#semester').val() == 'semester2') && ($('#year').val() == 'year3') && ($('#course').val() == 'Computer_Science')) {
+            units = ['COM 320: Computer 5', 'COM 326: Computer 6']
+        }
+        // YEAR FOUR
+        else if (($('#semester').val() == 'semester1') && ($('#year').val() == 'year4') && ($('#course').val() == 'Computer_Science')) {
+            units = [
+                {
+                    code: 'COM 410',
+                    name: 'User interface design',
+                    day: 'Tuesday', lecturer: 'Dr. Oguk',
+                    room: {
+                        name: 'E409',
+                        coordinates:  [
+                            {"latitude": -0.82719733592, "longitude": 34.618297577905},
+                            {"latitude": -0.82719733592, "longitude": 34.618297577906},
+                            {"latitude": -0.82719733593, "longitude": 34.618297577906},
+                            {"latitude": -0.82719733593, "longitude": 34.618297577905}
+                        ]                      
+                    },
+                    startTime: '9:00 AM',
+                    endTime: '11:59 AM'
+                },
+                {
+                    code: 'COM 415',
+                    name: 'Design Techniques for Websites',
+                    day: 'Monday', lecturer: 'Francis Onyango',
                     room: {
                         name: '',
+                        coordinates:  [
+                            {"latitude": -0.82719733592, "longitude": 34.618297577905},
+                            {"latitude": -0.82719733592, "longitude": 34.618297577906},
+                            {"latitude": -0.82719733593, "longitude": 34.618297577906},
+                            {"latitude": -0.82719733593, "longitude": 34.618297577905}
+                        ]                      
+                    },
+                    startTime: '2:00 PM',
+                    endTime: '4:00 PM'
+                },
+                {
+                    code: 'COM 414',
+                    name: 'Computer Graphics',
+                    day: 'Wednesday', lecturer: 'Abanti Cyrus',
+                    room: {
+                        name: 'Computer Lab',
+                        coordinates:  [
+                            {"latitude": -0.82719733592, "longitude": 34.618297577905},
+                            {"latitude": -0.82719733592, "longitude": 34.618297577906},
+                            {"latitude": -0.82719733593, "longitude": 34.618297577906},
+                            {"latitude": -0.82719733593, "longitude": 34.618297577905}
+                        ]                      
+                    },
+                    startTime: '7:00 AM',
+                    endTime: '11:00 AM'
+                },
+                {
+                    code: 'COM 411',
+                    name: 'Distributed Systems',
+                    day: 'Thursday', lecturer: 'Jane Juma',
+                    room: {
+                        name: 'Lecture room 13',
+                        coordinates:  [
+                            {"latitude": -0.82719733592, "longitude": 34.618297577905},
+                            {"latitude": -0.82719733592, "longitude": 34.618297577906},
+                            {"latitude": -0.82719733593, "longitude": 34.618297577906},
+                            {"latitude": -0.82719733593, "longitude": 34.618297577905}
+                        ]                      
+                    },
+                    startTime: '9:00 AM',
+                    endTime: '10:00 AM'
+                },
+                {
+                    code: 'COM 412',
+                    name: 'Neural Networks',
+                    day: 'Thursday', lecturer: 'Jane Juma',
+                    room: {
+                        name: 'Lecture room 13',
+                        coordinates:  [
+                            {"latitude": -0.82719733592, "longitude": 34.618297577905},
+                            {"latitude": -0.82719733592, "longitude": 34.618297577906},
+                            {"latitude": -0.82719733593, "longitude": 34.618297577906},
+                            {"latitude": -0.82719733593, "longitude": 34.618297577905}
+                        ]                      
+                    },
+                    startTime: '11:00 AM',
+                    endTime: '11:59 AM'
+                },
+                {
+                    code: 'COM 416',
+                    name: 'Expert Systems',
+                    day: 'Friday', lecturer: 'Jane Juma',
+                    room: {
+                        name: 'Lecture Room 13',
+                        coordinates:  [
+                            {"latitude": -0.82719733592, "longitude": 34.618297577905},
+                            {"latitude": -0.82719733592, "longitude": 34.618297577906},
+                            {"latitude": -0.82719733593, "longitude": 34.618297577906},
+                            {"latitude": -0.82719733593, "longitude": 34.618297577905}
+                        ]                      
+                    },
+                    startTime: '9:00 AM',
+                    endTime: '10:30 AM'
+                },
+                {
+                    code: 'COM 413',
+                    name: 'Object Oriented Programming',
+                    day: 'Thursday', lecturer: 'Abanti Cyrus',
+                    room: {
+                        name: 'Computer Lab',
+                        coordinates:  [
+                            {"latitude": -0.82719733592, "longitude": 34.618297577905},
+                            {"latitude": -0.82719733592, "longitude": 34.618297577906},
+                            {"latitude": -0.82719733593, "longitude": 34.618297577906},
+                            {"latitude": -0.82719733593, "longitude": 34.618297577905}
+                        ]                      
+                    },
+                    startTime: '7:00 AM',
+                    endTime: '11:00 AM'
+                },
+            ]
+        }
+        else if (($('#semester').val() == 'semester2') && ($('#year').val() == 'year4') && ($('#course').val() == 'Computer_Science')) {
+            units = [
+                {
+                    code: 'COM 421',
+                    name: 'Engineering and Software Law',
+                    day: 'Friday', lecturer: 'Dr. Charles Oguk',
+                    room: {
+                        name: 'E409',
+                        coordinates:  [
+                            {"latitude": -0.82719733592, "longitude": 34.618297577905},
+                            {"latitude": -0.82719733592, "longitude": 34.618297577906},
+                            {"latitude": -0.82719733593, "longitude": 34.618297577906},
+                            {"latitude": -0.82719733593, "longitude": 34.618297577905}
+                        ]                      
+                    },
+                    startTime: '9:00 PM',
+                    endTime: '11:59 PM'
+                },
+                {
+                    code: 'COM 423',
+                    name: 'Computer Science Project II',
+                    day: 'Tuesday', lecturer: 'Dr. Amuomo',
+                    room: {
+                        name: 'Computer Lab',
+                        coordinates:  [
+                            {"latitude": -0.82719733592, "longitude": 34.618297577905},
+                            {"latitude": -0.82719733592, "longitude": 34.618297577906},
+                            {"latitude": -0.82719733593, "longitude": 34.618297577906},
+                            {"latitude": -0.82719733593, "longitude": 34.618297577905}
+                        ]                      
+                    },
+                    startTime: '10:00 AM',
+                    endTime: '11:59 AM'
+                },
+                {
+                    code: 'COM 424',
+                    name: 'Simulation and Modelling',
+                    day: 'Thursday', lecturer: 'Dr Abanti Cyrus',
+                    room: {
+                        name: 'Computer Lab',
+                        coordinates:  [
+                            {"latitude": -0.82719733592, "longitude": 34.618297577905},
+                            {"latitude": -0.82719733592, "longitude": 34.618297577906},
+                            {"latitude": -0.82719733593, "longitude": 34.618297577906},
+                            {"latitude": -0.82719733593, "longitude": 34.618297577905}
+                        ]                      
+                    },
+                    startTime: '7:00 AM',
+                    endTime: '11:59 AM'
+                },
+                {
+                    code: 'COM 425',
+                    name: 'Data Communications, Antennas and Propagation',
+                    day: 'Monday', lecturer: 'Dr. Amuomo',
+                    room: {
+                        name: 'Computer Lab',
+                        coordinates:  [
+                            {"latitude": -0.82719733592, "longitude": 34.618297577905},
+                            {"latitude": -0.82719733592, "longitude": 34.618297577906},
+                            {"latitude": -0.82719733593, "longitude": 34.618297577906},
+                            {"latitude": -0.82719733593, "longitude": 34.618297577905}
+                        ]                      
+                    },
+                    startTime: '10:00 AM',
+                    endTime: '11:00 AM'
+                },
+                {
+                    code: 'COM 426',
+                    name: 'Signal Processing',
+                    day: 'Friday', lecturer: 'Dr. Charles Oguk',
+                    room: {
+                        name: 'E409',
                         coordinates:  [
                             {"latitude": -0.82719733592, "longitude": 34.618297577905},
                             {"latitude": -0.82719733592, "longitude": 34.618297577906},
@@ -428,23 +736,6 @@ $(document).ready(function () {
                     endTime: '11:59 PM'
                 },
             ]
-        }
-        else if (($('#semester').val() == 'semester2') && ($('#year').val() == 'year2') && ($('#course').val() == 'Computer_Science')) {
-            units = ['COM 220', 'PHY 226']
-        }
-        // YEAR 3
-        else if (($('#semester').val() == 'semester1') && ($('#year').val() == 'year3') && ($('#course').val() == 'Computer_Science')) {
-            units = ['COM 310', 'COM 311']
-        }
-        else if (($('#semester').val() == 'semester2') && ($('#year').val() == 'year3') && ($('#course').val() == 'Computer_Science')) {
-            units = ['COM 320: Computer 5', 'COM 326: Computer 6']
-        }
-        // YEAR FOUR
-        else if (($('#semester').val() == 'semester1') && ($('#year').val() == 'year4') && ($('#course').val() == 'Computer_Science')) {
-            units = ['COM 410', 'COM 411']
-        }
-        else if (($('#semester').val() == 'semester2') && ($('#year').val() == 'year4') && ($('#course').val() == 'Computer_Science')) {
-            units = ['COM 420', 'COM 421']
         }
 
         for (var i = 0; i < units.length; i++) {
