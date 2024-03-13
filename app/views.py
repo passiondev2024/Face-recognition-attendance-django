@@ -277,7 +277,7 @@ def Attend(request):
                 if is_user_within_coordinates(user_latitude, user_longitude, room_coordinates):
                     this_week = get_week_number()
                     if takeAttendance.objects.filter(week=this_week, student=student, unitAttendent=unit_attendance_data).count() != 0:
-                        messages.info(request, 'Attendance already taken')
+                        messages.info(request, 'Attendance already taken for this week')
                         return redirect('attendance')
 
                     # Check if it's the day of the week when attendance can be marked for this unit
