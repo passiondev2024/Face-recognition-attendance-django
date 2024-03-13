@@ -59,7 +59,7 @@ $(document).ready(function () {
             text: '-- Select Course --'
         }));
 
-        if ($('#department').val() == 'Mathematics Statistics nad Computing') {
+        if ($('#department').val() == 'Mathematics, Statistics and Computing') {
             $('#course').append($('<option>', {
                 value: 'Computer Science',
                 text: 'Computer Science'
@@ -133,16 +133,16 @@ $(document).ready(function () {
             text: '-- Select Semester --'
         }));
 
-        if (($('#year').val() == 'Year1')
-            || ($('#year').val() == 'Year2')
-            || ($('#year').val() == 'Year3')
-            || ($('#year').val() == 'Year4')) {
+        if (($('#year').val() == 'Year 1')
+            || ($('#year').val() == 'Year 2')
+            || ($('#year').val() == 'Year 3')
+            || ($('#year').val() == 'Year 4')) {
             $('#semester').append($('<option>', {
-                value: 'Semester1',
+                value: 'Semester 1',
                 text: 'Semester 1'
             }));
             $('#semester').append($('<option>', {
-                value: 'Semester2',
+                value: 'Semester 2',
                 text: 'Semester 2'
             }));
         }
@@ -159,7 +159,7 @@ $(document).ready(function () {
 
         // YEAR ONE
         // COMPUTER SCIENCE
-        if (($('#semester').val() == 'Semester1') && ($('#year').val() == 'Year1') && ($('#course').val() == 'Computer_Science')) {
+        if (($('#semester').val() == 'Semester 1') && ($('#year').val() == 'Year 1') && ($('#course').val() == 'Computer Science')) {
             units = [
                 {
                     code: 'COM 110',
@@ -228,7 +228,7 @@ $(document).ready(function () {
                 },            
             ];
         }
-        else if (($('#semester').val() == 'semester2') && ($('#year').val() == 'Year1') && ($('#course').val() == 'Computer_Science')) {
+        else if (($('#semester').val() == 'Semester 2') && ($('#year').val() == 'Year 1') && ($('#course').val() == 'Computer Science')) {
             units = [
                 {
                     code: 'COM 120',
@@ -313,7 +313,7 @@ $(document).ready(function () {
             ]
         }
         // YEAR TWO
-        else if (($('#semester').val() == 'semester1') && ($('#year').val() == 'year2') && ($('#course').val() == 'Computer_Science')) {
+        else if (($('#semester').val() == 'Semester 1') && ($('#year').val() == 'Year 2') && ($('#course').val() == 'Computer Science')) {
             units = [
                 {
                     code: 'COM 210',
@@ -429,7 +429,7 @@ $(document).ready(function () {
                 },
             ]
         }
-        else if (($('#semester').val() == 'semester2') && ($('#year').val() == 'year2') && ($('#course').val() == 'Computer_Science')) {
+        else if (($('#semester').val() == 'Semester 2') && ($('#year').val() == 'Year 2') && ($('#course').val() == 'Computer Science')) {
             units = [
                 {
                     code: 'COM 220',
@@ -530,14 +530,14 @@ $(document).ready(function () {
             ]
         }
         // YEAR 3
-        else if (($('#semester').val() == 'semester1') && ($('#year').val() == 'year3') && ($('#course').val() == 'Computer_Science')) {
+        else if (($('#semester').val() == 'Semester 1') && ($('#year').val() == 'Year 3') && ($('#course').val() == 'Computer Science')) {
             units = ['COM 310', 'COM 311']
         }
-        else if (($('#semester').val() == 'semester2') && ($('#year').val() == 'year3') && ($('#course').val() == 'Computer_Science')) {
+        else if (($('#semester').val() == 'semester2') && ($('#year').val() == 'Year 3') && ($('#course').val() == 'Computer Science')) {
             units = ['COM 320: Computer 5', 'COM 326: Computer 6']
         }
         // YEAR FOUR
-        else if (($('#semester').val() == 'semester1') && ($('#year').val() == 'year4') && ($('#course').val() == 'Computer_Science')) {
+        else if (($('#semester').val() == 'Semester 1') && ($('#year').val() == 'Year 4') && ($('#course').val() == 'Computer Science')) {
             units = [
                 {
                     code: 'COM 410',
@@ -653,7 +653,7 @@ $(document).ready(function () {
                 },
             ]
         }
-        else if (($('#semester').val() == 'Semester2') && ($('#year').val() == 'Year4') && ($('#course').val() == 'Computer_Science')) {
+        else if (($('#semester').val() == 'Semester 2') && ($('#year').val() == 'Year 4') && ($('#course').val() == 'Computer Science')) {
             units = [
                 {
                     code: 'TEST 100',
