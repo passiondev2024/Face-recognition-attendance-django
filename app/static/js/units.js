@@ -360,13 +360,61 @@ $(document).ready(function () {
                             {"latitude": -0.82719733593, "longitude": 34.618297577905}
                         ]                      
                     },
-                    startTime: '12:00 PM',
-                    endTime: '11:59 PM'
+                    startTime: '8:00 AM',
+                    endTime: '11:00 AM'
                 },
                 {
                     code: 'COM 215',
                     name: 'Electrical Circuits',
                     day: 'Wednesday', lecturer: 'Dr. Oguk',
+                    room: {
+                        name: 'E409',
+                        coordinates:  [
+                            {"latitude": -0.82719733592, "longitude": 34.618297577905},
+                            {"latitude": -0.82719733592, "longitude": 34.618297577906},
+                            {"latitude": -0.82719733593, "longitude": 34.618297577906},
+                            {"latitude": -0.82719733593, "longitude": 34.618297577905}
+                        ]                      
+                    },
+                    startTime: '2:00 PM',
+                    endTime: '4:00 PM'
+                },
+                {
+                    code: 'COM 217',
+                    name: 'Electronics I',
+                    day: 'Thursday', lecturer: 'Dr. Oguk',
+                    room: {
+                        name: 'E409',
+                        coordinates:  [
+                            {"latitude": -0.82719733592, "longitude": 34.618297577905},
+                            {"latitude": -0.82719733592, "longitude": 34.618297577906},
+                            {"latitude": -0.82719733593, "longitude": 34.618297577906},
+                            {"latitude": -0.82719733593, "longitude": 34.618297577905}
+                        ]                      
+                    },
+                    startTime: '2:00 PM',
+                    endTime: '4:00 PM'
+                },
+                {
+                    code: 'MAT 210',
+                    name: 'Calculus II',
+                    day: 'Friday', lecturer: 'Odoyo Wekesa',
+                    room: {
+                        name: 'E003',
+                        coordinates:  [
+                            {"latitude": -0.82719733592, "longitude": 34.618297577905},
+                            {"latitude": -0.82719733592, "longitude": 34.618297577906},
+                            {"latitude": -0.82719733593, "longitude": 34.618297577906},
+                            {"latitude": -0.82719733593, "longitude": 34.618297577905}
+                        ]                      
+                    },
+                    startTime: '8:00 AM',
+                    endTime: '11:00 AM'
+                },
+                {
+                    code: 'MAT 212',
+                    name: 'Linear Algebra I',
+                    day: '', lecturer: 'E003',
                     room: {
                         name: '',
                         coordinates:  [
