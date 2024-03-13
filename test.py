@@ -3,7 +3,9 @@
 # def get_current_gps_coordinates():
 #     g = geocoder.ip('me')
 #     if g.latlng is not None:
-#         return g.latlng
+#         latitude = "{:.8f}".format(g.latlng[0])
+#         longitude = "{:.8f}".format(g.latlng[1])
+#         return latitude, longitude
 #     else:
 #         return None
 
@@ -11,11 +13,13 @@
 #     coordinates = get_current_gps_coordinates()
 #     if coordinates is not None:
 #         latitude, longitude = coordinates
-#         print(f"Your current GPS coordinates are:")
+#         print("Your current GPS coordinates are:")
 #         print(f"Latitude: {latitude}")
 #         print(f"Longitude: {longitude}")
 #     else:
 #         print("Unable to retrieve your GPS coordinates.")
+
+
 
 # from datetime import datetime
 
