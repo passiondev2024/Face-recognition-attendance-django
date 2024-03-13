@@ -192,7 +192,7 @@ async def getCoords():
     pos = await locator.get_geoposition_async()
     return [round(pos.coordinate.latitude, 12), round(pos.coordinate.longitude, 12)]
 
-def get_current_gps_coordinates():
+def get_current_gps_coordinate():
     try:
         coordinates = asyncio.run(getCoords())
         return coordinates
@@ -267,7 +267,7 @@ def Attend(request):
 
             current_day = datetime.now().strftime('%A')
 
-            user_coordinates = get_current_gps_coordinates()
+            user_coordinates = get_current_gps_coordinate()
 
             if user_coordinates is not None:
                 user_latitude, user_longitude = user_coordinates

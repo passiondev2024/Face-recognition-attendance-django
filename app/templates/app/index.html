@@ -42,7 +42,7 @@
             </div>
         </div>
         <div class="row">
-            <div class="col-12 col-md-6 col-lg-6 col-xl-6">
+            <!-- <div class="col-12 col-md-6 col-lg-6 col-xl-6">
                 <div class="card">
                     <div class="card-header">
                         <h4 class="card-title d-inline-block">My Units</h4>
@@ -72,12 +72,12 @@
                         </div>
                     </div>
                 </div>
-            </div>
-            <div class="col-12 col-md-6 col-lg-6 col-xl-6">
+            </div> -->
+            <div class="col-12 col-md-6 col-lg-12 col-xl-12">
                 <div class="card">
                     <div class="card-body">
                         <div class="chart-title">
-                            <h4>Time Table</h4>
+                            <h4>My Units and Time Table</h4>
                         </div>
                         <div class="row">
                             <div class="col-md-12">
@@ -85,7 +85,8 @@
                                     <table class="table table-striped custom-table mb-0 datatable">
                                         <thead>
                                             <tr>
-                                                <th>Unit</th>
+                                                <th>Unit Code</th>
+                                                <th>Unit Name</th>
                                                 <th>Day</th>
                                                 <th>Lecture</th>
                                                 <th>Room</th>
@@ -97,6 +98,7 @@
                                             {% for unit in units_list %}
                                             <tr>
                                                 <td>{{unit.code}}</td>
+                                                <td>{{unit.name}}</td>
                                                 <td>
                                                     <strong>{{unit.day}}</strong>
                                                 </td>
@@ -116,7 +118,7 @@
             </div>
         </div>
 
-        <div class="row">
+        <!-- <div class="row">
             <div class="col-12 col-md-6 col-lg-12 col-xl-12">
                 <div class="card">
                     <div class="card-header">
@@ -169,7 +171,7 @@
                         </div>
                     </div>
                 </div>
-            </div>
+            </div> -->
             <div class="col-12 col-md-6 col-lg-6 col-xl-12">
                 <div class="card">
                     <div class="card-body">
