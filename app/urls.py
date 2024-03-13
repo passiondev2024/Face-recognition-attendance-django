@@ -11,7 +11,6 @@ urlpatterns = [
     path('get_unit_attendance/', views.get_unit_attendance, name='get_unit_attendance'),
     path('chat', views.Chats, name='chat'),
     path('enroll', views.Enroll, name='enroll'),
-    path('save_photo/', views.savePhoto, name='save_photo'),
     path('profilePic', views.ProfilePic, name='profilePic'),
     path('examcard', views.ExamCard, name='examcard'),
     path('profile', views.myProfile, name='profile'),
