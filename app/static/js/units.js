@@ -213,7 +213,7 @@ $(document).ready(function () {
                 {
                     code: 'MAT 110',
                     name: 'CALCULUS I',
-                    day: 'Tuesday', lecturer: '',
+                    day: 'Tuesday', lecturer: 'Onyango',
                     room: {
                         name: 'E409',
                         coordinates:  [
@@ -229,11 +229,157 @@ $(document).ready(function () {
             ];
         }
         else if (($('#semester').val() == 'semester2') && ($('#year').val() == 'Year1') && ($('#course').val() == 'Computer_Science')) {
-            units = ['COM 120: Computer', 'PHY 121: Physics']
+            units = [
+                {
+                    code: 'COM 120',
+                    name: 'System Hardware',
+                    day: 'Monday', lecturer: 'Dr.Jane Juma',
+                    room: {
+                        name: 'Lecture room 4',
+                        coordinates:  [
+                            {"latitude": -0.82719733592, "longitude": 34.618297577905},
+                            {"latitude": -0.82719733592, "longitude": 34.618297577906},
+                            {"latitude": -0.82719733593, "longitude": 34.618297577906},
+                            {"latitude": -0.82719733593, "longitude": 34.618297577905}
+                        ]                      
+                    },
+                    startTime: '12:00 PM',
+                    endTime: '11:59 PM'
+                },
+                {
+                    code: 'COM 121',
+                    name: 'Procedural Programming I',
+                    day: 'Tuesday', lecturer: 'Odol',
+                    room: {
+                        name: 'Lecture room 7',
+                        coordinates:  [
+                            {"latitude": -0.82719733592, "longitude": 34.618297577905},
+                            {"latitude": -0.82719733592, "longitude": 34.618297577906},
+                            {"latitude": -0.82719733593, "longitude": 34.618297577906},
+                            {"latitude": -0.82719733593, "longitude": 34.618297577905}
+                        ]                      
+                    },
+                    startTime: '12:00 PM',
+                    endTime: '11:59 PM'
+                },
+                {
+                    code: 'COM 122',
+                    name: 'Computer Applications',
+                    day: 'Wednesday', lecturer: 'Francia Onyango',
+                    room: {
+                        name: 'Lecture Room 9',
+                        coordinates:  [
+                            {"latitude": -0.82719733592, "longitude": 34.618297577905},
+                            {"latitude": -0.82719733592, "longitude": 34.618297577906},
+                            {"latitude": -0.82719733593, "longitude": 34.618297577906},
+                            {"latitude": -0.82719733593, "longitude": 34.618297577905}
+                        ]                      
+                    },
+                    startTime: '12:00 PM',
+                    endTime: '11:59 PM'
+                },
+                {
+                    code: 'MAT 120',
+                    name: 'Geometry and Applied Mathematics',
+                    day: 'Thursday', lecturer: 'Anyango',
+                    room: {
+                        name: 'E003',
+                        coordinates:  [
+                            {"latitude": -0.82719733592, "longitude": 34.618297577905},
+                            {"latitude": -0.82719733592, "longitude": 34.618297577906},
+                            {"latitude": -0.82719733593, "longitude": 34.618297577906},
+                            {"latitude": -0.82719733593, "longitude": 34.618297577905}
+                        ]                      
+                    },
+                    startTime: '12:00 PM',
+                    endTime: '11:59 PM'
+                },
+                {
+                    code: 'COM 120',
+                    name: 'Basic Physics II',
+                    day: 'Friday', lecturer: 'Onyango Martin',
+                    room: {
+                        name: 'MPH',
+                        coordinates:  [
+                            {"latitude": -0.82719733592, "longitude": 34.618297577905},
+                            {"latitude": -0.82719733592, "longitude": 34.618297577906},
+                            {"latitude": -0.82719733593, "longitude": 34.618297577906},
+                            {"latitude": -0.82719733593, "longitude": 34.618297577905}
+                        ]                      
+                    },
+                    startTime: '12:00 PM',
+                    endTime: '11:59 PM'
+                },
+            ]
         }
         // YEAR TWO
         else if (($('#semester').val() == 'semester1') && ($('#year').val() == 'year2') && ($('#course').val() == 'Computer_Science')) {
-            units = ['COM 210: Computer 2', 'COM 215: Computer']
+            units = [
+                {
+                    code: 'COM 210',
+                    name: 'Procedural Programming II',
+                    day: 'Monday', lecturer: 'Okemwa Martin',
+                    room: {
+                        name: 'Computer Lab',
+                        coordinates:  [
+                            {"latitude": -0.82719733592, "longitude": 34.618297577905},
+                            {"latitude": -0.82719733592, "longitude": 34.618297577906},
+                            {"latitude": -0.82719733593, "longitude": 34.618297577906},
+                            {"latitude": -0.82719733593, "longitude": 34.618297577905}
+                        ]                      
+                    },
+                    startTime: '12:00 PM',
+                    endTime: '11:59 PM'
+                },
+                {
+                    code: 'COM 211',
+                    name: 'System Software',
+                    day: 'Tuesday', lecturer: 'Jane Juma',
+                    room: {
+                        name: 'Lecture Romm 13',
+                        coordinates:  [
+                            {"latitude": -0.82719733592, "longitude": 34.618297577905},
+                            {"latitude": -0.82719733592, "longitude": 34.618297577906},
+                            {"latitude": -0.82719733593, "longitude": 34.618297577906},
+                            {"latitude": -0.82719733593, "longitude": 34.618297577905}
+                        ]                      
+                    },
+                    startTime: '12:00 PM',
+                    endTime: '11:59 PM'
+                },
+                {
+                    code: 'COM 212',
+                    name: 'Digital Electronics I',
+                    day: 'Wednesday', lecturer: 'Dr. Oguk',
+                    room: {
+                        name: 'E409',
+                        coordinates:  [
+                            {"latitude": -0.82719733592, "longitude": 34.618297577905},
+                            {"latitude": -0.82719733592, "longitude": 34.618297577906},
+                            {"latitude": -0.82719733593, "longitude": 34.618297577906},
+                            {"latitude": -0.82719733593, "longitude": 34.618297577905}
+                        ]                      
+                    },
+                    startTime: '12:00 PM',
+                    endTime: '11:59 PM'
+                },
+                {
+                    code: 'COM 215',
+                    name: 'Electrical Circuits',
+                    day: 'Wednesday', lecturer: 'Dr. Oguk',
+                    room: {
+                        name: '',
+                        coordinates:  [
+                            {"latitude": -0.82719733592, "longitude": 34.618297577905},
+                            {"latitude": -0.82719733592, "longitude": 34.618297577906},
+                            {"latitude": -0.82719733593, "longitude": 34.618297577906},
+                            {"latitude": -0.82719733593, "longitude": 34.618297577905}
+                        ]                      
+                    },
+                    startTime: '12:00 PM',
+                    endTime: '11:59 PM'
+                },
+            ]
         }
         else if (($('#semester').val() == 'semester2') && ($('#year').val() == 'year2') && ($('#course').val() == 'Computer_Science')) {
             units = ['COM 220', 'PHY 226']
