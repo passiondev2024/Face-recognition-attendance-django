@@ -96,6 +96,31 @@ def Enroll(request):
         return render(request, 'app/enroll.html')
     return render(request, 'app/enroll.html')
 
+from django.views.decorators.csrf import csrf_exempt
+@csrf_exempt
+def savePhoto(request):
+    if request.method == 'POST':
+        try:
+            form = ProfileForm(request.POST, request.FILES)
+
+            if form.is_valid():
+                print(form.cleaned_data)
+                photo = form.save(commit=False)
+                photo.student = request.user.student
+                photo.save()
+                
+                return JsonResponse({'status': 'success', 'photo_id': photo.id})
+                return redirect('id_status')
+            else:
+                print(form.errors)
+                return JsonResponse({'status': 'error', 'message': 'Form is not valid'})
+
+        except Exception as e:
+            print(f"Error: {e}")
+            return JsonResponse({'status': 'error', 'message': 'Failed to save photo'})
+
+    return JsonResponse({'status': 'error', 'message': 'Invalid request method'})
+
 
 def ProfilePic(request):
     student = request.user.student

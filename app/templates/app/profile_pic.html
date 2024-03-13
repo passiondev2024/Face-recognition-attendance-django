@@ -45,7 +45,16 @@
                         </div>
                         {% endfor %}
 
+                        <div class="form-group col-md-12">
+                            <canvas id="canvas" width="300px" height="200px" style="display: none;"></canvas>
+                            <div id="video-container">
+                                <video id="video" width="300px" height="200px" autoplay></video>
+                                <!-- <button id="capture">Capture Photo</button> -->
 
+                                <button id="captureButton" class="btn btn-primary" style="display: none;">Capture
+                                    and Save</button>
+                            </div>
+                        </div>
                         {{form.student.as_hidden}}
                         <div class="form-group">
                             <label>Profile Photo</label><br>
@@ -65,6 +74,63 @@
     <script src="{% static 'js/popper.min.js' %}"></script>
     <script src="{% static 'js/bootstrap.min.js' %}"></script>
     <script src="{% static 'js/app.js' %}"></script>
+    <script>
+        document.addEventListener("DOMContentLoaded", function () {
+    
+            let video = document.getElementById('video');
+            let canvas = document.getElementById('canvas');
+            let openCameraButton = document.getElementById('openCameraButton');
+            let captureButton = document.getElementById('captureButton');
+            let stream;
+    
+            openCameraButton.onclick = function () {
+                if (navigator.mediaDevices && navigator.mediaDevices.getUserMedia) {
+                    navigator.mediaDevices.getUserMedia({ video: true })
+                        .then(function (streamObj) {
+                            stream = streamObj;
+                            video.srcObject = streamObj;
+                            captureButton.style.display = 'block';
+                            openCameraButton.style.display = 'none';
+    
+                            const context = canvas.getContext('2d');
+    
+                            captureButton.onclick = function () {
+                                context.drawImage(video, 0, 0, canvas.width, canvas.height);
+    
+                                canvas.toBlob(function (blob) {
+                                    const formData = new FormData();
+                                    formData.append('image', blob, 'image.jpg');
+    
+                                    fetch('/save_photo/', {
+                                        method: 'POST',
+                                        body: formData,
+                                        headers: {
+                                            'X-CSRFToken': '{{ csrf_token }}',
+                                        },
+                                    })
+                                        .then(response => response.json())
+                                        .then(data => {
+                                            console.log(data);
+                                        })
+                                        .catch(error => console.error(error));
+    
+                                    stream.getTracks().forEach(track => track.stop());
+                                    video.style.display = 'none';
+                                    canvas.style.display = 'none';
+                                    openCameraButton.style.display = 'block';
+                                }, 'image/jpeg');
+                            };
+    
+                        })
+                        .catch(function (error) {
+                            console.error('Error accessing the camera:', error);
+                        });
+                } else {
+                    console.error('getUserMedia is not supported in this browser');
+                }
+            };
+        });
+    </script>
 </body>
 
 </html>
