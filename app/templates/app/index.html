@@ -42,37 +42,6 @@
             </div>
         </div>
         <div class="row">
-            <!-- <div class="col-12 col-md-6 col-lg-6 col-xl-6">
-                <div class="card">
-                    <div class="card-header">
-                        <h4 class="card-title d-inline-block">My Units</h4>
-                    </div>
-                    <div class="card-body p-0">
-                        <div class="table-responsive">
-                            <table class="table mb-0">
-                                <thead class="d-none">
-                                    <tr>
-                                        <th>Unit code</th>
-                                        <th>Unit Name</th>
-                                    </tr>
-                                </thead>
-                                <tbody>
-                                    {% for unit in units_list %}
-                                    <tr>
-                                        <td>
-                                            <h5 class="time-title p-0">{{unit.code}}</h5>
-                                        </td>
-                                        <td>
-                                            <h5 class="time-title p-0">{{unit.name}}</h5>
-                                        </td>
-                                    </tr>
-                                    {% endfor %}
-                                </tbody>
-                            </table>
-                        </div>
-                    </div>
-                </div>
-            </div> -->
             <div class="col-12 col-md-6 col-lg-12 col-xl-12">
                 <div class="card">
                     <div class="card-body">
@@ -116,62 +85,7 @@
                     </div>
                 </div>
             </div>
-        </div>
 
-        <!-- <div class="row">
-            <div class="col-12 col-md-6 col-lg-12 col-xl-12">
-                <div class="card">
-                    <div class="card-header">
-                        <h4 class="card-title d-inline-block">Attendance </h4> <a href="{% url 'attendance' %}"
-                            class="btn btn-primary float-right">View all</a>
-                    </div>
-                    <div class="card-block">
-                        <div class="table-responsive">
-                            <table class="table mb-0 new-patient-table">
-                                <thead>
-                                    <tr>
-                                        <th>Student</th>
-                                        <th>Unit</th>
-                                        <th>Date</th>
-                                        <th>Time Range</th>
-                                        <th>Time Attendant</th>
-                                        <th>Status</th>
-                                    </tr>
-                                </thead>
-                                <tbody>
-                                    {% for data in register|slice:":5" %}
-                                    <tr>
-                                        <td>
-                                            <span class="user-img">
-                                                <img class="rounded-circle"
-                                                    src="{{user.student.profile.profile_photo.url}}" width="24"
-                                                    alt="Admin">
-                                                <span class="status online"></span>
-                                            </span>
-                                        </td>
-                                        <th>{{data.unitAttendent.code}}</th>
-                                        <td>{{data.unitAttendent.day}}, {{data.date}}</td>
-                                        <td>{{data.unitAttendent.startTime}} - {{data.unitAttendent.endTime}}</td>
-                                        <td>{{data.time}}</td>
-                                        {% for unit in units_list %}
-                                        {% if data.unitAttendent.code == unit.code %}
-                                        {% if data.status == 'Present' %}
-                                        <td><i class="fa fa-check text-success"></i></td>
-                                        {% else %}
-                                        <td><i class="fa fa-close text-danger"></i></td>
-                                        {% endif %}
-                                        {% else %}
-                                        <td></td>
-                                        {% endif %}
-                                        {% endfor %}
-                                    </tr>
-                                    {% endfor %}
-                                </tbody>
-                            </table>
-                        </div>
-                    </div>
-                </div>
-            </div> -->
             <div class="col-12 col-md-6 col-lg-6 col-xl-12">
                 <div class="card">
                     <div class="card-body">
