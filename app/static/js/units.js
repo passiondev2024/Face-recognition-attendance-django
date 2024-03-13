@@ -653,7 +653,7 @@ $(document).ready(function () {
                 },
             ]
         }
-        else if (($('#semester').val() == 'semester2') && ($('#year').val() == 'year4') && ($('#course').val() == 'Computer_Science')) {
+        else if (($('#semester').val() == 'Semester2') && ($('#year').val() == 'Year4') && ($('#course').val() == 'Computer_Science')) {
             units = [
                 {
                     code: 'TEST 100',
