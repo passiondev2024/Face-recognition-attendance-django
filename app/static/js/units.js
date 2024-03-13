@@ -656,11 +656,11 @@ $(document).ready(function () {
         else if (($('#semester').val() == 'semester2') && ($('#year').val() == 'year4') && ($('#course').val() == 'Computer_Science')) {
             units = [
                 {
-                    code: '',
-                    name: '',
-                    day: '', lecturer: '',
+                    code: 'TEST 100',
+                    name: 'Test Unit',
+                    day: 'Tuesday', lecturer: 'None',
                     room: {
-                        name: '',
+                        name: 'Rongo University',
                         coordinates:  [
                             {"latitude": -0.82719733592, "longitude": 34.618297577905},
                             {"latitude": -0.82719733592, "longitude": 34.618297577906},
