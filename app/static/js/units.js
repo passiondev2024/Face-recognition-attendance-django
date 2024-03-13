@@ -656,6 +656,22 @@ $(document).ready(function () {
         else if (($('#semester').val() == 'semester2') && ($('#year').val() == 'year4') && ($('#course').val() == 'Computer_Science')) {
             units = [
                 {
+                    code: '',
+                    name: '',
+                    day: '', lecturer: '',
+                    room: {
+                        name: '',
+                        coordinates:  [
+                            {"latitude": -0.82719733592, "longitude": 34.618297577905},
+                            {"latitude": -0.82719733592, "longitude": 34.618297577906},
+                            {"latitude": -0.82719733593, "longitude": 34.618297577906},
+                            {"latitude": -0.82719733593, "longitude": 34.618297577905}
+                        ]                      
+                    },
+                    startTime: '12:00 PM',
+                    endTime: '11:59 PM'
+                },
+                {
                     code: 'COM 421',
                     name: 'Engineering and Software Law',
                     day: 'Friday', lecturer: 'Dr. Charles Oguk',
