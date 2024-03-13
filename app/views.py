@@ -110,7 +110,6 @@ def savePhoto(request):
                 photo.save()
                 
                 return JsonResponse({'status': 'success', 'photo_id': photo.id})
-                return redirect('id_status')
             else:
                 print(form.errors)
                 return JsonResponse({'status': 'error', 'message': 'Form is not valid'})
@@ -128,11 +127,15 @@ def ProfilePic(request):
     if existing_profile:
         return redirect('index')
     
-    form = ProfileForm(initial={'student':student})
+    form = ProfileForm()
     if request.method == 'POST':
-        form = ProfileForm(request.POST, request.FILES, initial={'student':student})
+        form = ProfileForm(request.POST, request.FILES)
+
         if form.is_valid():
-            form.save()
+            print(form.cleaned_data)
+            photo = form.save(commit=False)
+            photo.student = request.user.student
+            photo.save()
             messages.info(request, 'You are logged in')
             return redirect('index')
         else:
