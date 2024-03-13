@@ -150,7 +150,10 @@
                                                     {% for unit in units_list %}
                                                     <tr>
                                                         <td>
-                                                            <h5 class="time-title p-0">{{unit}}</h5>
+                                                            <h5 class="time-title p-0">{{unit.code}}</h5>
+                                                        </td>
+                                                        <td>
+                                                            <h5 class="time-title p-0">{{unit.name}}</h5>
                                                         </td>
                                                     </tr>
                                                     {% endfor %}
