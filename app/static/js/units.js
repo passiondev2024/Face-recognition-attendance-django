@@ -163,8 +163,8 @@ $(document).ready(function () {
             units = [
                 {
                     code: 'COM 110',
-                    name: 'Introduction to Computer',
-                    day: 'Friday', lecturer: 'Dr.Amuomo',
+                    name: 'Introduction to Computers',
+                    day: 'Monday', lecturer: 'Dr.Amuomo',
                     room: {
                         name: 'E409',
                         coordinates:  [
@@ -177,7 +177,55 @@ $(document).ready(function () {
                     startTime: '12:00 PM',
                     endTime: '11:59 PM'
                 },
-                { code: 'PHY 110', name: 'Introduction to Physics', day: 'Saturday', lecturer: 'Dr.Amuomo', room: 'E409', startTime: '09:00 AM', endTime: '12:00 PM' }
+                
+                {
+                    code: 'PHY 110',
+                    name: 'Basic Physics 1',
+                    day: 'Friday', lecturer: 'Dr.Oguk',
+                    room: {
+                        name: 'MPH',
+                        coordinates:  [
+                            {"latitude": -0.82719733592, "longitude": 34.618297577905},
+                            {"latitude": -0.82719733592, "longitude": 34.618297577906},
+                            {"latitude": -0.82719733593, "longitude": 34.618297577906},
+                            {"latitude": -0.82719733593, "longitude": 34.618297577905}
+                        ]                      
+                    },
+                    startTime: '12:00 PM',
+                    endTime: '11:59 PM'
+                },  
+                {
+                    code: 'COS 100',
+                    name: 'Communication Skills',
+                    day: 'Tuesday', lecturer: 'Dr.Amuomo',
+                    room: {
+                        name: 'E409',
+                        coordinates:  [
+                            {"latitude": -0.82719733592, "longitude": 34.618297577905},
+                            {"latitude": -0.82719733592, "longitude": 34.618297577906},
+                            {"latitude": -0.82719733593, "longitude": 34.618297577906},
+                            {"latitude": -0.82719733593, "longitude": 34.618297577905}
+                        ]                      
+                    },
+                    startTime: '12:00 PM',
+                    endTime: '11:59 PM'
+                },
+                {
+                    code: 'MAT 110',
+                    name: 'CALCULUS I',
+                    day: 'Tuesday', lecturer: '',
+                    room: {
+                        name: 'E409',
+                        coordinates:  [
+                            {"latitude": -0.82719733592, "longitude": 34.618297577905},
+                            {"latitude": -0.82719733592, "longitude": 34.618297577906},
+                            {"latitude": -0.82719733593, "longitude": 34.618297577906},
+                            {"latitude": -0.82719733593, "longitude": 34.618297577905}
+                        ]                      
+                    },
+                    startTime: '12:00 PM',
+                    endTime: '11:59 PM'
+                },            
             ];
         }
         else if (($('#semester').val() == 'semester2') && ($('#year').val() == 'Year1') && ($('#course').val() == 'Computer_Science')) {
