@@ -684,8 +684,8 @@ $(document).ready(function () {
                             {"latitude": -0.82719733593, "longitude": 34.618297577905}
                         ]                      
                     },
-                    startTime: '10:00 AM',
-                    endTime: '11:59 AM'
+                    startTime: '2:00 PM',
+                    endTime: '4:00 PM'
                 },
                 {
                     code: 'COM 424',
@@ -732,8 +732,56 @@ $(document).ready(function () {
                             {"latitude": -0.82719733593, "longitude": 34.618297577905}
                         ]                      
                     },
-                    startTime: '12:00 PM',
-                    endTime: '11:59 PM'
+                    startTime: '9:00 AM',
+                    endTime: '10:30 AM'
+                },
+                {
+                    code: 'COM 427',
+                    name: 'Analog and Digital Modulation',
+                    day: 'Monday', lecturer: 'Dr. Amuomo',
+                    room: {
+                        name: 'Computer lab',
+                        coordinates:  [
+                            {"latitude": -0.82719733592, "longitude": 34.618297577905},
+                            {"latitude": -0.82719733592, "longitude": 34.618297577906},
+                            {"latitude": -0.82719733593, "longitude": 34.618297577906},
+                            {"latitude": -0.82719733593, "longitude": 34.618297577905}
+                        ]                      
+                    },
+                    startTime: '11:00 AM',
+                    endTime: '11:59 AM'
+                },
+                {
+                    code: 'COM 428',
+                    name: 'Human Computer Factors',
+                    day: 'Thursday', lecturer: 'Dr. Charlse Oguk',
+                    room: {
+                        name: 'E409',
+                        coordinates:  [
+                            {"latitude": -0.82719733592, "longitude": 34.618297577905},
+                            {"latitude": -0.82719733592, "longitude": 34.618297577906},
+                            {"latitude": -0.82719733593, "longitude": 34.618297577906},
+                            {"latitude": -0.82719733593, "longitude": 34.618297577905}
+                        ]                      
+                    },
+                    startTime: '2:00 PM',
+                    endTime: '4:00 PM'
+                },
+                {
+                    code: 'BCE 411',
+                    name: 'Enterprenuarship and Employability',
+                    day: 'Friday', lecturer: 'Omondi Justus',
+                    room: {
+                        name: 'MPH',
+                        coordinates:  [
+                            {"latitude": -0.82719733592, "longitude": 34.618297577905},
+                            {"latitude": -0.82719733592, "longitude": 34.618297577906},
+                            {"latitude": -0.82719733593, "longitude": 34.618297577906},
+                            {"latitude": -0.82719733593, "longitude": 34.618297577905}
+                        ]                      
+                    },
+                    startTime: '2:00 PM',
+                    endTime: '4:00 PM'
                 },
             ]
         }
