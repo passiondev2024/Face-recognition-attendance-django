@@ -22,19 +22,18 @@
             <ul class="nav nav-tabs nav-tabs-bottom" id="unitTabs">
                 {% for unit_data in unit_attendance_data %}
                 <li class="nav-item">
-                    <a class="nav-link" href="#unit-{{ unit_data.unit.code }}" data-toggle="tab"
-                        data-unit-code="{{ unit_data.unit.code }}">
+                    <a class="nav-link" href="#" data-toggle="tab" data-unit-code="{{ unit_data.unit.code }}">
                         {{ unit_data.unit.code }}
                     </a>
                 </li>
                 {% endfor %}
             </ul>
             <section class="page">
-                <div class="tab-content">
+                <!-- <div class="tab-content"> -->
                     <div class="tab-content">
                         {% for unit_data in unit_attendance_data %}
-                        <div class="tab-pane show" id="unit-{{ unit_data.unit.code }}">
-                            {% for week, attendance_list in unit_data.attendance_by_week.items reversed %}
+                        <div class="tab-pane" id="unit-{{ unit_data.unit.code }}">
+                            {% for week, attendance_list in unit_data.attendance_by_week.items %}
                             <div class="row">
                                 <div class="col-md-12">
                                     <div class="card-box">
@@ -111,56 +110,56 @@
             </section>
         </div>
     </div>
-    <script>
-        document.getElementById('downloadButton').addEventListener('click', function () {
-            var jsPDF = window.jspdf.jsPDF;
-            var section = document.querySelector('.page');
-            var originalWidth = section.offsetWidth;
-            var originalHeight = section.offsetHeight;
-
-            // Set the desired scaling factors for width and height (you can adjust these values)
-            var scaleWidth = 1.5;
-            var scaleHeight = 2;
-
-            // Set the new width and height to the section
-            section.style.width = originalWidth * scaleWidth + 'px';
-            section.style.height = originalHeight * scaleHeight + 'px';
-
-            html2canvas(section, { scale: 2 }).then(function (canvas) {
-                var imgData = canvas.toDataURL('image/png');
-                var pdf = new jsPDF('p', 'mm', 'a4');
-                pdf.addImage(imgData, 'PNG', 0, 0, pdf.internal.pageSize.getWidth(), pdf.internal.pageSize.getHeight());
-                pdf.save('downloaded_section.pdf');
-
-                // Restore the original width and height
-                section.style.width = originalWidth + 'px';
-                section.style.height = originalHeight + 'px';
-            });
+<script>
+    document.addEventListener("DOMContentLoaded", function () {
+        var unitTabs = document.getElementById("unitTabs");
+        unitTabs.addEventListener("click", function (event) {
+            event.preventDefault();
+            var targetTab = event.target;
+            var unitCode = targetTab.getAttribute("data-unit-code");
+            showTabContent(unitCode);
         });
-    </script>
-    <script>
-        // Add click event listener to handle tab clicks
-        document.addEventListener("DOMContentLoaded", function () {
-            var unitTabs = document.getElementById("unitTabs");
-            unitTabs.addEventListener("click", function (event) {
-                event.preventDefault();
-                var targetTab = event.target;
-                var unitCode = targetTab.getAttribute("data-unit-code");
-                showTabContent(unitCode);
-            });
 
-            // Function to show the content of the selected tab
-            function showTabContent(unitCode) {
-                var tabs = document.querySelectorAll(".tab-pane");
-                tabs.forEach(function (tab) {
-                    tab.classList.remove("show", "active");
-                    if (tab.id === "unit-" + unitCode) {
-                        tab.classList.add("show", "active");
-                    }
-                });
-            }
+        function showTabContent(unitCode) {
+            var tabs = document.querySelectorAll(".tab-pane");
+            tabs.forEach(function (tab) {
+                tab.classList.remove("show", "active");
+                if (tab.id === "unit-" + unitCode) {
+                    tab.classList.add("show", "active");
+                }
+            });
+        }
+    });
+</script>
+
+
+<script>
+    document.getElementById('downloadButton').addEventListener('click', function () {
+        var jsPDF = window.jspdf.jsPDF;
+        var section = document.querySelector('.page');
+        var originalWidth = section.offsetWidth;
+        var originalHeight = section.offsetHeight;
+
+        // Set the desired scaling factors for width and height (you can adjust these values)
+        var scaleWidth = 1.5;
+        var scaleHeight = 2;
+
+        // Set the new width and height to the section
+        section.style.width = originalWidth * scaleWidth + 'px';
+        section.style.height = originalHeight * scaleHeight + 'px';
+
+        html2canvas(section, { scale: 2 }).then(function (canvas) {
+            var imgData = canvas.toDataURL('image/png');
+            var pdf = new jsPDF('p', 'mm', 'a4');
+            pdf.addImage(imgData, 'PNG', 0, 0, pdf.internal.pageSize.getWidth(), pdf.internal.pageSize.getHeight());
+            pdf.save('downloaded_section.pdf');
+
+            // Restore the original width and height
+            section.style.width = originalWidth + 'px';
+            section.style.height = originalHeight + 'px';
         });
-    </script>
+    });
+</script>
 
 
 

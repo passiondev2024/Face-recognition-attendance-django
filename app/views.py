@@ -347,6 +347,7 @@ def get_unit_attendance(request):
 
     return JsonResponse({'attendance_data': list(attendance_data)})
 
+
 def ClassAttendance(request):
     student = request.user.student
     course = student.course
@@ -373,6 +374,7 @@ def ClassAttendance(request):
 
     context = {'unit_attendance_data': unit_attendance_data, 'student': student, 'students': students}
     return render(request, 'app/fullAttendance.html', context)
+
 
 
 def Chats(request):
