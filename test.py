@@ -51,3 +51,10 @@
 #         print("Longitude:", coordinates[1])
 
 
+from digidevice import location
+
+loc = location.Location()
+loc.position
+loc.latitude
+loc.longitude
+
