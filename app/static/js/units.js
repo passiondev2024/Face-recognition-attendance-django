@@ -560,7 +560,7 @@ $(document).ready(function () {
                     name: 'Design Techniques for Websites',
                     day: 'Monday', lecturer: 'Francis Onyango',
                     room: {
-                        name: '',
+                        name: 'Lecture room 9',
                         coordinates:  [
                             {"latitude": -0.82719733592, "longitude": 34.618297577905},
                             {"latitude": -0.82719733592, "longitude": 34.618297577906},
