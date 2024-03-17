@@ -29,87 +29,78 @@
                 {% endfor %}
             </ul>
             <section class="page">
-                <!-- <div class="tab-content"> -->
-                    <div class="tab-content">
-                        {% for unit_data in unit_attendance_data %}
-                        <div class="tab-pane" id="unit-{{ unit_data.unit.code }}">
-                            {% for week, attendance_list in unit_data.attendance_by_week.items %}
-                            <div class="row">
-                                <div class="col-md-12">
-                                    <div class="card-box">
-                                        <h3 class="card-title">Attendance for {{ unit_data.unit.code }} - Week 
-                                            {{ week }}
-                                        </h3>
-                                        <div class="experience-box">
-                                            <div class="table-responsive">
-                                                <table id="myTable" class="table mb-0 new-patient-table">
-                                                    <thead>
-                                                        <tr class="no-border" style="border: none;">
-                                                            <th>Unit: </th>
-                                                            {% for attendance in attendance_list %}
-                                                            <td>{{attendance.unitAttendent.code}}:
-                                                                {{attendance.unitAttendent.name}}</td>
-                                                            {% endfor %}
-                                                            <th>School: </th>
-                                                            {% for attendance in attendance_list %}
-                                                            <td>{{attendance.student.school}}</td>
-                                                            {% endfor %}
-                                                        </tr>
-                                                        <tr style="border: none;">
-                                                            <th>Course: </th>
-                                                            {% for attendance in attendance_list %}
-                                                            <td>{{attendance.student.course}}</td>
-                                                            {% endfor %}
-                                                            <th>Lecturer: </th>
-                                                            {% for attendance in attendance_list %}
-                                                            <td>{{attendance.unitAttendent.lecturer}}</td>
-                                                            {% endfor %}
-                                                        </tr><br><br>
-
-                                                        <tr>
-                                                            <th>Admission Number</th>
-                                                            <th>Name</th>
-                                                            <th>Date</th>
-                                                            <th>Time</th>
-                                                            <th>Status</th>
-                                                        </tr>
-                                                    </thead>
-                                                    <tbody>
-                                                        {% for attendance in attendance_list %}
-                                                        <tr>
-                                                            <td>{{ attendance.student.user }}</td>
-                                                            <td>{{ attendance.student.first_name }}
-                                                                {{ attendance.student.last_name }}
-                                                            </td>
-                                                            <td>{{ attendance.date }}</td>
-                                                            <td>{{ attendance.time }}</td>
-                                                            {% if attendance.status == 'Present' %}
-                                                            <td><i class="fa fa-check text-success"></i></td>
-                                                            {% else %}
-                                                            <td><i class="fa fa-close text-danger"></i></td>
-                                                            {% endif %}
-                                                        </tr>
-                                                        {% endfor %}
-                                                    </tbody>
-                                                </table>
-                                                <!-- <div style="text-align: center;" class="">
-                                                    <button id="downloadButton" class="btn btn-primary w-90">Download
-                                                        ID</button>
-                                                </div> -->
-                                                {% endfor %}
-                                            </div>
+                <div class="tab-content">
+                    {% for unit_data in unit_attendance_data %}
+                    <div class="tab-pane" id="unit-{{ unit_data.unit.code }}">
+                        {% for week, attendance_list in unit_data.attendance_by_week.items %}
+                        <div class="row">
+                            <div class="col-md-12">
+                                <div class="card-box">
+                                    <h3 class="card-title">Attendance for {{ unit_data.unit.code }} - Week 
+                                        {{ week }}
+                                    </h3>
+                                    <div class="experience-box">
+                                        <div class="table-responsive">
+                                            <table id="myTable" class="table mb-0 new-patient-table">
+                                                <thead>
+                                                    <div class="row">
+                                                        <div class="col-md-6">
+                                                            <div class="card-box">
+                                                                <h3 class="card-title">Unit Info</h3>
+                                                                <div>
+                                                                    <p><strong>Unit:</strong> {{ attendance_list.0.unitAttendent.code }}: {{ attendance_list.0.unitAttendent.name }}</p>
+                                                                    <p><strong>Course:</strong> {{ attendance_list.0.student.course }}</p>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                        <div class="col-md-6">
+                                                            <div class="card-box">
+                                                                <h3 class="card-title">Student Info</h3>
+                                                                <div>
+                                                                    <p><strong>School:</strong> {{ attendance_list.0.student.school }}</p>
+                                                                    <p><strong>Lecturer:</strong> {{ attendance_list.0.unitAttendent.lecturer }}</p>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                    </div>                                                    
+                                                    <tr>
+                                                        <th>Admission Number</th>
+                                                        <th>Name</th>
+                                                        <th>Date</th>
+                                                        <th>Time</th>
+                                                        <th>Status</th>
+                                                    </tr>
+                                                </thead>
+                                                <tbody>
+                                                    {% for attendance in attendance_list %}
+                                                    <tr>
+                                                        <td>{{ attendance.student.user }}</td>
+                                                        <td>{{ attendance.student.first_name }}
+                                                            {{ attendance.student.last_name }}</td>
+                                                        <td>{{ attendance.date }}</td>
+                                                        <td>{{ attendance.time }}</td>
+                                                        {% if attendance.status == 'Present' %}
+                                                        <td><i class="fa fa-check text-success"></i></td>
+                                                        {% else %}
+                                                        <td><i class="fa fa-close text-danger"></i></td>
+                                                        {% endif %}
+                                                    </tr>
+                                                    {% endfor %}
+                                                </tbody>
+                                            </table>
                                         </div>
                                     </div>
                                 </div>
                             </div>
-
                         </div>
                         {% endfor %}
                     </div>
+                    {% endfor %}
                 </div>
             </section>
         </div>
     </div>
+</div>                
     <script>
         document.addEventListener("DOMContentLoaded", function () {
             var unitTabs = document.getElementById("unitTabs");
