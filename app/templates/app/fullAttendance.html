@@ -28,10 +28,10 @@
                 </li>
                 {% endfor %}
             </ul>
-            <section class="page">
                 <div class="tab-content">
                     {% for unit_data in unit_attendance_data %}
                     <div class="tab-pane" id="unit-{{ unit_data.unit.code }}">
+                        <section class="page">
                         {% for week, attendance_list in unit_data.attendance_by_week.items %}
                         <div class="row">
                             <div class="col-md-12">
@@ -87,6 +87,7 @@
                                                     </tr>
                                                     {% endfor %}
                                                 </tbody>
+                                                <div class="downloadButton">Export</div>
                                             </table>
                                         </div>
                                     </div>
@@ -94,10 +95,10 @@
                             </div>
                         </div>
                         {% endfor %}
+                        </section>
                     </div>
                     {% endfor %}
                 </div>
-            </section>
         </div>
     </div>
 </div>                
