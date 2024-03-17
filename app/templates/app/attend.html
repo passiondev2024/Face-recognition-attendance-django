@@ -21,15 +21,17 @@
                         {{form.student}}
                         <label>Select Unit</label>
                         <select name="unitAttendent" id="" class="form-control">
-                            <option value="">Select unit.......</option>
+                            <option value=""></option>
+                            {% if unit %}
                             {% for unit in units_list %}
-                            {% if unit.day == day_of_week %}
-                            <option value="{{unit}}" aria-required="true">{{unit.code}}: {{unit.name}} ({{unit.startTime}}-{{unit.endTime}})</option>
-                            {% else %}
-                            <p>No units to attend today</p>
-                            {% endif %}
+                                {% if unit.day == day_of_week %}
+                                    <option value="{{unit}}" aria-required="true">{{unit.code}}: {{unit.name}} ({{unit.startTime}}-{{unit.endTime}})</option>
+                                {% endif %}
                             {% endfor %}
-                        </select>
+                            {% else %}
+                                <option value="">No unit to attend today</option>
+                            {% endif %}
+                        </select>                                              
                     </div>
                     <div class="form-group text-center">
                         <button type="submit" class="btn btn-primary account-btn">Attend</button>
