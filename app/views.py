@@ -356,24 +356,20 @@ def ClassAttendance(request):
     students = Student.objects.filter(course=course, semester=semester, year=year)
     units_list = json.loads(student.units)
 
-    unit_attendance_data = []
-
-    for unit in units_list:
-        # Fetch attendance data for each unit
-        unit_attendance = takeAttendance.objects.filter(unitAttendent=unit, student__in=students)
+    if request.method == 'GET' and request.is_ajax():
+        unit_code = request.GET.get('unit_code')
+        student = request.user.student
+        course = student.course
+        year = student.year
+        semester = student.semester
+        students = Student.objects.filter(course=course, semester=semester, year=year)
         
-        # Group attendance data by week
-        attendance_by_week = {}
-        for attendance_entry in unit_attendance:
-            week = attendance_entry.week
-            if week not in attendance_by_week:
-                attendance_by_week[week] = []
-            attendance_by_week[week].append(attendance_entry)
-
-        unit_attendance_data.append({'unit': unit, 'attendance_by_week': attendance_by_week})
-
-    context = {'unit_attendance_data': unit_attendance_data, 'student': student, 'students': students}
-    return render(request, 'app/fullAttendance.html', context)
+        unit_attendance = takeAttendance.objects.filter(unitAttendent=unit_code, student__in=students)
+        # Process attendance data as needed
+        # Return attendance data as JSON or render a template
+        return render(request, 'app/attendance_data.html', {'unit_attendance': unit_attendance})
+    else:
+        return JsonResponse({'error': 'Invalid request'})
 
 
 
