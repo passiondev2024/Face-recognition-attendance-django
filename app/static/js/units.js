@@ -662,10 +662,10 @@ $(document).ready(function () {
                     room: {
                         name: 'Rongo University',
                         coordinates: [
-                            {"latitude": -0.8271909 - 0.000005, "longitude": 34.61829111 - 0.000005},
-                            {"latitude": -0.8271909 - 0.000005, "longitude": 34.61829111 + 0.000005},
-                            {"latitude": -0.8271909 + 0.000005, "longitude": 34.61829111 + 0.000005},
-                            {"latitude": -0.8271909 + 0.000005, "longitude": 34.61829111 - 0.000005}
+                            {"latitude": -0.8271909 - 0.05, "longitude": 34.61829111 - 0.05},
+                            {"latitude": -0.8271909 - 0.05, "longitude": 34.61829111 + 0.05},
+                            {"latitude": -0.8271909 + 0.05, "longitude": 34.61829111 + 0.05},
+                            {"latitude": -0.8271909 + 0.05, "longitude": 34.61829111 - 0.05}
                         ]                   
                     },
                     startTime: '12:00 PM',
