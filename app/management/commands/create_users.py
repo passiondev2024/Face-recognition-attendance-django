@@ -1,6 +1,8 @@
 from django.core.management.base import BaseCommand
 from django.db.utils import IntegrityError
-from app.models import User  # Import your custom User model
+from app.models import User
+from django.contrib.auth import get_user_model
+User = get_user_model()
 
 class Command(BaseCommand):
     help = 'Create users in the User model'

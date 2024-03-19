@@ -1,5 +1,7 @@
 from django.shortcuts import render, redirect
-from django.contrib.auth.models import auth, User
+from django.contrib.auth.models import auth
+from django.contrib.auth import get_user_model
+User = get_user_model()
 from django.contrib import messages
 from .models import Student, Profile, takeAttendance, Chat
 from django.db.models import Count, F, ExpressionWrapper, FloatField
