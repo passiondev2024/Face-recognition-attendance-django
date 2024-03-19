@@ -14,6 +14,22 @@ class Command(BaseCommand):
                 "username": "CSC/027/2020",
                 "password": "CSC/027/2020"
             },
+            {
+                "username": "CSC/043/2020",
+                "password": "CSC/043/2020"
+            },
+            {
+                "username": "CSC/011/2020",
+                "password": "CSC/011/2020"
+            },
+            {
+                "username": "CSC/052/2020",
+                "password": "CSC/052/2020"
+            },
+            {
+                "username": "CSC/044/2020",
+                "password": "CSC/044/2020"
+            },
         ]
 
         for user_data in users_data:
