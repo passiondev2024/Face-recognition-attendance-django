@@ -2,6 +2,10 @@ from django.contrib import admin
 from .models import Student, Profile, takeAttendance, Chat
 
 # Register your models here.
+# @admin.register(User)
+# class UserTable(admin.ModelAdmin):
+#     list_display = ('id', 'username')
+
 @admin.register(Student)
 class StudentTable(admin.ModelAdmin):
     list_display = ('user', 'first_name', 'last_name', 'phone', 'email', 'gender', 'school', 'department', 'course', 'year', 'semester', 'units')
