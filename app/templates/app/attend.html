@@ -22,7 +22,7 @@
                         <label>Select Unit</label>
                         <select name="unitAttendent" id="" class="form-control">
                             <option value=""></option>
-                            {% if unit %}
+                            {% if units_list %}
                             {% for unit in units_list %}
                                 {% if unit.day == day_of_week %}
                                     <option value="{{unit}}" aria-required="true">{{unit.code}}: {{unit.name}} ({{unit.startTime}}-{{unit.endTime}})</option>

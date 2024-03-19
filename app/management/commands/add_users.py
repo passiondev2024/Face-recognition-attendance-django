@@ -13,24 +13,24 @@ class Command(BaseCommand):
         users_data = [
             # Add user credentials here - use dictionary
             {
-                "username": "CSC/027/2020",
-                "password": "CSC/027/2020",
+                "username": "CSC0272020",
+                "password": "CSC0272020",
             },
             {
-                "username": "CSC/043/2020",
-                "password": "CSC/043/2020",
+                "username": "CSC0432020",
+                "password": "CSC0432020",
             },
             {
-                "username": "CSC/044/2020",
-                "password": "CSC/044/2020",
+                "username": "CSC0442020",
+                "password": "CSC0442020",
             },
             {
-                "username": "CSC/052/2020",
-                "password": "CSC/052/2020",
+                "username": "CSC0522020",
+                "password": "CSC0522020",
             },
             {
-                "username": "CSC/011/2020",
-                "password": "CSC/011/2020",
+                "username": "CSC0112020",
+                "password": "CSC0112020",
             },
         ]
 
