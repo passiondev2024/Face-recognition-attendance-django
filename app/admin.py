@@ -1,10 +1,10 @@
 from django.contrib import admin
-from .models import Student, Profile, takeAttendance, Chat
+from .models import Student, Profile, takeAttendance, Chat, User
 
 # Register your models here.
-# @admin.register(User)
-# class UserTable(admin.ModelAdmin):
-#     list_display = ('id', 'username')
+@admin.register(User)
+class UserTable(admin.ModelAdmin):
+    list_display = ('id', 'username')
 
 @admin.register(Student)
 class StudentTable(admin.ModelAdmin):
