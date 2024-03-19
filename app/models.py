@@ -10,6 +10,7 @@ class Student(models.Model):
     user = models.OneToOneField(User, null = True, blank = True, on_delete= models.CASCADE)
     first_name = models.CharField(max_length=200, null=True, blank=True)
     last_name = models.CharField(max_length=200, null=True, blank=True)
+    admission_no = models.CharField(max_length=20, null=True, blank=True)
     phone = models.CharField(max_length=200, null=True, blank=True)
     email = models.CharField(max_length=200, null=True, blank=True)
     gender = models.CharField(max_length=200, null=True, blank=True)

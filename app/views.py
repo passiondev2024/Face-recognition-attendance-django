@@ -50,6 +50,7 @@ def Enroll(request):
     if request.method == 'POST':
         first_name = request.POST['first_name']
         last_name = request.POST['last_name']
+        admission_no = request.POST['admission_no']
         phone = request.POST['phone']
         email = request.POST['email']
         gender = request.POST['gender']
@@ -77,6 +78,7 @@ def Enroll(request):
             user=user,
             first_name=first_name,
             last_name=last_name,
+            admission_no=admission_no,
             phone=phone,
             email=email,
             gender=gender,
@@ -89,7 +91,7 @@ def Enroll(request):
         )
         student_details.save()
 
-        messages.info(request, 'You have been enrolled, upload a profile photo to continue')
+        # messages.info(request, 'You have been enrolled, upload a profile photo to continue')
         return redirect('profilePic')
     else:
         # Render the enrollment form
@@ -108,10 +110,10 @@ def ProfilePic(request):
         form = ProfileForm(request.POST, request.FILES, initial={'student':student})
         if form.is_valid():
             form.save()
-            messages.info(request, 'You are logged in')
+            # messages.info(request, 'You are logged in')
             return redirect('index')
         else:
-            messages.error(request, 'Upload a valid profile image')
+            # messages.error(request, 'Upload a valid profile image')
             return redirect('profilePic')  
     else:
         form = ProfileForm(initial={'student':student})
