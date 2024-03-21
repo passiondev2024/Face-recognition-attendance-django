@@ -118,8 +118,8 @@
                                                         <thead>
                                                             <tr>
                                                                 <th style="text-decoration: none;">Units for
-                                                                    {{student.user.username}} {{student.first_name}}
-                                                                    {{student.last_name}}</th>
+                                                                    {{student.user.username}} {{student.first_name}} {{student.last_name}}
+                                                                </th>
                                                             </tr>
                                                             <tr>
                                                                 <th>#</th>
@@ -131,17 +131,15 @@
                                                         </thead>
                                                         <tbody>
                                                             {% for unit in unit_list %}
-                                                            <tr>
-                                                                <td>1</td>
-                                                                <td>
-                                                                    {{unit.code}}
-                                                                </td>
-                                                                <td>{{unit.name}}</td>
-                                                                <td></td>
-                                                                <td></td>
-                                                            </tr>
+                                                                <tr>
+                                                                    <td>{{ forloop.counter }}</td>
+                                                                    <td>{{ unit.code }}</td>
+                                                                    <td>{{ unit.name }}</td>
+                                                                    <td></td>
+                                                                    <td></td>
+                                                                </tr>
                                                             {% endfor %}
-                                                        </tbody>
+                                                        </tbody>                                                        
                                                     </table>
                                                 </div>
                                             </div>
