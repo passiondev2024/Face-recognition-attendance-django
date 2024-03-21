@@ -658,7 +658,7 @@ $(document).ready(function () {
                 {
                     code: 'TEST 100',
                     name: 'Test Unit',
-                    day: 'Tuesday', lecturer: 'Test Lecturer',
+                    day: 'Thursday', lecturer: 'Test Lecturer',
                     room: {
                         name: 'Rongo University',
                         coordinates: [
@@ -668,7 +668,7 @@ $(document).ready(function () {
                             {"latitude": -0.8271909 + 0.05, "longitude": 34.61829111 - 0.05}
                         ]                   
                     },
-                    startTime: '12:00 PM',
+                    startTime: '12:00 AM',
                     endTime: '11:59 PM'
                 },
                 {
