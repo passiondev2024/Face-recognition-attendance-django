@@ -385,7 +385,9 @@ def Chats(request):
     year = student.year
     semester = student.semester
     students = Student.objects.filter(course=course, semester=semester, year=year)
-    all_texts = Chat.objects.filter(student__in=students)
+    all_texts = Chat.objects.filter(student__in=students).order_by('time')
+
+
     if request.method == 'POST':
         search_query = request.POST.get('search_text', '')
         text = request.POST.get('text', '')

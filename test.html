@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+<!-- <!DOCTYPE html>
 <html lang="en">
 
 <head>
@@ -59,4 +59,46 @@
 
 </body>
 
+</html> -->
+
+
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Auto Scroll to Bottom</title>
+<style>
+    /* CSS styles for the chat container */
+    #chat-container {
+        height: 300px; /* Set the height of the chat container */
+        overflow-y: scroll; /* Enable vertical scrolling */
+    }
+</style>
+</head>
+<body>
+<div id="chat-container">
+    <!-- Your chat content goes here -->
+    <div class="chat">Chat 1</div>
+    <div class="chat">Chat 2</div>
+    <div class="chat">Chat 3</div>
+    <!-- More chat content -->
+</div>
+
+<!-- Include jQuery library -->
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+<script>
+$(document).ready(function(){
+    // Function to scroll to the bottom of the chat container
+    function scrollToBottom() {
+        var chatContainer = document.getElementById("chat-container");
+        chatContainer.scrollTop = chatContainer.scrollHeight;
+    }
+
+    // Call the function initially to scroll to the bottom
+    scrollToBottom();
+});
+</script>
+</body>
 </html>
