@@ -754,7 +754,7 @@ textarea.form-control {
 -----------------------*/
 
 .header {
-	background-color: #009efb;
+	background-color: #28a85d;
 	left: 0;
 	position: fixed;
 	right: 0;
@@ -876,7 +876,7 @@ textarea.form-control {
 	top: 50px;
 	width: 230px;
 	z-index: 1039;
-	background-color: #fff;
+	background-color: #498863;
 	bottom: 0;
 	margin-top: 0px;
 	position: fixed;
@@ -899,7 +899,7 @@ textarea.form-control {
 	padding: 0;
 }
 .sidebar-menu li a {
-	color: #888;
+	color: #fff;
 	display: block;
 	font-size: 15px;
 	height: auto;
@@ -985,6 +985,7 @@ textarea.form-control {
 .mobile_btn {
 	display: none;
 }
+
 .sidebar .sidebar-menu > ul > li > a span {
 	transition: all 0.2s ease-in-out 0s;
 	display: inline-block;
@@ -1002,7 +1003,7 @@ textarea.form-control {
 	position: relative;
 }
 .sidebar-menu ul ul {
-	background-color: #f3f3f3;
+	background-color: #498863;
 	display: none;
 }
 .sidebar-menu ul ul ul a {
