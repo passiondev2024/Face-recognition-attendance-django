@@ -9,10 +9,6 @@
     input[type=text] {
         width: 70%;
     }
-    #contents {
-        overflow-y: scroll; 
-        height: 600px;
-    }
 </style>
 <div class="page-wrapper">
     <div class="chat-main-row">
@@ -66,70 +62,68 @@
                             </ul> -->
                         </div>
                     </div>
-                    <div id="contents">
-                        <div class="chat-contents">
-                            <div class="chat-content-wrap">
-                                <div class="chat-wrap-inner">
-                                    <div class="chat-box">
-                                        <div class="chats">
-                                            {% for data in all_texts %}
-                                            {% if data.student == student %}
-                                            <div class="chat chat-right">
-                                                <div class="chat-body">
-                                                    <div class="chat-bubble">
-                                                        <div class="chat-content">
-                                                            <ul class="attach-list">
-                                                                <p style="color: black;">{{data.text}}</p>
-                                                            </ul>
-                                                            <span style="color: green;"
-                                                                class="chat-time">{{data.time}}</span>
-                                                        </div>
+                    <div class="chat-contents">
+                        <div class="chat-content-wrap">
+                            <div class="chat-wrap-inner">
+                                <div class="chat-box">
+                                    <div class="chats">
+                                        {% for data in all_texts %}
+                                        {% if data.student == student %}
+                                        <div class="chat chat-right">
+                                            <div class="chat-body">
+                                                <div class="chat-bubble">
+                                                    <div class="chat-content">
+                                                        <ul class="attach-list">
+                                                            <p style="color: black;">{{data.text}}</p>
+                                                        </ul>
+                                                        <span style="color: green;"
+                                                            class="chat-time">{{data.time}}</span>
                                                     </div>
                                                 </div>
                                             </div>
-                                            {% else %}
-                                            <div class="chat chat-left">
-                                                <div class="chat-avatar">
-                                                    <a href="#" class="avatar">
-                                                        <img alt="" src="{{data.student.profile.profile_photo.url}}"
-                                                            class="img-fluid rounded-circle">
-                                                    </a>
-                                                </div>
-                                                <div class="chat-body">
-                                                    <div class="chat-bubble">
-                                                        <div class="chat-content">
-                                                            <p style="color: green;font-size: 12px;">{{data.student.first_name}} {{data.student.last_name}}</p>
-                                                            <ul class="attach-list">
-                                                                <p style="color: black;">{{data.text}}</p>
-                                                            </ul>
-                                                            <span class="chat-time">{{data.time}}</span>
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                            {% endif %}
-                                            {% endfor %}
                                         </div>
+                                        {% else %}
+                                        <div class="chat chat-left">
+                                            <div class="chat-avatar">
+                                                <a href="#" class="avatar">
+                                                    <img alt="" src="{{data.student.profile.profile_photo.url}}"
+                                                        class="img-fluid rounded-circle">
+                                                </a>
+                                            </div>
+                                            <div class="chat-body">
+                                                <div class="chat-bubble">
+                                                    <div class="chat-content">
+                                                        <p style="color: green;font-size: 11px;">{{data.student.first_name}} {{data.student.last_name}}</p>
+                                                        <ul class="attach-list">
+                                                            <p style="color: black;">{{data.text}}</p>
+                                                        </ul>
+                                                        <span class="chat-time">{{data.time}}</span>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        {% endif %}
+                                        {% endfor %}
                                     </div>
                                 </div>
                             </div>
                         </div>
-                        <div class="chat-footer">
-                            <div class="message-bar">
-                                <div class="message-inner">
-                                    <div class="message-area">
-                                        <form action="" method="post">
-                                            {% csrf_token %}
-                                            <div class="input-group">
-                                                <input type="text" id="messag" name="text" class="form-control"
-                                                    placeholder="Type message..." required>
-                                                <!-- <span class="input-group-append"> -->
-                                                <button class="btn btn-primary" type="submit"><i
-                                                        class="fa fa-send"></i></button>
-                                                </span>
-                                            </div>
-                                        </form>
-                                    </div>
+                    </div>
+                    <div class="chat-footer">
+                        <div class="message-bar">
+                            <div class="message-inner">
+                                <div class="message-area">
+                                    <form action="" method="post">
+                                        {% csrf_token %}
+                                        <div class="input-group">
+                                            <input type="text" id="messag" name="text" class="form-control"
+                                                placeholder="Type message..." required>
+                                            <!-- <span class="input-group-append"> -->
+                                            <button class="btn btn-primary" type="submit"><i
+                                                    class="fa fa-send"></i></button>
+                                            </span>
+                                        </div>
+                                    </form>
                                 </div>
                             </div>
                         </div>
@@ -140,21 +134,6 @@
     </div>
 </div>
 </div>
-
-<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
-<script>
-$(document).ready(function(){
-    // Function to scroll to the bottom of the chat container
-    function scrollToBottom() {
-        var chatContainer = document.getElementById("contents");
-        chatContainer.scrollTop = chatContainer.scrollHeight;
-    }
-
-    // Call the function initially to scroll to the bottom
-    scrollToBottom();
-});
-</script>
-
 <script>
     $(document).ready(function () {
         $("#message").emojioneArea({

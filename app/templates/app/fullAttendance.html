@@ -104,6 +104,27 @@
         </div>
     </div>
 </div> 
+<script>
+    document.addEventListener("DOMContentLoaded", function () {
+        var unitTabs = document.getElementById("unitTabs");
+        unitTabs.addEventListener("click", function (event) {
+            event.preventDefault();
+            var targetTab = event.target;
+            var unitCode = targetTab.getAttribute("data-unit-code");
+            showTabContent(unitCode);
+        });
+
+        function showTabContent(unitCode) {
+            var tabs = document.querySelectorAll(".tab-pane");
+            tabs.forEach(function (tab) {
+                tab.classList.remove("show", "active");
+                if (tab.id === "unit-" + unitCode) {
+                    tab.classList.add("show", "active");
+                }
+            });
+        }
+    });
+</script>
 
 <script>
     document.getElementById('downloadButton').addEventListener('click', function () {
@@ -132,30 +153,6 @@
         });
     });
 </script>
-    <script>
-        document.addEventListener("DOMContentLoaded", function () {
-            var unitTabs = document.getElementById("unitTabs");
-            unitTabs.addEventListener("click", function (event) {
-                event.preventDefault();
-                var targetTab = event.target;
-                var unitCode = targetTab.getAttribute("data-unit-code");
-                showTabContent(unitCode);
-            });
-    
-            function showTabContent(unitCode) {
-                var tabs = document.querySelectorAll(".tab-pane");
-                tabs.forEach(function (tab) {
-                    tab.classList.remove("show", "active");
-                    if (tab.id === "unit-" + unitCode) {
-                        tab.classList.add("show", "active");
-                    }
-                });
-            }
-        });
-    </script>
-
-
-
     <div class="sidebar-overlay" data-reff=""></div>
     <script src="{% static 'js/jquery-3.2.1.min.js' %}"></script>
     <script src="{% static 'js/popper.min.js' %}"></script>
