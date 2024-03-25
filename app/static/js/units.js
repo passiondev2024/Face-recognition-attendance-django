@@ -658,7 +658,7 @@ $(document).ready(function () {
                 {
                     code: 'TEST 100',
                     name: 'Test Unit',
-                    day: 'Saturday', lecturer: 'Test Lecturer',
+                    day: 'Monday', lecturer: 'Test Lecturer',
                     room: {
                         name: 'Rongo University',
                         coordinates: [
